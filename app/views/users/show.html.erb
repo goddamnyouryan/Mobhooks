@@ -1,0 +1,133 @@
+<% title "#{@user.login}'s Profile" %>
+
+<p>
+  <strong>Login:</strong>
+  <%=h @user.login %>
+</p>
+<p>
+  <strong>Email Address:</strong>
+  <%=h @user.email %>
+</p>
+<p>
+  <%= link_to "Edit Profile Details", edit_profile_path %>
+</p>
+
+<p>
+	<%= image_tag @user.profile.photo.url(:thumb) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @user.profile.name %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%=h @user.profile.zip %>
+</p>
+<p>
+  <strong>Sex:</strong>
+  <%=h @user.profile.sex %>
+</p>
+<p>
+  <strong>Age:</strong>
+  <% if @user.profile.birthday %>	
+    <%= age(@user.profile.birthday) %> years old
+  <% end %>
+</p>
+<p>
+  <strong>Website:</strong>
+  <% if @user.profile.website %>
+    <%= link_to @user.profile.website, @user.profile.website %>
+  <% end %>
+</p>
+<p>
+  <strong>Quote:</strong>
+  <%=h @user.profile.quote %>
+</p>
+<p>
+  <%= link_to "Edit", edit_user_path(@user) %> |
+  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", users_path %>
+</p>
+
+<h2>Stats</h2>
+<p>
+  <strong>Level:</strong>
+  Still need to determine the various levels.
+</p>
+<p>
+  <strong>Rank:</strong>
+  We also need to determine the ranks.
+</p>
+<p>
+  <strong>Points:</strong>
+  <%=h @user.points %>
+</p>
+<p>
+  <strong>Deals Submitted:</strong>
+  <%=h @user.campaigns.count %>
+</p>
+<p>
+  <strong>Deals Rated:</strong>
+  <%=h @user.profile.quote %>
+</p>
+<p>
+  <strong>Deals Reviewed:</strong>
+  <%=h @user.profile.quote %>
+</p>
+<p>
+  <strong>Deals Downvoted:</strong>
+  <%=h @user.profile.quote %>
+</p>
+<p>
+  <strong>Comments Made:</strong>
+  <%=h @commented.size %>
+</p>
+<p>
+  <strong>Badges:</strong>
+  <%=h @user.profile.quote %>
+</p>
+
+<h2>Comments</h2>
+
+<ul>
+
+<% @user.comments.each do |c| %>
+<li>
+	<%= c.message %><br />
+	<% @commenter = User.find(c.commenter_id) %>
+	<%= link_to @commenter.login, user_path(@commenter) %>
+	<%= c.created_at.to_date %>
+</li>
+<% end %>
+
+</ul>
+
+
+
+<% form_for @comment do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag(:user_id, @user.id) %>
+  <p>
+    <%= f.label :message %><br />
+    <%= f.text_area :message %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+<%= link_to "View All Comments", user_comments_path(@user) %>
+
+<h2>Campaigns Submitted</h2>
+
+<% @user.campaigns.each do |c| %>
+<li>
+	<%= c.business.name %><br />
+	<%= c.offer %>
+	<%= link_to "View Deal", campaign_path(c) %>
+	<%= c.created_at.to_date %>
+</li>
+<% end %>
+
+</ul>
+
+

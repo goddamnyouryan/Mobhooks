@@ -1,0 +1,20 @@
+<% title "Review" %>
+
+<p>
+  <strong>User:</strong>
+  <%=h @review.user_id %>
+</p>
+<p>
+  <strong>Reviewer:</strong>
+  <%=h @review.reviewer_id %>
+</p>
+<p>
+  <strong>Message:</strong>
+  <%=h @review.message %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_review_path(@review) %> |
+  <%= link_to "Destroy", @review, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", reviews_path %>
+</p>

@@ -1,0 +1,15 @@
+one:
+  name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+  description: MyText
+
+two:
+  name: MyString
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+  description: MyText

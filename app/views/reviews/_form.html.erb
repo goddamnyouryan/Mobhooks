@@ -1,0 +1,16 @@
+<% form_for @review do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :user_id %><br />
+    <%= f.text_field :user_id %>
+  </p>
+  <p>
+    <%= f.label :reviewer_id %><br />
+    <%= f.text_field :reviewer_id %>
+  </p>
+  <p>
+    <%= f.label :message %><br />
+    <%= f.text_area :message %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

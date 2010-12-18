@@ -1,0 +1,40 @@
+<% form_for @profile, :html => { :multipart => true } do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :zip %><br />
+    <%= f.text_field :zip %>
+  </p>
+  <p>
+    <%= f.label :sex %><br />
+    <%= f.radio_button :sex, "Male" %> Male
+	<%= f.radio_button :sex, "Female" %> Female
+  </p>
+  <p>
+    <%= f.label :birthday %><br />
+    <%= f.date_select :birthday, 
+										:start_year => Time.now.year,
+										:end_year => Profile::START_YEAR,
+										:include_blank => true,
+										:order => [:month, :day, :year]											
+	%>
+  </p>
+  <p>
+    <%= f.label :website %><br />
+    <%= f.text_field :website %>
+  </p>
+  <p>
+    <%= f.label :quote %><br />
+    <%= f.text_field :quote %>
+  </p>
+
+  <p>
+	<%= f.file_field :photo %>
+  </p>
+
+
+  <p><%= f.submit %></p>
+<% end %>

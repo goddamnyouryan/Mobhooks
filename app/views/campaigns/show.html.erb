@@ -1,0 +1,64 @@
+<% title "Campaign" %>
+
+<h2>Rating</h2>
+<h3 id="votes_for"><%= @campaign.votes_for %> upvotes</h3>
+<h3 id="votes_against"><%= @campaign.votes_against %> downvotes</h3>
+
+<div id="voting">
+	<% unless current_user.voted_for?(@campaign) %>
+		<%= link_to_remote "+ Vote Up", :url => { :controller => 'campaigns', :action => 'vote_up', :campaign => @campaign } %>
+		<%= link_to_remote "- Vote Down", :url => { :controller => 'campaigns', :action => 'vote_down', :campaign => @campaign } %>
+	<% else %>
+		You voted on this campaign.
+	<% end %>	
+</div>
+
+<%= link_to "view / write reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign) %>
+
+<h2>Campaign Details</h2>
+
+<p>
+	<%= image_tag @campaign.photo.url(:thumb) %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%=h @campaign.user_id %>
+</p>
+<p>
+  <strong>Business:</strong>
+  <%=h @business.name %>
+</p>
+<p>
+  <strong>Offer:</strong>
+  <%=h @campaign.offer %>
+</p>
+<p>
+  <strong>Shortcode:</strong>
+  <%=h @campaign.shortcode %>
+</p>
+<p>
+  <strong>Keyword:</strong>
+  <%=h @campaign.keyword %>
+</p>
+<p>
+  <strong>Start Date:</strong>
+  <%=h @campaign.start_date.to_date %>
+</p>
+<p>
+  <strong>End Date:</strong>
+  <%=h @campaign.end_date.to_date %>
+</p>
+<p>
+  <strong>Type:</strong>
+  <%=h @campaign.type %>
+</p>
+<p>
+  <strong>Details:</strong>
+  <%=h @campaign.details %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_campaign_path(@campaign) %> |
+  <%= link_to "Destroy", @campaign, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", campaigns_path %>
+</p>

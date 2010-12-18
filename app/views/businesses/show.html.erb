@@ -1,0 +1,32 @@
+<% title "Business" %>
+
+<p>
+  <strong>Name:</strong>
+  <%=h @business.name %>
+</p>
+<p>
+  <strong>Address:</strong>
+  <%=h @business.address %>
+</p>
+<p>
+  <strong>City:</strong>
+  <%=h @business.city %>
+</p>
+<p>
+  <strong>State:</strong>
+  <%=h @business.state %>
+</p>
+<p>
+  <strong>Zip:</strong>
+  <%=h @business.zip %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%=h @business.description %>
+</p>
+
+<p>
+  <%= link_to "Edit", edit_business_path(@business) %> |
+  <%= link_to "Destroy", @business, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", businesses_path %>
+</p>

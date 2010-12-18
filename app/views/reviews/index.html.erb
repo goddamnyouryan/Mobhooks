@@ -1,0 +1,26 @@
+<% title "Reviews" %>
+
+<h2>Comments</h2>
+
+<ul>
+
+<% @campaign.reviews.each do |r| %>
+<li>
+	<%= r.message %><br />
+	<% @reviewer = User.find(r.reviewer_id) %>
+	<%= link_to @reviewer.login, user_path(@reviewer) %>
+	<%= r.created_at.to_date %>
+</li>
+<% end %>
+
+</ul>
+
+<% form_for @review do |f| %>
+  <%= f.error_messages %>
+  <%= hidden_field_tag(:campaign_id, @campaign.id) %>
+  <p>
+    <%= f.label :message %><br />
+    <%= f.text_area :message %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>

@@ -1,0 +1,17 @@
+one:
+  user_id: 1
+  name: MyString
+  zip: 1
+  sex: MyString
+  birthday: 2010-12-04 15:24:31
+  website: MyString
+  quote: MyString
+
+two:
+  user_id: 1
+  name: MyString
+  zip: 1
+  sex: MyString
+  birthday: 2010-12-04 15:24:31
+  website: MyString
+  quote: MyString

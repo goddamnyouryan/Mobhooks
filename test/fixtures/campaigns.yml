@@ -1,0 +1,21 @@
+one:
+  user_id: 1
+  business_id: 1
+  offer: MyString
+  shortcode: 1
+  keyword: MyString
+  start_date: 2010-12-02 22:41:48
+  end_date: 2010-12-02 22:41:48
+  type: MyString
+  details: MyText
+
+two:
+  user_id: 1
+  business_id: 1
+  offer: MyString
+  shortcode: 1
+  keyword: MyString
+  start_date: 2010-12-02 22:41:48
+  end_date: 2010-12-02 22:41:48
+  type: MyString
+  details: MyText

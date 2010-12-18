@@ -1,0 +1,9 @@
+one:
+  user_id: 1
+  reviewer_id: 1
+  message: MyText
+
+two:
+  user_id: 1
+  reviewer_id: 1
+  message: MyText

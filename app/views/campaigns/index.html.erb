@@ -1,0 +1,33 @@
+<% title "Campaigns" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Business</th>
+    <th>Offer</th>
+    <th>Shortcode</th>
+    <th>Keyword</th>
+    <th>Start Date</th>
+    <th>End Date</th>
+    <th>Type</th>
+    <th>Details</th>
+  </tr>
+  <% for campaign in @campaigns %>
+    <tr>
+      <td><%=h campaign.user_id %></td>
+      <td><%=h campaign.business_id %></td>
+      <td><%=h campaign.offer %></td>
+      <td><%=h campaign.shortcode %></td>
+      <td><%=h campaign.keyword %></td>
+      <td><%=h campaign.start_date.to_date %></td>
+      <td><%=h campaign.end_date.to_date %></td>
+      <td><%=h campaign.type %></td>
+      <td><%=h campaign.details %></td>
+      <td><%= link_to "Show", campaign %></td>
+      <td><%= link_to "Edit", edit_campaign_path(campaign) %></td>
+      <td><%= link_to "Destroy", campaign, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Campaign", new_campaign_path %></p>
