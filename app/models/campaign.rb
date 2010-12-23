@@ -36,4 +36,18 @@ class Campaign < ActiveRecord::Base
     end
   end
   
+  def self.location_search(search, near)
+    if search
+      find(:all, 
+           :joins => :business, 
+           :conditions => ['offer LIKE ? OR details LIKE ? OR businesses.name LIKE ? OR businesses.description LIKE ?', 
+                           "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"],
+           :origin => "#{near}",
+           :within => 25
+           )
+    else
+      find(:all)
+    end
+  end
+  
 end

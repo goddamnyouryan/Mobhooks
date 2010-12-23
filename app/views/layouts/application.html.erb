@@ -21,7 +21,10 @@
 		
 		<% form_tag campaigns_path, :method => 'get' do %>
 		  <p>
+			Find a deal (e.g. electronics, bank, food, etc..)
 		    <%= text_field_tag :search, params[:search] %>
+		    Near:
+		    <%= text_field_tag :near, params[:near] %>
 		    <%= submit_tag "Search", :name => nil %>
 		  </p>
 		<% end %>
