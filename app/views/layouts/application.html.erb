@@ -19,6 +19,13 @@
 		  <% end %>
 		</ul>
 		
+		<% form_tag campaigns_path, :method => 'get' do %>
+		  <p>
+		    <%= text_field_tag :search, params[:search] %>
+		    <%= submit_tag "Search", :name => nil %>
+		  </p>
+		<% end %>
+		
 	
       <%- flash.each do |name, msg| -%>
         <%= content_tag :div, msg, :id => "flash_#{name}" %>

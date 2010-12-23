@@ -16,9 +16,18 @@
 <%= link_to "view / write reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign) %>
 
 <h2>Campaign Details</h2>
+<p><%= pluralize(@distance, "mile") %></p>
+<p>
+  <strong>Latitude:</strong>
+  <%=h @campaign.lat %>
+</p>
+<p>
+  <strong>Longitude:</strong>
+  <%=h @campaign.lng %>
+</p>
 
 <p>
-	<%= image_tag @campaign.photo.url(:thumb) %>
+	<%= image_tag @campaign.photo.url(:show) %>
 </p>
 <p>
   <strong>User:</strong>

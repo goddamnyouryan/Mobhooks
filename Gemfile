@@ -24,6 +24,7 @@ gem "heroku", "1.8.3"
 gem "vote_fu"
 gem "paperclip"
 gem "aws-s3"
+gem "geokit"
 
 # Add a git repository as a source. Valid options include :branch, :tag,
 # and :ref. Next, add any gems that you want from that repo.

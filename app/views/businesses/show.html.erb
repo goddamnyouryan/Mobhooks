@@ -1,9 +1,7 @@
-<% title "Business" %>
+<% title "#{h @business.name}" %>
 
-<p>
-  <strong>Name:</strong>
-  <%=h @business.name %>
-</p>
+<p><%= image_tag @business.photo.url(:medium)%>
+
 <p>
   <strong>Address:</strong>
   <%=h @business.address %>
@@ -30,3 +28,17 @@
   <%= link_to "Destroy", @business, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", businesses_path %>
 </p>
+
+<h2>Campaigns</h2>
+
+<% @business.campaigns.each do |c| %>
+<li>
+	<%= c.business.name %><br />
+	<%= c.offer %>
+	<%= link_to "View Deal", campaign_path(c) %>
+	<%= c.created_at.to_date %>
+</li>
+<% end %>
+
+</ul>
+

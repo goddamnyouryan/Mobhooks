@@ -5,11 +5,15 @@ class CampaignsController < ApplicationController
   
   def create
     @campaign = current_user.campaigns.new(params[:campaign])
-    @business = Business.find_by_name(params[:campaign][:business_id])
-    @business_name = params[:campaign][:business_id]
+    @business = Business.find_by_name(params[:campaign][:business_name])
+    @business_name = params[:campaign][:business_name]
     unless @business.nil?
       @campaign.business_id = @business.id
+      @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
+      @campaign.lat = @geocode.lat
+      @campaign.lng = @geocode.lng
       @campaign.save!      
+      flash[:notice] = "Successfully created campaign."
       redirect_to @campaign
     else
       @campaign.save!
@@ -36,11 +40,15 @@ class CampaignsController < ApplicationController
   
   def show
     @campaign = Campaign.find(params[:id])
-    @business = Business.find(@campaign.business_id)
+    @business = @campaign.business
+    @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
+    @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
   end
   
+  
   def index
-    @campaigns = Campaign.all
+    @campaigns = Campaign.search(params[:search])
+    @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
   end
   
   def destroy

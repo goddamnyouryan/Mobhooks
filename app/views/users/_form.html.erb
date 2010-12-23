@@ -16,5 +16,6 @@
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation %>
   </p>
+  <p><%= f.check_box :terms %>You have read and agree to our <%= link_to 'terms of service', terms_path %></p>
   <p><%= f.submit %></p>
 <% end %>

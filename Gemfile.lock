@@ -19,6 +19,7 @@ GEM
       xml-simple
     builder (2.1.2)
     configuration (1.2.0)
+    geokit (1.5.0)
     heroku (1.8.3)
       json_pure (~> 1.2.0)
       launchy (~> 0.3.2)
@@ -53,6 +54,7 @@ PLATFORMS
 DEPENDENCIES
   authlogic
   aws-s3
+  geokit
   heroku (= 1.8.3)
   nifty-generators
   paperclip
