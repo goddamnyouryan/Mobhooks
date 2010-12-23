@@ -47,7 +47,7 @@ class CampaignsController < ApplicationController
   
   
   def index
-    unless params[:near] = ""
+    unless params[:near] == "" || params[:near] == nil
       @campaigns = Campaign.search(params[:search])
     else
       @campaigns = Campaign.location_search(params[:search], params[:near])
