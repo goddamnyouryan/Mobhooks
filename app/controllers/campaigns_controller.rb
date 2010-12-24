@@ -48,7 +48,9 @@ class CampaignsController < ApplicationController
   
   def index
     @campaigns = Campaign.location_search(params[:search], params[:near])
-    unless current_user.profile.nil?
+    if params[:near]
+      @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:near]}"
+    else current_user
       @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
     end
   end
