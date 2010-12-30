@@ -69,15 +69,15 @@
 </p>
 <p>
   <strong>Deals Rated:</strong>
-  <%=h @user.profile.quote %>
+  <%=h @user.votes.count %>
 </p>
 <p>
   <strong>Deals Reviewed:</strong>
-  <%=h @user.profile.quote %>
+  <%=h @reviews.size %>
 </p>
 <p>
   <strong>Deals Downvoted:</strong>
-  <%=h @user.profile.quote %>
+  <%=h @downvoted %>
 </p>
 <p>
   <strong>Comments Made:</strong>
@@ -85,7 +85,11 @@
 </p>
 <p>
   <strong>Badges:</strong>
-  <%=h @user.profile.quote %>
+  <ul>
+  <% @user.achievements.each do |a|%>
+	<li><%= a.type %></li>
+  <% end %>
+  </ul>
 </p>
 
 <h2>Comments</h2>
@@ -109,7 +113,7 @@
   <%= f.error_messages %>
   <%= hidden_field_tag(:user_id, @user.id) %>
   <p>
-    <%= f.label :message %><br />
+    <%= f.label :write_a_new_comment %><br />
     <%= f.text_area :message %>
   </p>
   <p><%= f.submit %></p>
@@ -119,15 +123,6 @@
 
 <h2>Campaigns Submitted</h2>
 
-<% @user.campaigns.each do |c| %>
-<li>
-	<%= c.business.name %><br />
-	<%= c.offer %>
-	<%= link_to "View Deal", campaign_path(c) %>
-	<%= c.created_at.to_date %>
-</li>
-<% end %>
-
-</ul>
+<%= render :partial=>'campaigns/list', :locals => { :campaign => @user.campaigns } %> 
 
 

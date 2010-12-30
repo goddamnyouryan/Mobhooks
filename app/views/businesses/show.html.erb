@@ -18,6 +18,12 @@
   <strong>Zip:</strong>
   <%=h @business.zip %>
 </p>
+<% unless @business.tag_list.empty? %>
+<p>
+	<strong>Tags:</strong>
+	<%= h @business.tag_list %>
+</p>
+<% end %>
 <p>
   <strong>Description:</strong>
   <%=h @business.description %>

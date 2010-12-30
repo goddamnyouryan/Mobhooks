@@ -6,24 +6,18 @@ No comments!
 
 <% else %>
 
-<table>
-  <tr>
-    <th>User</th>
-    <th>Commenter</th>
-    <th>Message</th>
-  </tr>
+<ul>
 
-  <% for comment in @comments %>
-    <tr>
-      <td><%=h comment.user_id %></td>
-      <td><%=h comment.commenter_id %></td>
-      <td><%=h comment.message %></td>
-      <td><%= link_to "Show", comment %></td>
-      <td><%= link_to "Edit", edit_comment_path(comment) %></td>
-      <td><%= link_to "Destroy", comment, :confirm => 'Are you sure?', :method => :delete %></td>
-    </tr>
-  <% end %>
-</table>
+<% @comments.each do |c| %>
+<li>
+	<%= c.message %><br />
+	<% @commenter = User.find(c.commenter_id) %>
+	<%= link_to @commenter.login, user_path(@commenter) %>
+	<%= c.created_at.to_date %>
+</li>
+<% end %>
+
+</ul>
 
 <% end %>
 
@@ -31,7 +25,7 @@ No comments!
   <%= f.error_messages %>
   <%= hidden_field_tag(:user_id, @user.id) %>
   <p>
-    <%= f.label :message %><br />
+    <%= f.label :Write_a_new_comment %><br />
     <%= f.text_area :message %>
   </p>
   <p><%= f.submit %></p>

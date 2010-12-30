@@ -20,6 +20,8 @@ class ReviewsController < ApplicationController
     @review.reviewer_id = current_user.id
     @review.save
     if @review.save
+      current_user.points = current_user.points + 5
+      current_user.save
       flash[:notice] = "Successfully reviewed campaign."
       redirect_to campaign_url(@campaign)
     else

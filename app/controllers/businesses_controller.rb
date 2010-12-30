@@ -4,6 +4,10 @@ class BusinessesController < ApplicationController
     @biznass = Business.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
   end
   
+  def admin
+    @businesses = Business.all
+  end
+  
   def show
     @business = Business.find(params[:id])
   end
@@ -15,6 +19,7 @@ class BusinessesController < ApplicationController
   
   def create
     @business = Business.new(params[:business])
+    @business.tag_list = params[:business][:tag_list]
     @business.save!
     if @business.save
       if session[:created_campaign]
@@ -23,6 +28,16 @@ class BusinessesController < ApplicationController
         @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
         @campaign.lat = @geocode.lat
         @campaign.lng = @geocode.lng
+        if @campaign.kind == "Text Club"
+          current_user.points = current_user.points + 50
+          current_user.save
+        elsif @campaign.kind == "Discount/Coupon"
+          current_user.points = current_user.points + 100
+          current_user.save
+        elsif @campaign.kind == "Enter to Win"
+          current_user.points = current_user.points + 200
+          current_user.save
+        end
         @campaign.save!
         session[:created_campaign] = nil
       end
@@ -40,9 +55,10 @@ class BusinessesController < ApplicationController
   
   def update
     @business = Business.find(params[:id])
+    @business.tag_list = params[:business][:tag_list]
     if @business.update_attributes(params[:business])
       @business.campaigns.each do |campaign|
-        @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:business][:address]} #{params[:business][:city]} #{params[:business][:city]} #{params[:business][:zip]}"
+        @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:business][:address]} #{params[:business][:city]} #{params[:business][:state]} #{params[:business][:zip]}"
         campaign.lat = @geocode.lat
         campaign.lng = @geocode.lng
         campaign.save!

@@ -3,10 +3,17 @@ class UsersController < ApplicationController
     @users = User.all
   end
   
+  def admin 
+    @users = User.all
+  end
+  
   def show
     @user = User.find(params[:id])
     @comment = Comment.new(params[:comment])
     @commented = Comment.find(:all, :conditions => ["commenter_id in (?)", @user.id])
+    @downvotes = @user.votes.find(:all, :conditions => ["vote = ?", false])
+    @downvoted = @downvotes.size
+    @reviews = Review.find(:all, :conditions => ["reviewer_id in (?)", @user.id])
   end
     
   def new
@@ -19,6 +26,8 @@ class UsersController < ApplicationController
       @profile = Profile.create
       @profile.user_id = @user.id
       @profile.save
+      @user.points = @user.points + 100
+      @user.save
       flash[:notice] = "Registration Successful!"
       redirect_to root_url
     else

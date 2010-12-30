@@ -79,3 +79,87 @@ a {
   font-size: 12px;
   list-style: disc;
 }
+
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
+
+/***************NAV BAR *********************/
+
+h1#home_title{
+	float:left;
+}
+
+h1#title{
+	float:left;
+}
+
+ul#nav {
+	float: left;
+	 margin: 28px 0 0 -25px;
+}
+
+ul#nav li {
+	display: inline;
+}
+
+#search {
+	float:left;
+	margin: 0 0 0 25px;
+}
+
+#search p:first-child {
+	 margin: 0 0 -10px 25px;
+}
+
+
+/****************TAG CLOUD*******************/
+.css1 { font-size: 1.0em; }
+.css2 { font-size: 1.2em; }
+.css3 { font-size: 1.4em; }
+.css4 { font-size: 1.6em; }
+
+/***************CAMPAIGN LIST ****************/
+
+ul#campaign_list {
+	width:600px;
+}
+
+ul#campaign_list li { 
+	border: 5px solid #C0C0C0;
+	height: 90px;
+	list-style-type: none;
+	margin-bottom: 10px;
+	padding: 10px;
+}
+
+ul#campaign_list li img {
+	float: left;
+}
+
+ul#campaign_list li .campaign_titles {
+	float:left;
+	margin-left:5px;
+}
+
+ul#campaign_list li div.campaign_list_right {
+	float:right;
+	margin: 10px 0 0;
+}
+
+ul#campaign_list li div.campaign_list_right h2 {
+	text-align:center;
+	margin: 0 0 -10px 0;
+}
+
+ul#campaign_list li div.campaign_list_right p.view_deal {
+	background: #EDA02C;
+	padding: 10px;
+}
+
+ul#campaign_list li p.view_deal a {
+	color:#fff;
+	text-decoration: none;
+}

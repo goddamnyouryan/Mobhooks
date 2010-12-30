@@ -1,8 +1,9 @@
 <% title "Campaign" %>
 
 <h2>Rating</h2>
-<h3 id="votes_for"><%= @campaign.votes_for %> upvotes</h3>
-<h3 id="votes_against"><%= @campaign.votes_against %> downvotes</h3>
+<h2><%= score_percentage(@campaign) %>%</h2>
+<h3><span id="votes_for"><%= @campaign.votes_for %> upvotes</span><br />
+<span id="votes_against"><%= @campaign.votes_against %> downvotes</span></h3>
 
 <div id="voting">
 	<% unless current_user.voted_for?(@campaign) %>
@@ -14,6 +15,10 @@
 </div>
 
 <%= link_to "view / write reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign) %>
+
+<h2>Share</h2>
+<p><%= link_to "Share via Facebook" %><br />
+<%= link_to "Share via Twitter" %></p>
 
 <h2>Campaign Details</h2>
 <p><%= pluralize(@distance, "mile") %></p>
@@ -31,11 +36,11 @@
 </p>
 <p>
   <strong>User:</strong>
-  <%=h @campaign.user_id %>
+  <%= link_to @campaign.user.login, user_path(@campaign.user) %>
 </p>
 <p>
   <strong>Business:</strong>
-  <%=h @business.name %>
+  <%= link_to @business.name, business_path(@business) %>
 </p>
 <p>
   <strong>Offer:</strong>
@@ -59,12 +64,36 @@
 </p>
 <p>
   <strong>Type:</strong>
-  <%=h @campaign.type %>
+  <%=h @campaign.kind %>
 </p>
+<% unless @campaign.tag_list.empty? %>
+<p>
+	<strong>Tags:</strong>
+	<%= h @campaign.tag_list %>
+</p>
+<% end %>
 <p>
   <strong>Details:</strong>
   <%=h @campaign.details %>
 </p>
+
+<h2>Map</h2>
+	<%= @map.div(:width => 540, :height => 200) %>
+
+<% unless @related.nil? %>
+<h2>Related Deals</h2>
+<ul>
+<% @related.each do |c| %>
+<li>
+	<%= c.business.photo.url(:tiny) %>
+	<%= c.business.name %><br />
+	<%= c.offer %>
+	<%= link_to "View Deal", campaign_path(c) %>
+	<%= c.created_at.to_date %>
+</li>
+<% end %>
+</ul>
+<% end %>
 
 <p>
   <%= link_to "Edit", edit_campaign_path(@campaign) %> |

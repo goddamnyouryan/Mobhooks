@@ -9,7 +9,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101223072408) do
+ActiveRecord::Schema.define(:version => 20101229023540) do
+
+  create_table "achievements", :force => true do |t|
+    t.string   "type"
+    t.integer  "level"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "businesses", :force => true do |t|
     t.string   "name"
@@ -34,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20101223072408) do
     t.string   "keyword"
     t.datetime "start_date"
     t.datetime "end_date"
-    t.string   "type"
+    t.string   "kind"
     t.text     "details"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -76,6 +84,20 @@ ActiveRecord::Schema.define(:version => 20101223072408) do
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "taggings", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
+  add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|

@@ -1,0 +1,19 @@
+<% unless campaign.nil? %>
+<ul id="campaign_list">
+<% campaign.each do |c| %>
+<li>
+	<%= image_tag c.business.photo.url(:thumb) %>
+	<div class="campaign_titles">
+		<h3><%= c.business.name %></h3>
+		<h4><%= c.offer %></h4>
+	</div>
+	
+	<div class="campaign_list_right">
+		<h2><%= score_percentage(c) %>%</h2>
+		<p class="view_deal"><%= link_to "View Deal", campaign_path(c) %></p>
+	</div>
+</li>
+<div class="clear"></div>
+<% end %>
+</ul>
+<% end %>
