@@ -10,4 +10,4 @@ test:
  ABQIAAAAKV0gSeLnzE-drT_Wim1uHxQPk50ZfWgYE9cxemhtFtIFwsnpCRTXlRh84nln6cCYczWGtYA3t4wkdA
 
 production:
-    warm-waterfall-261.heroku.com: ABQIAAAAKV0gSeLnzE-drT_Wim1uHxQPk50ZfWgYE9cxemhtFtIFwsnpCRTXlRh84nln6cCYczWGtYA3t4wkdA
+ http://warm-waterfall-261.heroku.com: ABQIAAAAKV0gSeLnzE-drT_Wim1uHxQPk50ZfWgYE9cxemhtFtIFwsnpCRTXlRh84nln6cCYczWGtYA3t4wkdA
