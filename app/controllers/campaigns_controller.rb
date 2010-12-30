@@ -42,6 +42,7 @@ class CampaignsController < ApplicationController
   else
     redirect_to login_path
   end
+  end
   
   def edit
     @campaign = Campaign.find(params[:id])
