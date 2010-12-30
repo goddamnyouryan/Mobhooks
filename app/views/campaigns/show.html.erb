@@ -93,7 +93,7 @@
 <ul>
 <% @related.each do |c| %>
 <li>
-	<%= c.business.photo.url(:tiny) %>
+	<%= image_tag c.business.photo.url(:tiny) %>
 	<%= c.business.name %><br />
 	<%= c.offer %>
 	<%= link_to "View Deal", campaign_path(c) %>
