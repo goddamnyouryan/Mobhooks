@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
   end
   
   def create
+    if current_user
     @campaign = current_user.campaigns.new(params[:campaign])
     @business = Business.find_by_name(params[:campaign][:business_name])
     @campaign.tag_list = params[:campaign][:tag_list].downcase
@@ -38,6 +39,8 @@ class CampaignsController < ApplicationController
       session[:created_campaign] = @campaign.id
       redirect_to new_business_path
     end
+  else
+    redirect_to login_path
   end
   
   def edit
