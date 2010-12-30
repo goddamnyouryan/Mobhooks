@@ -2,21 +2,4 @@
 
 <p><%= link_to "New Campaign", new_campaign_path %></p>
 
-<ul>
-  <% for campaign in @campaigns %>
-	<li>
-	  <%= image_tag campaign.photo.url(:thumb) %>
-	  <%= campaign.business.name %>
-	  <%= campaign.offer %>
-	  <%= score_percentage(campaign) %>%
-	  <%= link_to "View Deal", campaign %>
-	  <% @business_geo = Geokit::Geocoders::GoogleGeocoder.geocode "#{campaign.business.address} #{campaign.business.city} #{campaign.business.state} #{campaign.business.zip}" %>
-	   <% @distance =  (@zip.distance_from(@business_geo)).round %>
-	  <%= pluralize(@distance, "mile") %>
-	</li>
-  <% end %>
-</ul>
-
-
-
-
+<%= render :partial=>'campaigns/list', :locals => { :campaign => @campaigns } %>

@@ -21,7 +21,11 @@
 <%= link_to "Share via Twitter" %></p>
 
 <h2>Campaign Details</h2>
-<p><%= pluralize(@distance, "mile") %></p>
+
+<p>
+	<strong>Latitude:</strong>
+	<%= pluralize(@distance, "mile") %>
+</p>
 <p>
   <strong>Latitude:</strong>
   <%=h @campaign.lat %>
