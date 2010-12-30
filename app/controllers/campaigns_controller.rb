@@ -59,8 +59,10 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @business = @campaign.business
-    @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
-    @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
+    if current_user
+      @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
+      @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
+    end
     @map = GMap.new("map_div")
     @map.control_init(:large_map => true,:map_type => true)
     @map.center_zoom_init([@campaign.lat, @campaign.lng],15)

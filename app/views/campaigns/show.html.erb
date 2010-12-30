@@ -22,10 +22,12 @@
 
 <h2>Campaign Details</h2>
 
+<% if current_user %>
 <p>
 	<strong>Latitude:</strong>
 	<%= pluralize(@distance, "mile") %>
 </p>
+<% end %>
 <p>
   <strong>Latitude:</strong>
   <%=h @campaign.lat %>
