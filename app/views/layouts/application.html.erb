@@ -14,19 +14,19 @@
   <body>
     <div id="container">
 	<% if params[:controller] == "home" %>
-		<h1 id="home_title">Mobhooks</h1>
+		<h1 id="home_title"><%= link_to "Mobhooks", root_path %></h1>
 	<% else %>
-		<h1 id="title">Mobhooks</h1>
+		<h1 id="title"><%= link_to "Mobhooks", root_path %></h1>
 	<% end %>
 		<ul id="nav">
 		  <% if current_user %>
-			<li><%= link_to "Deals", root_path %></li>
+			<li><%= link_to "Deals", campaigns_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Profile", user_path(current_user) %></li>
 			<li><%= link_to "Submit a Campaign", new_campaign_path %></li>
 			<li><%= link_to "Logout", logout_path %></li>
 		  <% else %>
-			<li><%= link_to "Deals", root_path %></li>
+			<li><%= link_to "Deals", campaigns_path %></li>
 			<li><%= link_to "Submit a Campaign", new_campaign_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Register", new_user_path %></li>

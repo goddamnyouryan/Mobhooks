@@ -1,4 +1,16 @@
 <h2>Sponsored Deals</h2>
+
+<ul id="sponsored">
+	<% @sponsored.each do |s| %>
+	<li>
+		<%= link_to "#{image_tag s.business.photo.url(:thumb)}", campaign_path(s) %>
+		<h3><%= link_to "#{s.business.name}", campaign_path(s) %></h3>
+		<h4><%= link_to "#{s.offer}", campaign_path(s) %></h4>
+	</li>
+	<% end %>
+</ul>
+
+<div class="clear"></div>
 	
 <h2>Most Popular Deals</h2>
 
