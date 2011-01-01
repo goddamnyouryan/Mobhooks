@@ -104,6 +104,7 @@ class CampaignsController < ApplicationController
     render :update do |page| 
      page.replace_html "voting", "You voted this campaign up."
      page.replace_html "votes_for", "#{@campaign.votes_for} upvotes"
+     page.replace_html "score_percentage", "#{score_percentage(@campaign)}%"
     end
   end
   
@@ -115,6 +116,7 @@ class CampaignsController < ApplicationController
     render :update do |page| 
      page.replace_html "voting", "You voted this campaign down."
      page.replace_html "votes_against", "#{@campaign.votes_against} downvotes"
+     page.replace_html "score_percentage", "#{score_percentage(@campaign)}%"
     end
   end
   

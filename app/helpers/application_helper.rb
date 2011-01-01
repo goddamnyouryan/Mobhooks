@@ -14,4 +14,19 @@ module ApplicationHelper
     end
   end
   
+  def level(user)
+    @users = User.find :all, :order => "points DESC"
+    if @users[0] == user
+      "Don"
+    elsif @users[1] == user
+      "Underboss"
+    elsif user.points > 5000
+      "Capo"
+    elsif user.points > 1000
+      "Soldier"
+    else
+      "Associate"
+    end
+  end
+  
 end

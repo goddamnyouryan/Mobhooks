@@ -1,1 +1,14 @@
 <% title "The Family" %>
+
+<h2>Leaderboard</h2>
+<ul>
+<% @leaderboard.each do |l| %>
+	<li>
+	<%= link_to "#{image_tag l.profile.photo.url(:thumb)}", user_path(l) %>
+	<%= link_to "#{l.login}", user_path(l) %>
+	<%= l.points %> points
+	</li>
+<% end %>
+
+<h2>Recent Campaign Submissions</h2>
+<%= render :partial=>'campaigns/list', :locals => { :campaign => @recent } %> 

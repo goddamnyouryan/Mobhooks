@@ -1,7 +1,7 @@
 <% title "Campaign" %>
 
 <h2>Rating</h2>
-<h2><%= score_percentage(@campaign) %>%</h2>
+<h2 id="score_percentage"><%= score_percentage(@campaign) %>%</h2>
 <h3><span id="votes_for"><%= @campaign.votes_for %> upvotes</span><br />
 <span id="votes_against"><%= @campaign.votes_against %> downvotes</span></h3>
 
@@ -19,8 +19,9 @@
 <%= link_to "view / write reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign) %>
 
 <h2>Share</h2>
-<p><%= link_to "Share via Facebook" %><br />
-<%= link_to "Share via Twitter" %></p>
+<p><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%= request.url %>" show_faces="true" width="450"></fb:like>
+<br />
+<a href="http://twitter.com/home?status=I found this mobile deal on Mobhooks, check it out! <%= request.url %>" title="Click to send this page to Twitter!" target="_blank">Share on Twitter</a></p>
 
 <h2>Campaign Details</h2>
 

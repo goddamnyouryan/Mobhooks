@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
+    @leaderboard = User.find :all, :order => "points DESC", :limit => 25
+    @recent = Campaign.find :all, :order => "created_at DESC", :limit => 25
   end
   
   def admin 
