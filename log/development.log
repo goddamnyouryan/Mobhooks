@@ -44649,3 +44649,41 @@ Rendered campaigns/_list (101.7ms)
   [4;36;1mUser Load (0.5ms)[0m   [0;1mSELECT * FROM "users" WHERE ("users"."id" = '4') LIMIT 1[0m
   [4;35;1mUser Update (0.8ms)[0m   [0mUPDATE "users" SET "last_request_at" = '2011-01-02 19:29:42', "updated_at" = '2011-01-02 19:29:42' WHERE "id" = 4[0m
 Completed in 807ms (View: 763, DB: 15) | 200 OK [http://localhost/users/4]
+
+
+Processing CampaignsController#index (for 127.0.0.1 at 2011-01-02 11:54:06) [GET]
+  Parameters: {"search"=>"Bay", "action"=>"index", "controller"=>"campaigns", "near"=>"48640"}
+Google geocoding. Address: 48640. Result: <?xml version="1.0" encoding="UTF-8" ?>
+<kml xmlns="http://earth.google.com/kml/2.0"><Response>
+  <name>48640</name>
+  <Status>
+    <code>200</code>
+    <request>geocode</request>
+  </Status>
+  <Placemark id="p1">
+    <address>Midland, MI 48640, USA</address>
+    <AddressDetails Accuracy="5" xmlns="urn:oasis:names:tc:ciq:xsdschema:xAL:2.0"><Country><CountryNameCode>US</CountryNameCode><CountryName>USA</CountryName><AdministrativeArea><AdministrativeAreaName>MI</AdministrativeAreaName><Locality><LocalityName>Midland</LocalityName><PostalCode><PostalCodeNumber>48640</PostalCodeNumber></PostalCode></Locality></AdministrativeArea></Country></AddressDetails>
+    <ExtendedData>
+      <LatLonBox north="43.6645240" south="43.5034549" east="-84.1684329" west="-84.5283470" />
+    </ExtendedData>
+    <Point><coordinates>-84.3410224,43.5839881,0</coordinates></Point>
+  </Placemark>
+</Response></kml>
+
+Geokit::ActsAsMappable::UnsupportedAdapter (`sqlite` is not a supported adapter.):
+  app/models/campaign.rb:45:in `location_search'
+  app/controllers/campaigns_controller.rb:79:in `index'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:104:in `service'
+  /usr/local/lib/ruby/1.8/webrick/httpserver.rb:65:in `run'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:173:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:162:in `start_thread'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:95:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `each'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:92:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:23:in `start'
+  /usr/local/lib/ruby/1.8/webrick/server.rb:82:in `start'
+
+Rendered rescues/_trace (31.8ms)
+Rendered rescues/_request_and_response (0.3ms)
+Rendering rescues/layout (internal_server_error)
