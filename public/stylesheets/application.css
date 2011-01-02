@@ -175,3 +175,20 @@ ul#campaign_list li p.view_deal a {
 	color:#fff;
 	text-decoration: none;
 }
+
+/****************THE FAMILY ***************************/
+ul#leaderboard { }
+
+ul#leaderboard li {
+	 list-style-type:none;
+	 margin-bottom: 10px;
+}
+
+ul#leaderboard li img { 
+	float:left;
+}
+
+ul#leaderboard li .info {
+	float:left;
+	margin: 0 0 0 10px;
+}
