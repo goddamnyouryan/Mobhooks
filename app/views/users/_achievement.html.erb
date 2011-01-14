@@ -1,4 +1,4 @@
 <% @user.achievements.each do |f| %>
   <% klass = Kernel.const_get f.kind %>
-  <%= link_to "#{image_tag klass.small_image}", :controller => "achievements", :action => "show", :id => f.id, :alt => "#{f.kind}", :title => "#{f.kind}" %>
+  <%= link_to "#{image_tag klass.small_image}", :controller => "achievements", :action => "show", :id => f.id %>
 <% end %>
