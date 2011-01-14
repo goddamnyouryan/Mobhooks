@@ -4,7 +4,7 @@ module Achievements
     base.class_eval do
       has_many :achievements do
         def include?(achievement, level = nil)
-          all.select { |a| a.type.to_s == achievement.to_s and a.level == level }.any?
+          all.select { |a| a.kind.to_s == achievement.to_s and a.level == level }.any?
         end
       end
     end
@@ -15,7 +15,7 @@ module Achievements
   end
   
   def has_achievement?(achievement, level = nil)
-    conditions = {:type => achievement.to_s, :user_id => id}    
+    conditions = {:kind => achievement.to_s, :user_id => id}    
     conditions[:level] = level if level
     achievements.first(:conditions => conditions).present?
   end
@@ -23,7 +23,7 @@ module Achievements
   def get_badges_in_progress(badges)
     badges.collect do |achievement|
       {
-        :type => achievement,
+        :kind => achievement,
         :level => achievement.next_level(self),
         :progress => achievement.progress_to_next_level(self),
         :next_level_quota => achievement.next_level_quota(self),

@@ -1,43 +1,43 @@
 <% form_for @campaign, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :business_name %><br />
+    <h3 style="margin:0;">Name of Business:</h3>
     <%= text_field_with_auto_complete :campaign, :business_name, {}, { :url => formatted_businesses_path(:js), :method => :get, :with => "'search=' + element.value" } %>
   </p>
   <p>
-    <%= f.label :offer %><br />
-    <%= f.text_field :offer %>
+    <h3 style="margin:0;">Offer:</h3>
+    <%= f.text_field :offer, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :shortcode %><br />
-    <%= f.text_field :shortcode %>
+    <h3 style="margin:0;">Shortcode:</h3>
+    <%= f.text_field :shortcode, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :keyword %><br />
-    <%= f.text_field :keyword %>
+    <h3 style="margin:0;">Keyword:</h3>
+    <%= f.text_field :keyword, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :start_date %><br />
-    <%= f.datetime_select :start_date %>
+    <h3 style="margin:0;">Start Date:</h3>
+    <%= f.date_select :start_date %>
   </p>
   <p>
-    <%= f.label :end_date %><br />
-    <%= f.datetime_select :end_date %>
+    <h3 style="margin:0;">End Date:</h3>
+    <%= f.date_select :end_date %>
   </p>
   <p>
-    <%= f.label :kind %><br />
+    <h3 style="margin:0;">Offer Type:</h3>
     <%= f.select :kind, options_for_select([['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
   </p>
   <p>
-	<%= f.label :tags %><br />
-	<%= f.text_field :tag_list %>
+	<h3 style="margin:0;">Tags (separate with commas):</h3>
+	<%= f.text_field :tag_list, :class => "large_form" %>
   <p>
-    <%= f.label :details %><br />
-    <%= f.text_area :details %>
+    <h3 style="margin:0;">Offer details:</h3>
+    <%= f.text_area :details, :class => "large_form", :style => "height: 200px;" %>
   </p>
   <p>
-	<%= f.label :upload_photo %><br />
-	<%= f.file_field :photo %>
+	<h3 style="margin:0;">Upload Campaign Photo:</h3>
+	<%= f.file_field :photo, :class => "large_form button" %>
   </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Submit Campaign", :class => 'button' %></p>
 <% end %>

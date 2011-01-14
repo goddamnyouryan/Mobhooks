@@ -1,0 +1,6 @@
+<div class="user_image">
+	<% unless @user.profile.nil? %>
+		<%= image_tag @user.profile.photo.url(:thumb) %>
+	<% end %>
+	<h4><%= @user.points %></h4>
+</div>

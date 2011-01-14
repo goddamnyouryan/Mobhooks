@@ -1,18 +1,20 @@
 <% title "Login" %>
 
+<h2>Login</h2>
+
 <% form_for @user_session do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :login %><br />
+    <h3 style="margin:0;">Username:</h3>
     <%= f.text_field :login %>
   </p>
   <p>
-    <%= f.label :password %><br />
+    <h3 style="margin:0;">Password:</h3>
     <%= f.password_field :password %>
   </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Login", :class => 'button' %></p>
 <% end %>
 
-<%= link_to "No Username? Sign Up here!", new_user_path %>
+<p style="margin-top:50px;"><%= link_to "No Username? Sign Up here!", new_user_path, :class => 'link' %></p>
 
 

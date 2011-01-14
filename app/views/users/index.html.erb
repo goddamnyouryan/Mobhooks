@@ -16,8 +16,9 @@
 <% end %>
 </div>
 
-<div style="float:left;">
+<div style="float:right;">
 <h2>Recent Campaign Submissions</h2>
+<p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
 <%= render :partial=>'campaigns/list', :locals => { :campaign => @recent } %> 
 </div>
 

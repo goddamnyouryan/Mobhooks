@@ -76,12 +76,17 @@ class CampaignsController < ApplicationController
   
   
   def index
-    @campaigns = Campaign.location_search(params[:search], params[:near]) | Campaign.find_tagged_with(params[:search])
-    if params[:near]
-    @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:near]}"
-    elsif current_user
-    @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
+  	if params[:distance]
+    	@campaigns = Campaign.location_search(params[:search], params[:near], params[:distance]) | Campaign.find_tagged_with(params[:search])
+    else
+    	@campaigns = Campaign.location_search(params[:search], params[:near], 25) | Campaign.find_tagged_with(params[:search])
     end
+    if params[:near]
+    	@zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:near]}"
+    elsif current_user
+    	@zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
+    end
+    @tags = Campaign.tag_counts
   end
   
 
@@ -102,8 +107,8 @@ class CampaignsController < ApplicationController
     @user.points = @user.points + 5
     @user.save
     render :update do |page| 
-     page.replace_html "voting", "You voted this campaign up."
-     page.replace_html "votes_for", "#{@campaign.votes_for} upvotes"
+     page.replace_html "voting", ""
+     page.replace_html "votes_for", "#{image_tag "votes_up.gif"}#{@campaign.votes_for}"
      page.replace_html "score_percentage", "#{score_percentage(@campaign)}%"
     end
   end
@@ -114,8 +119,8 @@ class CampaignsController < ApplicationController
     current_user.points = current_user.points + 1
     current_user.save
     render :update do |page| 
-     page.replace_html "voting", "You voted this campaign down."
-     page.replace_html "votes_against", "#{@campaign.votes_against} downvotes"
+     page.replace_html "voting", ""
+     page.replace_html "votes_against", "#{image_tag "votes_down.gif", :style => "margin-top:3px;position:relative;top:6px;"}#{@campaign.votes_against}"
      page.replace_html "score_percentage", "#{score_percentage(@campaign)}%"
     end
   end

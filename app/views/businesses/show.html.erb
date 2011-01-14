@@ -1,33 +1,23 @@
 <% title "#{h @business.name}" %>
 
+<h2 style="margin:20px 0 0;"><%= "#{h @business.name}" %></h2>
+
+<div style="float:left">
+
 <p><%= image_tag @business.photo.url(:medium)%>
 
-<p>
-  <strong>Address:</strong>
-  <%=h @business.address %>
-</p>
-<p>
-  <strong>City:</strong>
-  <%=h @business.city %>
-</p>
-<p>
-  <strong>State:</strong>
-  <%=h @business.state %>
-</p>
-<p>
-  <strong>Zip:</strong>
-  <%=h @business.zip %>
-</p>
+
+<h3><%=h @business.address %> <%=h @business.city %> <%=h @business.state %> <%=h @business.zip %></h3>
+
 <% unless @business.tag_list.empty? %>
-<p>
-	<strong>Tags:</strong>
-	<%= h @business.tag_list %>
-</p>
+	<h3>Tags:
+			<% @business.tag_counts.each do |tag| %>
+				<%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => "link", :style => "font-size:18px;" %>
+			<% end %>
+	</h3>
 <% end %>
-<p>
-  <strong>Description:</strong>
-  <%=h @business.description %>
-</p>
+
+<h3><%=h @business.description %></h3>
 
 <p>
   <%= link_to "Edit", edit_business_path(@business) %> |
@@ -35,6 +25,14 @@
   <%= link_to "View All", businesses_path %>
 </p>
 
-<h2>Campaigns</h2>
+</div>
+
+<div style="float:left;margin-left:30px;">
+
+<h2 style="margin:0 0 -50px;">Campaigns</h2>
 
 <%= render :partial=>'campaigns/list', :locals => { :campaign => @business.campaigns } %>
+
+</div>
+
+<div class="clear"></div>

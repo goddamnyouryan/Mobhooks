@@ -9,12 +9,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101229023540) do
+ActiveRecord::Schema.define(:version => 20110114072736) do
 
   create_table "achievements", :force => true do |t|
-    t.string   "type"
+    t.string   "kind"
     t.integer  "level"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "affiliates", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "business_name"
+    t.string   "address"
+    t.string   "phone_number"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

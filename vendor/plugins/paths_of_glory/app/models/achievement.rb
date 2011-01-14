@@ -1,10 +1,15 @@
 class Achievement < ActiveRecord::Base
+	
+	has_attached_file :photo, :styles => { :small => "20x20#" }, 
+                            :storage => :s3, 
+                            :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
+                            :path => ':id/:style'
 
   belongs_to :user
   
   named_scope :not_notified, :conditions => {:notified => false}
   named_scope :recent, :order => "created_at desc"
-  named_scope :kind_of, lambda { |type| {:conditions => {:type => type.to_s}}} do
+  named_scope :kind_of, lambda { |kind| {:conditions => {:kind => kind.to_s}}} do
     def current
       order("level desc").limit(1).first
     end

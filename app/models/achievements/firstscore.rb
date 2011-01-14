@@ -25,4 +25,16 @@ class Firstscore < Achievement
     user.award_achievement(self)
   end
   
+   def self.image
+    'badges/firstscore.png'
+   end
+   
+   def self.small_image
+    'badges/small/firstscore.jpg'
+   end
+   
+   def self.description
+   	'You will earn this badge upon your first campaign submission.'
+   end
+  
 end

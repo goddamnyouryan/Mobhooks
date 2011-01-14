@@ -31,8 +31,8 @@ class Campaign < ActiveRecord::Base
     if search
       find(:all, 
            :joins => :business, 
-           :conditions => ['offer LIKE ? OR details LIKE ? OR tag_list LIKE ? OR businesses.name LIKE ? OR businesses.description LIKE ? OR businesses.tag_list LIKE ?', 
-                           "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(tag_list) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ? OR LOWER(businesses.tag_list) LIKE ?', 
+                           "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                           ]
            )
     else
@@ -40,14 +40,14 @@ class Campaign < ActiveRecord::Base
     end
   end
   
-  def self.location_search(search, near)
-    if search && near && near != ""
+  def self.location_search(search, near, distance)
+    if search && near && near != "" && near != "near..."
       f = find(:all, 
            :joins => :business, 
            :conditions => ['offer LIKE ? OR details LIKE ? OR businesses.name LIKE ? OR businesses.description LIKE ?', 
                            "%#{search}%", "%#{search}%", "%#{search}%", "%#{search}%"],
            :origin => "#{near}",
-           :within => 25
+           :within => distance
            )
     elsif search
       find(:all, 

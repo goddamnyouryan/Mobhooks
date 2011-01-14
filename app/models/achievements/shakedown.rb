@@ -24,5 +24,17 @@ class Shakedown < Achievement
      return if user.has_achievement?(self)
      user.award_achievement(self)
    end
+   
+   def self.image
+    'badges/shakedown.png'
+   end
+   
+   def self.small_image
+    'badges/small/shakedown.jpg'
+   end
+   
+   def self.description
+   	'Submit a text campaign for a restaurant to earn this badge.'
+   end
   
 end

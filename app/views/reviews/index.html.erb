@@ -1,24 +1,46 @@
 <% title "Reviews" %>
 
-<ul>
+<h2>Reviews for <%= @campaign.offer %> from <%= @campaign.business.name %></h2>
+
+<ul id="campaign_reviews">
 
 <% @campaign.reviews.each do |r| %>
 <li>
-	<%= r.message %><br />
+	<h3 style="font-size:24px;"><%= r.message %></h3>
 	<% @reviewer = User.find(r.reviewer_id) %>
-	<%= link_to @reviewer.login, user_path(@reviewer) %>
-	<%= r.created_at.to_date %>
+	<h3><%= link_to @reviewer.login, user_path(@reviewer) %> <span style="font-size:12px;font-weight:normal"><%= r.created_at.to_date %></span></h3>
+	
 </li>
+
 <% end %>
 
-</ul>
+<% if current_user %>
 
 <% form_for @review do |f| %>
   <%= f.error_messages %>
   <%= hidden_field_tag(:campaign_id, @campaign.id) %>
   <p>
-    <%= f.label :write_a_new_review %><br />
-    <%= f.text_area :message %>
+    <%= f.text_field :message, :value => "Leave a New Review...", :onfocus => "if (this.value == 'Leave a New Review...') this.value = ''", :size => 44 %>
   </p>
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Submit Review", :class => "button" %></p>
 <% end %>
+
+<% end %>
+
+</ul>
+
+<div style="float: right;"
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2919877323911591";
+/* Mobhooks */
+google_ad_slot = "6421093481";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+<div class="clear"></div>

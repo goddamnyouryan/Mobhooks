@@ -9,11 +9,12 @@
 	</div>
 	
 	<div class="campaign_list_right">
-		<h2><%= score_percentage(c) %>%</h2>
-		<p class="view_deal"><%= link_to "View Deal", campaign_path(c) %></p>
+		<%= render :partial => "campaigns/score", :locals => { :campaign => c } %>
+		<p class="button"><%= link_to "View Deal", campaign_path(c) %></p>
 	</div>
 </li>
-<div class="clear"></div>
+<%= link_to "View more deals from #{c.business.name}...", business_path(c.business), :style => "font-size:12px;" %>
+
 <% end %>
 </ul>
 <% end %>

@@ -24,5 +24,17 @@ class Bribe < Achievement
      return if user.has_achievement?(self)
      user.award_achievement(self)
    end
+   
+   def self.image
+    'badges/bribe.png'
+   end
+   
+   def self.small_image
+    'badges/small/bribe.jpg'
+   end
+   
+    def self.description
+   	'Submit a badge relating to politics or the government to get this badge.'
+   end
   
 end

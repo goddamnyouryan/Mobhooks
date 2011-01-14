@@ -24,5 +24,17 @@ class Heist < Achievement
      return if user.has_achievement?(self)
      user.award_achievement(self)
    end
+   
+   def self.image
+    'badges/heist.png'
+   end
+   
+   def self.small_image
+    'badges/small/heist.jpg'
+   end
   
+   def self.description
+   	'Submit a campaign for financial services to earn this badge.'
+   end   
+   
 end

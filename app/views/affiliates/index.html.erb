@@ -1,0 +1,26 @@
+<% title "Affiliates" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Name</th>
+    <th>Business Name</th>
+    <th>Address</th>
+    <th>Phone Number</th>
+    <th>Email</th>
+    <th>Submitted Date</th>
+  </tr>
+  <% for affiliate in @affiliates %>
+    <tr>
+      <td><%=h affiliate.user_id %></td>
+      <td><%=h affiliate.name %></td>
+      <td><%=h affiliate.business_name %></td>
+      <td><%=h affiliate.address %></td>
+      <td><%=h affiliate.phone_number %></td>
+      <td><%=h affiliate.email %></td>
+      <td><%= affiliate.created_at.to_date %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Affiliate", new_affiliate_path %></p>

@@ -1,12 +1,14 @@
 <% title "Comments" %>
 
+<h2>Comments for <%= @user.login %></h2>
+
 <% if @comments.nil? %>
 No comments!
 <%= @user.login %>
 
 <% else %>
 
-<ul>
+<ul id="comments">
 
 <% @comments.each do |c| %>
 <li>

@@ -1,37 +1,37 @@
 <% form_for @business, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name, :value => "#{@business_name}" %>
+    <h3 style="margin:0;">Name of Business:</h3>
+    <%= f.text_field :name, :value => "#{@business_name}", :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :address %><br />
-    <%= f.text_field :address %>
+    <h3 style="margin:0;">Business Address:</h3>
+    <%= f.text_field :address, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :city %><br />
-    <%= f.text_field :city %>
+    <h3 style="margin:0;">City:</h3>
+    <%= f.text_field :city, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :state %><br />
-    <%= f.text_field :state %>
+    <h3 style="margin:0;">State:</h3>
+    <%= f.text_field :state, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
+    <h3 style="margin:0;">Zip Code:</h3>
+    <%= f.text_field :zip, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :tags %><br />
-    <%= f.text_field :tag_list %>
+    <h3 style="margin:0;">Tags (separate with commas):</h3>
+    <%= f.text_field :tag_list, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+    <h3 style="margin:0;">Description:</h3>
+    <%= f.text_area :description, :class => "large_form", :style => "height:200px;" %>
   </p>
   <p>
-	<%= f.label :upload_photo %><br />
-	<%= f.file_field :photo %>
+	<h3 style="margin:0;">Upload Business Photo:</h3>
+	<%= f.file_field :photo, :class => "large_form" %>
   </p>
 
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Submit Business", :class => 'button' %></p>
 <% end %>

@@ -1,20 +1,20 @@
 <% form_for @profile, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+    <h3 style="margin:0;">Name:</h3>
+    <%= f.text_field :name, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :zip %><br />
-    <%= f.text_field :zip %>
+    <h3 style="margin:0;">Your Zip Code:</h3>
+    <%= f.text_field :zip, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :sex %><br />
+    <h3 style="margin:0;">Gender:</h3>
     <%= f.radio_button :sex, "Male" %> Male
 	<%= f.radio_button :sex, "Female" %> Female
   </p>
   <p>
-    <%= f.label :birthday %><br />
+    <h3 style="margin:0;">Birthday:</h3>
     <%= f.date_select :birthday, 
 										:start_year => Time.now.year,
 										:end_year => Profile::START_YEAR,
@@ -23,19 +23,19 @@
 	%>
   </p>
   <p>
-    <%= f.label :website %><br />
-    <%= f.text_field :website %>
+    <h3 style="margin:0;">Website:</h3>
+    <%= f.text_field :website, :class => "large_form" %>
   </p>
   <p>
-    <%= f.label :quote %><br />
-    <%= f.text_field :quote %>
+    <h3 style="margin:0;">Favorite Quote:</h3>
+    <%= f.text_field :quote, :class => "large_form" %>
   </p>
 
   <p>
-	<%= f.label :upload_a_photo_of_yourself %><br />
-	<%= f.file_field :photo %>
+	<h3 style="margin:0;">Upload a Photo of Yourself:</h3>
+	<%= f.file_field :photo, :class => "large_form" %>
   </p>
 
 
-  <p><%= f.submit %></p>
+  <p><%= f.submit "Submit Profile", :class => "button" %></p>
 <% end %>

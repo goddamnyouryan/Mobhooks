@@ -11,39 +11,46 @@
 		<%= @map.to_html %>
 	<% end %>
   </head>
-  <body>
-    <div id="container">
-	<% if params[:controller] == "home" %>
-		<h1 id="home_title"><%= link_to "Mobhooks", root_path %></h1>
+  <% if params[:controller] == "home" %>
+  	<body id="home">
 	<% else %>
-		<h1 id="title"><%= link_to "Mobhooks", root_path %></h1>
+		<body>
 	<% end %>
+	 <div id="container">
+	 <h1 id="title"><%= link_to "Mobhooks", root_path %></h1>
 		<ul id="nav">
 		  <% if current_user %>
+		  <li><%= link_to "Submit a Campaign", new_campaign_path %></li>
 			<li><%= link_to "Deals", campaigns_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Profile", user_path(current_user) %></li>
-			<li><%= link_to "Submit a Campaign", new_campaign_path %></li>
 			<li><%= link_to "Logout", logout_path %></li>
 		  <% else %>
+		  <li><%= link_to "Submit a Campaign", new_campaign_path %></li>
 			<li><%= link_to "Deals", campaigns_path %></li>
-			<li><%= link_to "Submit a Campaign", new_campaign_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Register", new_user_path %></li>
 			<li><%= link_to "Login", login_path %></li>
 		  <% end %>
 		</ul>
 		
-		
-		<div id="search">
+		<% if params[:controller] == "home" %>
+			<div id="splash_search">
+		<% else %>
+			<div id="search">
+		<% end %>
 		<% form_tag campaigns_path, :method => 'get' do %>
-			<p>Find a deal (e.g. electronics, bank, food, etc..)</p>
-			<p>
-		    <%= text_field_tag :search, params[:search] %>
-		    Near:
-		    <%= text_field_tag :near, params[:near] %>
-		    <%= submit_tag "Search", :name => nil %>
-		  </p>
+		    <%= text_field_tag :search, params[:search], :value => "Search for a Deal...", :onfocus => "if (this.value == 'Search for a Deal...') this.value = ''" %><% if params[:controller] == "home" %><br /><% end %>
+		    <% unless current_user %>
+		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %>
+		    <% else %>
+		    <% unless current_user.profile.zip.nil? %>
+		    <%= text_field_tag :near, params[:near], :value => "#{current_user.profile.zip}", :onfocus => "if (this.value == 'near...') this.value = ''" %>
+		    <% else %>
+		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %>
+		    <% end %>
+		    <% end %>
+		    <%= submit_tag "Search", :name => nil, :class => "button" %>
 		<% end %>
 		</div>
 		
@@ -53,11 +60,24 @@
         <%= content_tag :div, msg, :id => "flash_#{name}" %>
       <%- end -%>
 
-      <%- if show_title? -%>
+      <!--<%- if show_title? -%>
         <h1><%=h yield(:title) %></h1>
-      <%- end -%>
+      <%- end -%> -->
 
       <%= yield %>
     </div>
+    <div id="footer_container">
+    <ul id="footer">
+    	<li><%= link_to "©2010 MobHooks", root_path %></li>
+	    <li><%= link_to "Terms of Service", terms_path %></li>
+	    <li><%= link_to "Privacy Policy", terms_path %></li>
+	    <li><%= link_to "About Mobhooks", about_path %></li>
+	    <li><%= link_to "FAQ" %></li>
+	    <li><%= link_to "Submit a New Campaign", new_campaign_path %></li>
+	    <li><%= link_to "Affiliate Program", new_affiliate_path %></li>
+	    <li><a href="mailto:ryan.macinnes@gmail.com">Contact Us</a></li>
+		</ul>
+		</div>
+			
   </body>
 </html>

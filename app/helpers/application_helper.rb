@@ -28,5 +28,22 @@ module ApplicationHelper
       "Associate"
     end
   end
+
+  
+  def campaign_time(campaign)
+  	if Date.today > (campaign.start_date.to_date) && Date.today < (campaign.end_date.to_date)
+  		"#{((campaign.end_date.to_date - Date.today).to_i).round} days left"
+  	elsif Date.today == campaign.start_date.to_date
+  		"This campaign starts TODAY!"
+  	elsif Date.today == campaign.end_date.to_date
+  		"This campaign ends TODAY!"
+  	elsif Date.today < campaign.start_date.to_date
+  		"starts in #{(((campaign.start_date.to_date) - Date.today).to_i).round} days"
+  	else
+  		"this campaign has expired."
+  	end
+  end
+  	
+  		
   
 end

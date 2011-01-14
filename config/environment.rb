@@ -35,8 +35,7 @@ Rails::Initializer.run do |config|
   # Run "rake -D time" for a list of tasks for finding time zone names.
   config.time_zone = 'UTC'
   config.load_paths += %W( #{RAILS_ROOT}/app/models/achievements )
-  config.active_record.observers = :shakedown_observer, :firstscore_observer, :heist_observer,:bookmaker_observer, :bribe_observer, 
-                                   :junk_observer, :beef_observer
+  config.active_record.observers = :shakedown_observer, :firstscore_observer, :heist_observer,:bookie_observer, :bribe_observer, :medico_observer, :muscle_observer, :chop_shop_observer, :boot_leg_observer, :bellezza_observer, :charity_observer, :wise_guy_observer, :giardino_observer, :witness_protection_observer, :street_observer, :canary_observer, :show_biz_observer, :animali_observer, :rat_observer, :teamster_observer, :casa_observer, :dapper_observer, :ballz_observer, :fatico_observer
   
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]

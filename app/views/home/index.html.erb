@@ -1,4 +1,7 @@
-<h2>Sponsored Deals</h2>
+<% title "Home" %>
+<div style="float:left;">
+
+<h2 id="featured">Featured Deals</h2>
 
 <ul id="sponsored">
 	<% @sponsored.each do |s| %>
@@ -12,13 +15,31 @@
 
 <div class="clear"></div>
 	
-<h2>Most Popular Deals</h2>
+<h2 id="most_popular">Most Popular Deals</h2>
 
-<%= render :partial=>'campaigns/list', :locals => { :campaign => @popular } %> 
+<%= render :partial=>'campaigns/list', :locals => { :campaign => @popular } %>
 
-<h2>Tag Cloud</h2>
+</div> 
 
-<% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
-   <%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => css_class %>
- <% end %>
+<div style="float:left;margin:95px 0 0 100px;width:300px;">
 
+<%= link_to "Business Owners: Want to Start Your Own Text Campaign? Click Here!", new_affiliate_path, :class => "button affiliates" %>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2919877323911591";
+/* Mobhooks */
+google_ad_slot = "6421093481";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<%= render :partial => "campaigns/tag_cloud" %>
+
+</div>
+
+<div class="clear"></div>

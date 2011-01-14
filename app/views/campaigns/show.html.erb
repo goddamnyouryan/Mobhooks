@@ -1,111 +1,135 @@
-<% title "Campaign" %>
+<% title "Mobile Campaign" %>
 
-<h2>Rating</h2>
-<h2 id="score_percentage"><%= score_percentage(@campaign) %>%</h2>
-<h3><span id="votes_for"><%= @campaign.votes_for %> upvotes</span><br />
-<span id="votes_against"><%= @campaign.votes_against %> downvotes</span></h3>
+<h2 id="mobile_campaign">Mobile Campaign</h2>
+
+<div style="float:left;width:410px;">
+
+<h2 style="margin:0;">Rating</h2>
+
+<div id="votes">
+	<%= render :partial => "campaigns/score", :locals => { :campaign => @campaign } %>
+	
+	<h3 id="votes_count">
+		<span id="votes_for" style="color:#00ff00"><%= image_tag "votes_up.gif" %><%= @campaign.votes_for %></span><br />
+		<span id="votes_against" style="color:#ff0000"><%= image_tag "votes_down.gif", :style => "margin-top:3px;position:relative;top:6px;" %><%= @campaign.votes_against %></span>
+	</h3>
+</div>
 
 <% if current_user %>
 <div id="voting">
 	<% unless current_user.voted_for?(@campaign) %>
-		<%= link_to_remote "+ Vote Up", :url => { :controller => 'campaigns', :action => 'vote_up', :campaign => @campaign } %>
-		<%= link_to_remote "- Vote Down", :url => { :controller => 'campaigns', :action => 'vote_down', :campaign => @campaign } %>
-	<% else %>
-		You voted on this campaign.
+		<%= link_to_remote "this deal worked for me.", :url => { :controller => 'campaigns', :action => 'vote_up', :campaign => @campaign }, :html => { :id => "vote_up" } %><br />
+		<%= link_to_remote "this deal did not work.", :url => { :controller => 'campaigns', :action => 'vote_down', :campaign => @campaign }, :html => { :id => "vote_down" } %>
 	<% end %>	
 </div>
 <% end %>
 
-<%= link_to "view / write reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign) %>
+<div class="clear"></div>
 
-<h2>Share</h2>
-<p><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%= request.url %>" show_faces="true" width="450"></fb:like>
+<%= link_to "view / write reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign), :class => "link", :style => "margin-left: 10px;" %>
+
+<h2 id="business_name"><%= link_to "#{@campaign.business.name}", business_path(@campaign.business) %></h2>
+
+<p><%= link_to "#{image_tag @campaign.business.photo.url(:thumb)}", business_path(@campaign.business), :style => "margin-left: 10px;"  %></p>
+
+<%= link_to "view all #{@campaign.business.name} campaigns", business_path(@campaign.business), :class => "link", :style => "margin-left: 10px;"  %>
+
+<h2 style="margin:25px 0 -10px;">Share</h2>
+<p style="margin-left:10px"><script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%= request.url %>" show_faces="true" width="450"></fb:like>
 <br />
-<a href="http://twitter.com/home?status=I found this mobile deal on Mobhooks, check it out! <%= request.url %>" title="Click to send this page to Twitter!" target="_blank">Share on Twitter</a></p>
-
-<h2>Campaign Details</h2>
-
-<% if current_user %>
-<p>
-	<strong>Distance:</strong>
-	<%= pluralize(@distance, "mile") %>
-</p>
-<% end %>
-<p>
-  <strong>Latitude:</strong>
-  <%=h @campaign.lat %>
-</p>
-<p>
-  <strong>Longitude:</strong>
-  <%=h @campaign.lng %>
-</p>
-
-<p>
-	<%= image_tag @campaign.photo.url(:show) %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= link_to @campaign.user.login, user_path(@campaign.user) %>
-</p>
-<p>
-  <strong>Business:</strong>
-  <%= link_to @business.name, business_path(@business) %>
-</p>
-<p>
-  <strong>Offer:</strong>
-  <%=h @campaign.offer %>
-</p>
-<p>
-  <strong>Shortcode:</strong>
-  <%=h @campaign.shortcode %>
-</p>
-<p>
-  <strong>Keyword:</strong>
-  <%=h @campaign.keyword %>
-</p>
-<p>
-  <strong>Start Date:</strong>
-  <%=h @campaign.start_date.to_date %>
-</p>
-<p>
-  <strong>End Date:</strong>
-  <%=h @campaign.end_date.to_date %>
-</p>
-<p>
-  <strong>Type:</strong>
-  <%=h @campaign.kind %>
-</p>
-<% unless @campaign.tag_list.empty? %>
-<p>
-	<strong>Tags:</strong>
-	<%= h @campaign.tag_list %>
-</p>
-<% end %>
-<p>
-  <strong>Details:</strong>
-  <%=h @campaign.details %>
-</p>
-
-<h2>Map</h2>
-	<%= @map.div(:width => 540, :height => 200) %>
+<a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
 
 <% unless @related.nil? %>
-<h2>Related Deals</h2>
-<ul>
+<h2 style="margin:25px 0 -10px;" >Similar Deals</h2>
+<ul id="similar">
 <% @related.each do |c| %>
 <li>
-	<%= image_tag c.business.photo.url(:tiny) %>
-	<%= c.business.name %><br />
-	<%= c.offer %>
-	<%= link_to "View Deal", campaign_path(c) %>
-	<%= c.created_at.to_date %>
+	<%= link_to "#{image_tag c.business.photo.url(:tiny)}", campaign_path(c) %>
+	<div style="float:left;margin:-3px 0 0 20px;">
+		<h4><%= link_to c.business.name, campaign_path(c) %></h4>
+		<h5><%= link_to c.offer, campaign_path(c) %></h5>
+	</div>
+	<%= link_to "View Deal", campaign_path(c), :class => "button", :style => "float:right; font-size: 12px;margin-top:5px;" %>
+	<div class="clear"></div>
 </li>
 <% end %>
 </ul>
 <% end %>
+
+<div style="float: left;">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2919877323911591";
+/* Mobhooks */
+google_ad_slot = "6421093481";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
+
+</div>
+
+<div style="float:left;">
+
+<h2 id="offer"><%=h @campaign.offer %></h2>
+<p>
+	<%= image_tag @campaign.photo.url(:show) %>
+</p>
+
+<h2 class="button" style="width:350px;margin:0 auto 20px;text-align:center; cursor:default;">Text <%=h @campaign.keyword %> to <%=h @campaign.shortcode %></h2>
+
+<h2 class="campaign_details_header">
+	Where:
+	<span class="campaign_description"><%= @campaign.business.address %> <%= @campaign.business.city %> <%= @campaign.business.state %>, <%= @campaign.business.zip %>
+		<% if current_user %>
+			<em>(<%= pluralize(@distance, "mile") %>)</em>
+		<% end %>
+	</span>
+</h2>
+
+<h2 class="campaign_details_header">
+	When:
+	<span class="campaign_description"><%= campaign_time(@campaign) %></span>
+</h2>
+
+<h2 class="campaign_details_header">
+	Type:
+	<span class="campaign_description"><%=h @campaign.kind %></span>
+</h2>
+
+<h2 class="campaign_details_header">
+	Tags:
+	<span class="campaign_description">
+		<% unless @campaign.tag_list.empty? %>
+			<% @campaign.tag_counts.each do |tag| %>
+				<%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => "link", :style => "font-size:18px;" %>
+			<% end %>
+		<% end %>
+	</span>
+</h2>
+
+<h2 class="campaign_details_header">Details:</h2>
+	<span class="campaign_description"><%=h @campaign.details %></span>
+	
+<div style="margin-top: 50px;">
+	<%= @map.div(:width => 540, :height => 200) %>
+</div>
+	
+<p>
+  <strong>Submitted by:</strong>
+  <%= link_to @campaign.user.login, user_path(@campaign.user) %>
+</p>
 
 <p>
   <%= link_to "Edit", edit_campaign_path(@campaign) %> |
   <%= link_to "Destroy", @campaign, :confirm => 'Are you sure?', :method => :delete %> |
   <%= link_to "View All", campaigns_path %>
 </p>
+	
+</div>
+
+<div class="clear"></div>
+

@@ -1,8 +1,25 @@
-body {
-  background-color: #4B7399;
-  font-family: Verdana, Helvetica, Arial;
+body#home {
+  background: url(../images/splash_bg.gif) repeat-x #fff;
+  font-family: Helvetica, Arial, sans-serif;
   font-size: 14px;
+	margin: 0;
 }
+
+body {
+  background: url(../images/bg.gif) repeat-x #fff;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 14px;
+	margin: 0;
+}
+
+body#home h1#title {
+background:url(../images/splash_title.gif) no-repeat;
+width: 350px;
+height:203px;
+text-indent:-9999px;
+}
+
+body#home h1#title a { display:block; width: 350px; height:203px;}
 
 a img {
   border: none;
@@ -10,7 +27,15 @@ a img {
 
 a {
   color: #0000FF;
+	text-decoration:none;
 }
+
+.link {
+	color: #fff !important;
+	background:#808080;
+	padding: 4px 8px;
+}
+.link:hover {background:#EDA02C;}
 
 .clear {
   clear: both;
@@ -18,13 +43,15 @@ a {
   overflow: hidden;
 }
 
+h2 {
+ font-size:32px;
+ font-weight:bold;
+ letter-spacing:-1px;
+}
+
 #container {
-  width: 75%;
+  width: 960px;
   margin: 0 auto;
-  background-color: #FFF;
-  padding: 20px 40px;
-  border: solid 1px black;
-  margin-top: 20px;
 }
 
 #flash_notice, #flash_error {
@@ -86,45 +113,202 @@ a {
   overflow: hidden;
 }
 
+.button {
+	color: #fff !important;
+	border: none;
+	background: #e18b08; /* for non-css3 browsers */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5b047', endColorstr='#e18b08'); /* for IE */
+	background: -webkit-gradient(linear, left top, left bottom, from(#f5b047), to(#e18b08)); /* for webkit browsers */
+	background: -moz-linear-gradient(top,  #f5b047,  #e18b08); /* for firefox 3.6+ */
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	padding:5px 10px;
+}
+
+
+.button:hover { cursor:pointer; }
+
+.button a { color:#fff !important; }
+
 /***************NAV BAR *********************/
 
 h1#home_title{
 	float:left;
 }
 
-h1#title{
+h1#title {
 	float:left;
+	background:url(../images/title.gif) no-repeat;
+	height:64px;
+	width:153px;
+	text-indent:-9999px;
+	margin: 0;
 }
 
+h1#title a {display: block; width:153px; height: 64px; }
+
 ul#nav {
-	float: left;
-	 margin: 28px 0 0 -25px;
+	float: right;
+	background: #808080;
+	font-size: 18px;
+	padding:7px 20px;
+	margin: 0;
 }
+
+ul#nav a { color: #fff; text-decoration:none; }
+ul#nav a:hover { color: #EDA02C; }
 
 ul#nav li {
 	display: inline;
+	padding:0 10px;
 }
 
-#search {
+#splash_search {
+	float: right;
+	margin:25px 33px 0 0;
+}
+
+#splash_search form { float: left; }
+
+#search { float: right; }
+
+#search form {
+	padding:3px 0;
+	margin:0 -3px 0 0;
+}
+#search form input { float: left; margin: 3px; }
+
+#search form input#search, #search form input#near, input#comment_message, input#review_message{
+	border:3px solid #C0C0C0;
+	color:#C0C0C0;
+	margin-top:3px;
+	padding:3px;
+}
+
+#splash_search form input#search {
+	margin-bottom:10px;
+	width:400px;
+	font-size: 30px;
+	padding: 5px;
+	border: 5px solid #c0c0c0;
+	color: #c0c0c0;
 	float:left;
-	margin: 0 0 0 25px;
 }
 
-#search p:first-child {
-	 margin: 0 0 -10px 25px;
+#splash_search form input#near, input#user_session_login, input#user_session_password, input#user_login, input#user_email, input#user_password, input#user_password_confirmation, input#campaign_business_name, .large_form { 
+	width:400px;
+	font-size: 30px;
+	padding: 5px;
+	border: 5px solid #c0c0c0;
+	color: #c0c0c0; 
 }
 
+#splash_search form .button, input#user_session_submit, input#user_submit, input#campaign_submit, input#business_submit, input#affiliate_submit, input#profile_submit { 
+font-size: 24px; }
+
+.affiliates {
+	font-weight:bold;
+	margin-bottom:25px;
+	padding:10px;
+	text-align:center;
+	width:280px;
+	float:left;
+}
+
+
+/****************FOOTER*******************/
+
+div#footer_container {
+	background: url(../images/footer_bg.gif) repeat-x;
+	width: 100%;
+	height:85px;
+}
+
+ul#footer {
+	width: 1000px;
+	text-align:center;
+	margin: 0 auto;
+	font-size: 14px;
+	font-weight:bold;
+	color: #000;
+	padding-top:40px;
+}
+
+ul#footer li {
+	display: inline;
+	text-align:center;
+	margin-right:15px;
+}
+
+ul#footer li a { color: #000; }
+
+ul#footer li a:hover { color: #EDA02C; }
 
 /****************SPLASH*******************/
-ul#sponsored {}
+
+h2#featured {
+	background: url(../images/featured_deals.jpg) no-repeat;
+	text-indent: -9999px;
+	width:351px;
+	height:40px;
+	margin:50px 0 -10px;
+}
+
+ul#sponsored {
+	border: 7px solid #c0c0c0;
+	padding:20px 0;
+	width:545px;
+	float:left;
+}
+
+ul#sponsored a { color: #000; }
+ul#sponsored a:hover { color: #EDA02C; }
 
 ul#sponsored li {
 	display: inline;
 	float: left;
-	width: 200px;
+	width: 135px;
+	text-align:center;
 }
 
+ul#sponsored li h3 { margin:0; font-size:16px; font-weight:bold; }
 
+ul#sponsored li h4 { margin:0; font-size:12px; font-weight:normal; }
+
+h2#most_popular {
+	background: url(../images/most_popular.jpg) no-repeat;
+	text-indent: -9999px;
+	width:449px;
+	height:47px;
+	margin-bottom:-40px;
+}
+
+h2#browse {
+	background:url("../images/browse.jpg") no-repeat scroll 0 0 transparent;
+	float:right;
+	height:40px;
+	margin-bottom:0;
+	margin-right:125px;
+	text-indent:-9999px;
+	width:175px;
+}
+
+h2#campaigns {
+	background: url(../images/campaigns.jpg) no-repeat;
+	text-indent: -9999px;
+	width:261px;
+	height:46px;
+}
+
+div#tag_cloud {
+	float: right;
+	border: 7px solid #c0c0c0;
+	padding: 10px;
+	width:264px;
+}
+
+div#tag_cloud a { color: #000; }
+div#tag_cloud a:hover { color: #EDA02C; }
 
 .css1 { font-size: 0.6em; }
 .css2 { font-size: 1.0em; }
@@ -133,19 +317,25 @@ ul#sponsored li {
 
 /***************CAMPAIGN LIST ****************/
 
-
-
 ul#campaign_list {
-	width:600px;
+	width:560px;
+	padding:0;
+	float:left;
 }
+
+ul#campaign_list a { color: #000; }
+ul#campaign_list a:hover { color: #EDA02C; }
 
 ul#campaign_list li { 
-	border: 5px solid #C0C0C0;
+	border: 7px solid #C0C0C0;
 	height: 90px;
 	list-style-type: none;
-	margin-bottom: 10px;
+	margin-top: 25px;
 	padding: 10px;
 }
+
+ul#campaign_list li h3 {margin:0; font-size: 30px; font-weight:bold; }
+ul#campaign_list li h4 {margin:0; font-size: 24px; font-weight:normal; }
 
 ul#campaign_list li img {
 	float: left;
@@ -153,7 +343,7 @@ ul#campaign_list li img {
 
 ul#campaign_list li .campaign_titles {
 	float:left;
-	margin-left:5px;
+	margin: 12px 0 0 5px;
 }
 
 ul#campaign_list li div.campaign_list_right {
@@ -177,11 +367,11 @@ ul#campaign_list li p.view_deal a {
 }
 
 /****************THE FAMILY ***************************/
-ul#leaderboard { }
+ul#leaderboard { padding:0; }
 
 ul#leaderboard li {
 	 list-style-type:none;
-	 margin-bottom: 10px;
+	 margin-top:10px;
 }
 
 ul#leaderboard li img { 
@@ -192,3 +382,223 @@ ul#leaderboard li .info {
 	float:left;
 	margin: 0 0 0 10px;
 }
+
+ul#leaderboard li h3 {
+	margin:18px 0 0;
+}
+
+ul#leaderboard li a { color: #000; }
+ul#leaderboard li a:hover { color: #EDA02C; }
+
+/****************PROFILE ************************************/
+
+div#profile {
+
+}
+
+div#profile p {
+	float:left;
+	font-weight:bold;
+	margin:7px 0 0 5px;
+}
+
+div#profile p a { color: #808080; } 
+div#profile p a:hover { color: #EDA02C; }
+
+.user_image {
+	width: 110px;
+	background:#c1c1c1;
+	color: #808080;
+	float: left;
+}
+
+.user_image img {
+	padding: 10px 0 10px 10px;
+}
+
+.user_image h4 {
+	margin: 0;
+	text-align:center;
+	padding: 0 0 10px 0;
+}
+
+h2#stats {
+	background: url(../images/stats.jpg) no-repeat;
+	text-indent: -9999px;
+	width:121px;
+	height:44px;
+}
+
+table#stats {
+	border: 7px solid #C0C0C0;
+	padding: 7px;
+	width: 300px;
+}
+
+ul#badges {  }
+
+ul#badges li {
+	display: inline;
+}
+
+h2#comments {
+	background: url(../images/comments.jpg) no-repeat;
+	text-indent: -9999px;
+	width:252px;
+	height:40px;
+}
+
+ul#comments {
+	border: 7px solid #C0C0C0;
+	padding: 7px;
+	width: 272px;
+	height: 300px;
+	overflow-y: auto;
+}
+
+ul#comments li {
+	list-style-type: none;
+	margin-bottom: 20px;
+	border-bottom: 1px solid #c1c1c1;
+	padding-bottom:5px;
+}
+
+ul#comments li a { color: #000; font-size:12px; font-weight: bold; }
+ul#comments li a:hover { color: #EDA02C; }
+
+ul#comments li span.date {color:#808080; font-size:12px; font-weight:normal; }
+
+h2#submitted_campaigns {
+	background: url(../images/submitted_campaigns.jpg) no-repeat;
+	text-indent: -9999px;
+	width:512px;
+	height:49px;
+	float: left;
+	margin:0 0 -30px;
+}
+
+/**********************CAMPAIGNS***********************************/
+h2#mobile_campaign {
+	background: url(../images/mobile_campaign.jpg) no-repeat;
+	text-indent: -9999px;
+	width:403px;
+	height:48px;
+}
+
+div#votes {
+	float: left;
+	margin-left:10px;
+}
+
+h2#score_percentage {
+	font-size:32px;
+	margin:0;
+}
+
+h3#votes_count {
+	margin:0 0 20px;
+}
+
+div#voting {
+	float: left;
+	margin:10px 0 0 20px;
+}
+
+div#voting a#vote_up {
+	background: url(../images/vote_up.gif) no-repeat;
+	width:207px;
+	height:36px;
+	display:block;
+	color: #fff;
+	text-indent:45px;
+	padding: 12px 0 0 0;
+}
+
+div#voting a#vote_down {
+	background: url(../images/vote_down.gif) no-repeat;
+	width:207px;
+	height:36px;
+	display:block;
+	color: #fff;
+	text-indent:45px;
+	padding: 12px 0 0 0;
+	margin:-20px 0 0;
+}
+
+h2#business_name { margin: 25px 0 -10px; }
+
+h2#business_name a { color: #000; }
+h2#business_name a:hover { color: #EDA02C; }
+
+ul#similar {
+	padding:0;
+	width: 310px;
+}
+
+ul#similar li {
+	list-style-type: none;
+	border:4px solid #C1C1C1;
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+ul#similar li a { color: #000; } 
+ul#similar li a:hover { color: #EDA02C; }
+
+ul#similar li img {
+	float: left;
+}
+
+ul#similar li h4 {
+	font-size: 16px;
+	font-weight:bold;
+	margin: 0;
+}
+
+ul#similar li h5 {
+	font-size: 12px;
+	font-weight:normal;
+	margin: 0;
+}
+
+h2#offer {
+	margin:0 0 -10px;
+}
+
+h2.campaign_details_header {
+	margin: 0;
+	width: 550px;
+}
+
+.campaign_description {
+	font-weight:normal;
+	font-size:25px;
+}
+
+ul#about_badges {  }
+
+ul#about_badges li {
+	list-style-type: none;
+	margin-top: 20px;
+}
+
+ul#about_badges li img { float: left; }
+ul#about_badges li h3 { float: left; margin:25px 0 0 10px; }
+ul#about_badges li h3 a { color: #000; }
+ul#about_badges li h3 a:hover { color: #EDA02C; }
+
+ul#campaign_reviews {
+	float: left;
+	width:600px;
+}
+
+ul#campaign_reviews li {
+	list-style-type:none;
+	margin-bottom: 25px;
+	border-bottom: 1px solid #c1c1c1;
+}
+
+ul#campaign_reviews li h3 a { color: #000; }
+ul#campaign_reviews li h3 a:hover { color: #EDA02C; }
+
+form#new_review { float: left; }

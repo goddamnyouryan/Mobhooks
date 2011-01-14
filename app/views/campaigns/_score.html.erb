@@ -1,0 +1,9 @@
+<% unless campaign.votes_count == 0 %>
+	<% if score_percentage(campaign) >= 50 %>
+		<h2 id="score_percentage" style="color:#00ff00"><%= score_percentage(campaign) %>%</h2>
+	<% elsif score_percentage(campaign) <= 49 %>
+		<h2 id="score_percentage" style="color:#ff0000"><%= score_percentage(campaign) %>%</h2>
+	<% end %>
+<% else %>
+	<h2 id="score_percentage">0%</h2>
+<% end %>
