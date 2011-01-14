@@ -43,7 +43,7 @@
 
 <h2>Badges</h2>
 <ul id="about_badges">
-<% @master_badge_list.achievements.each do |f| %>
+<% @master_badge_list.each do |f| %>
   <% klass = Kernel.const_get f.kind %>
   <li>
   	<%= link_to "#{image_tag klass.small_image}", :controller => "achievements", :action => "show", :id => f.id %>
