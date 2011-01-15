@@ -94,7 +94,7 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @campaign.destroy
     flash[:notice] = "Successfully deleted campaign."
-    redirect_to campaigns_url
+    redirect_to root_url
   end
   
   def vote_up
