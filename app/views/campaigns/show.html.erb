@@ -30,7 +30,7 @@
 
 <h2 id="business_name"><%= link_to "#{@campaign.business.name}", business_path(@campaign.business) %></h2>
 
-<p><%= link_to "#{image_tag @campaign.business.photo.url(:thumb)}", business_path(@campaign.business), :style => "margin-left: 10px;"  %></p>
+<p><%= link_to "#{image_tag @campaign.business.photo.url(:main)}", business_path(@campaign.business), :style => "margin-left: 10px;"  %></p>
 
 <%= link_to "view all #{@campaign.business.name} campaigns", business_path(@campaign.business), :class => "link", :style => "margin-left: 10px;"  %>
 
@@ -40,7 +40,7 @@
 <a href="http://twitter.com/share" class="twitter-share-button" data-count="none">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
 
 <% unless @related.nil? %>
-<h2 style="margin:25px 0 -10px;" >Similar Deals</h2>
+<h2 style="margin:25px 0 0;" >Similar Deals</h2>
 <ul id="similar">
 <% @related.each do |c| %>
 <li>

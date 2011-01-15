@@ -40,15 +40,4 @@
    <li>Refer a local merchant to MobHooks’ SMS service = <strong>1000 point</strong>s</li>
 </ul>
 
-
-<h2>Badges</h2>
-<ul id="about_badges">
-<% @master_badge_list.each do |f| %>
-  <% klass = Kernel.const_get f.kind %>
-  <li>
-  	<%= link_to "#{image_tag klass.small_image}", :controller => "achievements", :action => "show", :id => f.id %>
-  	<h3><%= link_to f.kind, :controller => "achievements", :action => "show", :id => f.id %></h3>
-  </li>
-  <div class="clear"></div>
-<% end %>
 </ul>

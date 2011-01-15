@@ -1,4 +1,5 @@
 class BusinessesController < ApplicationController
+	
   def index
     @businesses = Business.all
     @biznass = Business.find(:all, :conditions => ['name LIKE ?', "%#{params[:search]}%"])
@@ -14,7 +15,7 @@ class BusinessesController < ApplicationController
   
   def new
     @business = Business.new
-    @business_name = flash[:business_name]
+    @business_name = session[:business_name]
   end
   
   def create
@@ -23,7 +24,7 @@ class BusinessesController < ApplicationController
     @business.save!
     if @business.save
       if session[:created_campaign]
-        @campaign = Campaign.find(session[:created_campaign])
+        @campaign = session[:created_campaign]
         @campaign.business_id = @business.id
         @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
         @campaign.lat = @geocode.lat
@@ -40,6 +41,7 @@ class BusinessesController < ApplicationController
         end
         @campaign.save!
         session[:created_campaign] = nil
+        session[:business_name] = nil
       end
       flash[:notice] = "Successfully created business."
       redirect_to @business
@@ -76,4 +78,5 @@ class BusinessesController < ApplicationController
     flash[:notice] = "Successfully destroyed business."
     redirect_to businesses_url
   end
+  
 end

@@ -36,10 +36,9 @@ class CampaignsController < ApplicationController
       flash[:notice] = "Successfully created campaign."
       redirect_to @campaign
     else
-      @campaign.save!
       flash[:notice] = "Successfully created campaign. Now please fill out the business info for this campaign."
-      flash[:business_name] = @business_name
-      session[:created_campaign] = @campaign.id
+      session[:business_name] = @business_name
+      session[:created_campaign] = @campaign
       redirect_to new_business_path
     end
   end

@@ -1,6 +1,6 @@
 <% title "#{@user.login}'s Profile" %>
 
-<h1 style="margin-bottom:0;"><%=h @user.login %></h1>
+<h2><%=h @user.login %></h2>
 
 <div style="float:left;width:400px;">
 
@@ -68,7 +68,6 @@
   <%= render :partial => "achievement" %>
   </td>
 </tr>
-<tr><td><%= link_to "view all badges", about_path, :class => "link" %></td></tr>
 </table>
 
 <h2 id="comments">Comments</h2>

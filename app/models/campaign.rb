@@ -11,7 +11,7 @@ class Campaign < ActiveRecord::Base
   acts_as_mappable
   acts_as_taggable
   
-  has_attached_file :photo, :styles => { :thumb => "90x90#", :show => "540x200#" }, 
+  has_attached_file :photo, :styles => { :thumbnail => "90x90#", :show => "540x200#" }, 
                             :storage => :s3, 
                             :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
                             :path => ':id/:style'

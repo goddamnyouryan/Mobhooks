@@ -4,7 +4,9 @@
   <head>
     <title>Mobhooks - <%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
+    <%= stylesheet_link_tag 'prototip' %>
 	<%= javascript_include_tag :defaults %>
+	<%= javascript_include_tag 'prototip' %>
     <%= yield(:head) %>
 	<% if params[:controller] == "campaigns" && params[:action] == "show" && @map.exists? %>
 		<%= GMap.header %>
@@ -33,24 +35,30 @@
 			<li><%= link_to "Login", login_path %></li>
 		  <% end %>
 		</ul>
-		
+		<div class="clear"></div>
 		<% if params[:controller] == "home" %>
 			<div id="splash_search">
 		<% else %>
 			<div id="search">
 		<% end %>
 		<% form_tag campaigns_path, :method => 'get' do %>
-		    <%= text_field_tag :search, params[:search], :value => "Search for a Deal...", :onfocus => "if (this.value == 'Search for a Deal...') this.value = ''" %><% if params[:controller] == "home" %><br /><% end %>
+				<span id="search_field">
+		    <%= text_field_tag :search, params[:search], :value => "Search for a Deal...", :onfocus => "if (this.value == 'Search for a Deal...') this.value = ''" %><% if params[:controller] == "home" %>
+		    <% end %>
+		    <p>ex: shoes, best buy, electronics.</p>
+		    </span>
+		    <span id="near_field">
 		    <% unless current_user %>
-		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %>
+		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
 		    <% else %>
 		    <% unless current_user.profile.zip.nil? %>
-		    <%= text_field_tag :near, params[:near], :value => "#{current_user.profile.zip}", :onfocus => "if (this.value == 'near...') this.value = ''" %>
+		    <%= text_field_tag :near, params[:near], :value => "#{current_user.profile.zip}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
 		    <% else %>
-		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %>
+		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
 		    <% end %>
 		    <% end %>
-		    <%= submit_tag "Search", :name => nil, :class => "button" %>
+		    </span>
+		    <%= submit_tag "Search", :name => nil, :class => "button", :id => "search_submit" %>
 		<% end %>
 		</div>
 		
@@ -72,7 +80,7 @@
 	    <li><%= link_to "Terms of Service", terms_path %></li>
 	    <li><%= link_to "Privacy Policy", terms_path %></li>
 	    <li><%= link_to "About Mobhooks", about_path %></li>
-	    <li><%= link_to "FAQ" %></li>
+	    <li><%= link_to "FAQ", faq_path %></li>
 	    <li><%= link_to "Submit a New Campaign", new_campaign_path %></li>
 	    <li><%= link_to "Affiliate Program", new_affiliate_path %></li>
 	    <li><a href="mailto:ryan.macinnes@gmail.com">Contact Us</a></li>

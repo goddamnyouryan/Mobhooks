@@ -2,7 +2,7 @@
 
 <h2 style="margin:20px 0 0;"><%= "#{h @business.name}" %></h2>
 
-<div style="float:left">
+<div style="float:left;width:370px;">
 
 <p><%= image_tag @business.photo.url(:medium)%>
 
@@ -29,7 +29,7 @@
 
 <div style="float:left;margin-left:30px;">
 
-<h2 style="margin:0 0 -50px;">Campaigns</h2>
+<h2 style="margin:0;">Campaigns</h2>
 
 <%= render :partial=>'campaigns/list', :locals => { :campaign => @business.campaigns } %>
 

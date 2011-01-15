@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       @profile.save
       @user.points = @user.points + 100
       @user.save
-      flash[:notice] = "Registration Successful!"
+      flash[:notice] = "Registration Successful! Welcome #{current_user.login}!"
       redirect_to root_url
     else
       render :action => 'new'

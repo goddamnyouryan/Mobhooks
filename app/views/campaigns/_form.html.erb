@@ -1,19 +1,19 @@
 <% form_for @campaign, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
-    <h3 style="margin:0;">Name of Business:</h3>
+    <h3 style="margin:0;">Name of Business:<%= image_tag "tooltip.png", :id => "business_name_tooltip" %></h3>
     <%= text_field_with_auto_complete :campaign, :business_name, {}, { :url => formatted_businesses_path(:js), :method => :get, :with => "'search=' + element.value" } %>
   </p>
   <p>
-    <h3 style="margin:0;">Offer:</h3>
+    <h3 style="margin:0;">Offer:<%= image_tag "tooltip.png", :id => "offer_tooltip" %></h3>
     <%= f.text_field :offer, :class => "large_form" %>
   </p>
   <p>
-    <h3 style="margin:0;">Shortcode:</h3>
+    <h3 style="margin:0;">Shortcode:<%= image_tag "tooltip.png", :id => "shortcode_tooltip" %></h3>
     <%= f.text_field :shortcode, :class => "large_form" %>
   </p>
   <p>
-    <h3 style="margin:0;">Keyword:</h3>
+    <h3 style="margin:0;">Keyword:<%= image_tag "tooltip.png", :id => "keyword_tooltip" %></h3>
     <%= f.text_field :keyword, :class => "large_form" %>
   </p>
   <p>
@@ -29,15 +29,15 @@
     <%= f.select :kind, options_for_select([['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
   </p>
   <p>
-	<h3 style="margin:0;">Tags (separate with commas):</h3>
+	<h3 style="margin:0;">Tags (separate with commas):<%= image_tag "tooltip.png", :id => "tags_tooltip" %></h3> 
 	<%= f.text_field :tag_list, :class => "large_form" %>
   <p>
-    <h3 style="margin:0;">Offer details:</h3>
+    <h3 style="margin:0;">Offer details:<%= image_tag "tooltip.png", :id => "offer_details_tooltip" %></h3>
     <%= f.text_area :details, :class => "large_form", :style => "height: 200px;" %>
   </p>
   <p>
-	<h3 style="margin:0;">Upload Campaign Photo:</h3>
-	<%= f.file_field :photo, :class => "large_form button" %>
+	<h3 style="margin:0;">Upload Campaign Photo:<%= image_tag "tooltip.png", :id => "campaign_photo_tooltip" %></h3>
+	<%= f.file_field :photo %>
   </p>
   <p><%= f.submit "Submit Campaign", :class => 'button' %></p>
 <% end %>

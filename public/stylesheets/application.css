@@ -47,6 +47,7 @@ h2 {
  font-size:32px;
  font-weight:bold;
  letter-spacing:-1px;
+ margin:50px 0 0;
 }
 
 #container {
@@ -55,13 +56,16 @@ h2 {
 }
 
 #flash_notice, #flash_error {
-  padding: 5px 8px;
-  margin: 10px 0;
+  font-weight:bold;
+	margin:35px 0 0;
+	padding:10px 8px;
+	text-align:center;
 }
 
 #flash_notice {
-  background-color: #CFC;
-  border: solid 1px #6C6;
+  background-color:#CCFFCC;
+	border:1px solid #66CC66;
+	color:#669966;
 }
 
 #flash_error {
@@ -138,11 +142,11 @@ h1#home_title{
 
 h1#title {
 	float:left;
-	background:url(../images/title.gif) no-repeat;
+	background:url(../images/title.png) no-repeat;
 	height:64px;
 	width:153px;
 	text-indent:-9999px;
-	margin: 0;
+	margin:12px 0 0;
 }
 
 h1#title a {display: block; width:153px; height: 64px; }
@@ -153,6 +157,7 @@ ul#nav {
 	font-size: 18px;
 	padding:7px 20px;
 	margin: 0;
+	height:25px;
 }
 
 ul#nav a { color: #fff; text-decoration:none; }
@@ -165,12 +170,70 @@ ul#nav li {
 
 #splash_search {
 	float: right;
-	margin:25px 33px 0 0;
+	width:420px;
+	margin-top:-164px;
 }
 
-#splash_search form { float: left; }
+#splash_search form {  }
 
-#search { float: right; }
+#splash_search form input#search {
+
+}
+
+#splash_search form input#near {
+
+}
+
+#splash_search form span#search_field {
+
+}
+
+#splash_search form span#near_field {
+
+}
+
+#splash_search form input#search_submit {  
+	float: right;
+}
+
+#search form input#search {
+
+}
+
+#search form input#near {
+
+}
+
+#search form span#search_field {
+	float:left;
+	width:160px;
+	margin-right: 5px;
+}
+
+#search form span#near_field {
+	float: left;
+	width:160px;
+	margin-right: 5px;
+}
+
+#search form input#search_submit {  
+
+}
+
+
+
+
+#splash_search form p {
+	font-size: 12px;
+	margin: 0;
+}
+
+#search form p {
+	font-size: 10px;
+	margin: 0 0 0 6px;
+}
+
+div#search { float: right;margin-top:-28px; height:16px;}
 
 #search form {
 	padding:3px 0;
@@ -186,13 +249,11 @@ ul#nav li {
 }
 
 #splash_search form input#search {
-	margin-bottom:10px;
 	width:400px;
 	font-size: 30px;
 	padding: 5px;
 	border: 5px solid #c0c0c0;
 	color: #c0c0c0;
-	float:left;
 }
 
 #splash_search form input#near, input#user_session_login, input#user_session_password, input#user_login, input#user_email, input#user_password, input#user_password_confirmation, input#campaign_business_name, .large_form { 
@@ -251,7 +312,7 @@ h2#featured {
 	text-indent: -9999px;
 	width:351px;
 	height:40px;
-	margin:50px 0 -10px;
+	margin:50px 0 0 0;
 }
 
 ul#sponsored {
@@ -259,6 +320,7 @@ ul#sponsored {
 	padding:20px 0;
 	width:545px;
 	float:left;
+	margin: 0;
 }
 
 ul#sponsored a { color: #000; }
@@ -280,7 +342,7 @@ h2#most_popular {
 	text-indent: -9999px;
 	width:449px;
 	height:47px;
-	margin-bottom:-40px;
+	margin: 50px 0 0;
 }
 
 h2#browse {
@@ -321,6 +383,7 @@ ul#campaign_list {
 	width:560px;
 	padding:0;
 	float:left;
+	margin: 0;
 }
 
 ul#campaign_list a { color: #000; }
@@ -334,8 +397,10 @@ ul#campaign_list li {
 	padding: 10px;
 }
 
-ul#campaign_list li h3 {margin:0; font-size: 30px; font-weight:bold; }
-ul#campaign_list li h4 {margin:0; font-size: 24px; font-weight:normal; }
+ul#campaign_list li:first-child { margin-top:0 !important; }
+
+ul#campaign_list li h3 {margin:0; font-weight:bold; }
+ul#campaign_list li h4 {margin:0; font-weight:normal; }
 
 ul#campaign_list li img {
 	float: left;
@@ -343,12 +408,14 @@ ul#campaign_list li img {
 
 ul#campaign_list li .campaign_titles {
 	float:left;
-	margin: 12px 0 0 5px;
+	margin:25px 0 0 5px;
+	width:320px;
 }
 
 ul#campaign_list li div.campaign_list_right {
 	float:right;
 	margin: 10px 0 0;
+	width: 85px;
 }
 
 ul#campaign_list li div.campaign_list_right h2 {
@@ -454,6 +521,7 @@ ul#comments {
 	width: 272px;
 	height: 300px;
 	overflow-y: auto;
+	margin: 0;
 }
 
 ul#comments li {
@@ -474,7 +542,7 @@ h2#submitted_campaigns {
 	width:512px;
 	height:49px;
 	float: left;
-	margin:0 0 -30px;
+	margin:0;
 }
 
 /**********************CAMPAIGNS***********************************/
@@ -533,6 +601,7 @@ h2#business_name a:hover { color: #EDA02C; }
 ul#similar {
 	padding:0;
 	width: 310px;
+	margin: 0;
 }
 
 ul#similar li {
@@ -563,6 +632,7 @@ ul#similar li h5 {
 
 h2#offer {
 	margin:0 0 -10px;
+	width:520px;
 }
 
 h2.campaign_details_header {

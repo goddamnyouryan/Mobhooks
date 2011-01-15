@@ -2,7 +2,7 @@
 <ul id="campaign_list">
 <% campaign.each do |c| %>
 <li>
-	<%= link_to "#{image_tag c.business.photo.url(:thumb)}", campaign_path(c) %>
+	<%= link_to "#{image_tag c.business.photo.url(:main)}", campaign_path(c) %>
 	<div class="campaign_titles">
 		<h3><%= link_to "#{c.business.name}", campaign_path(c) %></h3>
 		<h4><%= link_to "#{c.offer}", campaign_path(c) %></h4>
@@ -13,7 +13,7 @@
 		<p class="button"><%= link_to "View Deal", campaign_path(c) %></p>
 	</div>
 </li>
-<%= link_to "View more deals from #{c.business.name}...", business_path(c.business), :style => "font-size:12px;" %>
+<div class="clear"></div>
 
 <% end %>
 </ul>
