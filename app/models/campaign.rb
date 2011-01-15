@@ -31,9 +31,9 @@ class Campaign < ActiveRecord::Base
     if search
       find(:all, 
            :joins => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(tag_list) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ? OR LOWER(businesses.tag_list) LIKE ?', 
-                           "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
-                          ]
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
+                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
+                            ]
            )
     else
       find(:all)
@@ -44,8 +44,8 @@ class Campaign < ActiveRecord::Base
     if search && near && near != "" && near != "near..."
       f = find(:all, 
            :joins => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(tag_list) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ? OR LOWER(businesses.tag_list) LIKE ?', 
-                            "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
+                            "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                            ],
            :origin => "#{near}",
            :within => 25
@@ -53,9 +53,9 @@ class Campaign < ActiveRecord::Base
     elsif search
       find(:all, 
            :joins => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(tag_list) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ? OR LOWER(businesses.tag_list) LIKE ?', 
-                            "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
-                           ]
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
+                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
+                            ]
            )       
     else
       find(:all)
