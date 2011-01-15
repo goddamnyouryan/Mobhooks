@@ -78,7 +78,7 @@ class CampaignsController < ApplicationController
   	if params[:distance]
     	@campaigns = Campaign.location_search(params[:search], params[:near], params[:distance]) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => params[:distance])	
     else
-    	@campaigns = Campaign.location_search(params[:search], params[:near], 25) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :distance => 25)
+    	@campaigns = Campaign.location_search(params[:search], params[:near], 25) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => 25)
     end
     if params[:near]
     	@zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:near]}"
