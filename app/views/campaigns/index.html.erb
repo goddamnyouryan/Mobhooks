@@ -2,7 +2,9 @@
 
 <h2 id="campaigns">Campaigns</h2>
 
+<% unless @zip.nil? %>
 <p>Distance: <%= link_to "5 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5 %>
+<% end %>	
 
 <p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
 
