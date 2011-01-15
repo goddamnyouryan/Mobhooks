@@ -40,7 +40,7 @@ class Campaign < ActiveRecord::Base
     end
   end
   
-  def self.location_search(search, near)
+  def self.location_search(search, near, distance)
     if search && near && near != "" && near != "near..."
       f = find(:all, 
            :joins => :business, 
@@ -48,7 +48,7 @@ class Campaign < ActiveRecord::Base
                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                            ],
            :origin => "#{near}",
-           :within => 25
+           :within => distance
            )
     elsif search
       find(:all, 
