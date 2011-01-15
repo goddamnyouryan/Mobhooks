@@ -2,7 +2,7 @@
 
 <h2 id="campaigns">Campaigns</h2>
 
-<% unless @zip.nil && (params[:near] == "" || params[:near] == "near...") %>
+<% unless @zip.nil? && (params[:near] == "" || params[:near] == "near...") %>
 <p>Within: </p>
 <%= link_to "1 mile", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 1 %><br />
 <%= link_to "5 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5 %><br />
