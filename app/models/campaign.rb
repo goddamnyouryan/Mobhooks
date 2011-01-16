@@ -30,7 +30,7 @@ class Campaign < ActiveRecord::Base
   def self.search(search)
     if search
       find(:all, 
-           :joins => :business, 
+           :include => :business, 
            :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
                              "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                             ]
@@ -43,7 +43,7 @@ class Campaign < ActiveRecord::Base
   def self.location_search(search, near, distance)
     if search && near && near != "" && near != "near..."
       find(:all, 
-           :joins => :business, 
+           :include => :business, 
            :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                            ],
@@ -52,7 +52,7 @@ class Campaign < ActiveRecord::Base
            )
     elsif search
       find(:all, 
-           :joins => :business, 
+           :include => :business, 
            :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
                              "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                             ]
