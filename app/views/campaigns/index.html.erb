@@ -30,6 +30,14 @@
 
 <% else %>
 
+<p>Within: 
+<%= link_to "1 mile", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 1 %> | 
+<%= link_to "5 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5 %> | 
+<%= link_to "25 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 25 %> | 
+<%= link_to "100 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 100 %> | 
+<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5000 %>
+</p>
+
 <div id="tag_cloud" style="float:left !important;">
 <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
    <%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => css_class %>

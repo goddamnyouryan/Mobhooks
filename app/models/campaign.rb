@@ -42,7 +42,7 @@ class Campaign < ActiveRecord::Base
   
   def self.location_search(search, near, distance)
     if search && near && near != "" && near != "near..."
-      f = find(:all, 
+      find(:all, 
            :joins => :business, 
            :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"

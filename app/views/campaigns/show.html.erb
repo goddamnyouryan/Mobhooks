@@ -60,7 +60,7 @@
 <% @related.each do |c| %>
 <li>
 	<%= link_to "#{image_tag c.business.photo.url(:tiny)}", campaign_path(c) %>
-	<div style="float:left;margin:-3px 0 0 20px;">
+	<div style="float:left;margin:-3px 0 0 20px;width:150px;">
 		<h4><%= link_to c.business.name, campaign_path(c) %></h4>
 		<h5><%= link_to c.offer, campaign_path(c) %></h5>
 	</div>
@@ -87,7 +87,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 
 </div>
 
-<div style="float:left;">
+<div style="float:left;width:520px;">
 
 <h2 id="offer"><%=h @campaign.offer %></h2>
 <p>
