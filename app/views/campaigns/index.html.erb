@@ -22,10 +22,7 @@
 
 <p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
 
-<div style="width:560px;">
 <%= render :partial=>'campaigns/list', :locals => { :campaign => @campaigns } %>
-&nbsp;
-</div>
 
 <%= render :partial => "campaigns/tag_cloud" %>
 
