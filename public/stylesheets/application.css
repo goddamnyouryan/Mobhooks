@@ -14,12 +14,12 @@ body {
 
 body#home h1#title {
 background:url(../images/splash_title.png) no-repeat;
-width: 349px;
-height:204px;
+width: 404px;
+height:203px;
 text-indent:-9999px;
 }
 
-body#home h1#title a { display:block; width: 350px; height:203px;}
+body#home h1#title a { display:block; width: 404px; height:203px;}
 
 a img {
   border: none;
@@ -149,13 +149,13 @@ h1#title {
 	margin:12px 0 0;
 }
 
-h1#title a {display: block; width:153px; height: 64px; }
+h1#title a {display: block; width:186px; height: 62px; }
 
 ul#nav {
 	float: right;
 	background: #808080;
 	font-size: 18px;
-	padding:7px 20px;
+	 padding: 7px 17px 3px;
 	margin: 0;
 	height:25px;
 }
