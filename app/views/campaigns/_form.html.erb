@@ -16,14 +16,14 @@
     <h3 style="margin:0;">Keyword:<%= image_tag "tooltip.png", :id => "keyword_tooltip" %></h3>
     <%= f.text_field :keyword, :class => "large_form" %>
   </p>
-  <p>
+  <!--<p>
     <h3 style="margin:0;">Start Date:</h3>
     <%= f.date_select :start_date %>
   </p>
   <p>
     <h3 style="margin:0;">End Date:</h3>
     <%= f.date_select :end_date %>
-  </p>
+  </p> -->
   <p>
     <h3 style="margin:0;">Offer Type:</h3>
     <%= f.select :kind, options_for_select([['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
@@ -35,9 +35,9 @@
     <h3 style="margin:0;">Offer details:<%= image_tag "tooltip.png", :id => "offer_details_tooltip" %></h3>
     <%= f.text_area :details, :class => "large_form", :style => "height: 200px;" %>
   </p>
-  <p>
+  <!-- <p>
 	<h3 style="margin:0;">Upload Campaign Photo:<%= image_tag "tooltip.png", :id => "campaign_photo_tooltip" %></h3>
 	<%= f.file_field :photo %>
-  </p>
+  </p> -->
   <p><%= f.submit "Submit Campaign", :class => 'button' %></p>
 <% end %>

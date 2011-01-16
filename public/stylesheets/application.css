@@ -143,8 +143,8 @@ h1#home_title{
 h1#title {
 	float:left;
 	background:url(../images/title.png) no-repeat;
-	height:64px;
-	width:153px;
+	height:62px;
+	width:186px;
 	text-indent:-9999px;
 	margin:12px 0 0;
 }
@@ -310,7 +310,7 @@ ul#footer li a:hover { color: #EDA02C; }
 h2#featured {
 	background: url(../images/featured_deals.jpg) no-repeat;
 	text-indent: -9999px;
-	width:351px;
+	width:362px;
 	height:40px;
 	margin:50px 0 0 0;
 }
@@ -340,8 +340,8 @@ ul#sponsored li h4 { margin:0; font-size:12px; font-weight:normal; }
 h2#most_popular {
 	background: url(../images/most_popular.jpg) no-repeat;
 	text-indent: -9999px;
-	width:449px;
-	height:47px;
+	width:461px;
+	height:48px;
 	margin: 50px 0 0;
 }
 
@@ -496,6 +496,45 @@ h2#stats {
 	height:44px;
 }
 
+h2#Soldier {
+background: url(../images/levels/stats_soldier.png) no-repeat;
+text-indent: -9999px;
+width:300px;
+height:105px;
+}
+
+h2#Associate {
+background: url(../images/levels/stats_associate.png) no-repeat;
+text-indent: -9999px;
+width:300px;
+height:105px;
+}
+h2#Capo {
+background: url(../images/levels/stats_capo.png) no-repeat;
+text-indent: -9999px;
+width:300px;
+height:105px;
+}
+h2#Consigliere {
+background: url(../images/levels/stats_consigliere.png) no-repeat;
+text-indent: -9999px;
+width:300px;
+height:105px;
+}
+h2#Don {
+background: url(../images/levels/stats_don.png) no-repeat;
+text-indent: -9999px;
+width:300px;
+height:105px;
+}
+h2#Underboss {
+background: url(../images/levels/stats_underboss.png) no-repeat;
+text-indent: -9999px;
+width:300px;
+height:105px;
+}
+
+
 table#stats {
 	border: 7px solid #C0C0C0;
 	padding: 7px;
@@ -515,13 +554,20 @@ h2#comments {
 	height:40px;
 }
 
+h2#reviews {
+	background: url(../images/reviews.jpg) no-repeat;
+	text-indent: -9999px;
+	width:193px;
+	height:40px;
+}
+
 ul#comments {
 	border: 7px solid #C0C0C0;
 	padding: 7px;
 	width: 272px;
-	height: 300px;
+	max-height: 300px;
 	overflow-y: auto;
-	margin: 0;
+	margin: 0 0 10px;
 }
 
 ul#comments li {

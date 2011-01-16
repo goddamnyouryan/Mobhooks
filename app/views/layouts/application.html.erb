@@ -23,13 +23,13 @@
 		<ul id="nav">
 		  <% if current_user %>
 		  <li><%= link_to "Submit a Campaign", new_campaign_path %></li>
-			<li><%= link_to "Deals", campaigns_path %></li>
+			<li><%= link_to "Offers", campaigns_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Profile", user_path(current_user) %></li>
 			<li><%= link_to "Logout", logout_path %></li>
 		  <% else %>
 		  <li><%= link_to "Submit a Campaign", new_campaign_path %></li>
-			<li><%= link_to "Deals", campaigns_path %></li>
+			<li><%= link_to "Offers", campaigns_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Register", new_user_path %></li>
 			<li><%= link_to "Login", login_path %></li>
@@ -43,7 +43,7 @@
 		<% end %>
 		<% form_tag campaigns_path, :method => 'get' do %>
 				<span id="search_field">
-		    <%= text_field_tag :search, params[:search], :value => "Search for a Deal...", :onfocus => "if (this.value == 'Search for a Deal...') this.value = ''" %><% if params[:controller] == "home" %>
+		    <%= text_field_tag :search, params[:search], :value => "Search for an Offer...", :onfocus => "if (this.value == 'Search for an Offer...') this.value = ''" %><% if params[:controller] == "home" %>
 		    <% end %>
 		    <p>ex: shoes, best buy, electronics.</p>
 		    </span>
@@ -82,8 +82,8 @@
 	    <li><%= link_to "About Mobhooks", about_path %></li>
 	    <li><%= link_to "FAQ", faq_path %></li>
 	    <li><%= link_to "Submit a New Campaign", new_campaign_path %></li>
-	    <li><%= link_to "Affiliate Program", new_affiliate_path %></li>
-	    <li><a href="mailto:ryan.macinnes@gmail.com">Contact Us</a></li>
+	    <li><%= link_to "Get Your Own Shortcode", new_affiliate_path %></li>
+	    <li><a href="mailto:ryan.macinnes@gmail.com">Contact</a></li>
 		</ul>
 		</div>
 			

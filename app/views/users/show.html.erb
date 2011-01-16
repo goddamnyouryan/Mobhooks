@@ -29,7 +29,7 @@
 
 <div class="clear"></div>
 
-<h2 id="stats">Stats</h2>
+<h2 id="<%= level(@user) %>">Stats</h2>
 <table id="stats">
 <tr>
   <td><strong>Level:</strong></td>
@@ -40,19 +40,19 @@
   <td><%=h @user.points %></td>
 </tr>
 <tr>
-  <td><strong>Deals Submitted:</strong></td>
+  <td><strong>Offers Submitted:</strong></td>
   <td><%=h @user.campaigns.count %></td>
 </tr>
 <tr>
-  <td><strong>Deals Rated:</strong></td>
+  <td><strong>Offers Rated:</strong></td>
   <td><%=h @user.votes.count %></td>
 </tr>
 <tr>
-  <td><strong>Deals Reviewed:</strong></td>
+  <td><strong>Offers Reviewed:</strong></td>
   <td><%=h @reviews.size %></td>
 </tr>
 <tr>
-  <td><strong>Deals Downvoted:</strong></td>
+  <td><strong>Offers Downvoted:</strong></td>
   <td><%=h @downvoted %></td>
 </tr>
 <tr>

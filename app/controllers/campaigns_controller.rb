@@ -23,20 +23,12 @@ class CampaignsController < ApplicationController
       @campaign.lat = @geocode.lat
       @campaign.lng = @geocode.lng
       @campaign.save!
-      if @campaign.kind == "Text Club"
-        current_user.points = current_user.points + 50
-        current_user.save
-      elsif @campaign.kind == "Discount/Coupon"
-        current_user.points = current_user.points + 100
-        current_user.save
-      elsif @campaign.kind == "Enter to Win"
-        current_user.points = current_user.points + 200
-        current_user.save
-      end
-      flash[:notice] = "Successfully created campaign."
+      current_user.points = current_user.points + 100
+      current_user.save
+      flash[:notice] = "Successfully posted campaign."
       redirect_to @campaign
     else
-      flash[:notice] = "Successfully created campaign. Now please fill out the business info for this campaign."
+      flash[:notice] = "Successfully posted campaign. Now please fill out the business info for this campaign."
       session[:business_name] = @business_name
       session[:created_campaign] = @campaign
       redirect_to new_business_path

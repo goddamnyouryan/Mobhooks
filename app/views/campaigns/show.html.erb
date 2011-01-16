@@ -26,7 +26,22 @@
 
 <div class="clear"></div>
 
-<%= link_to "view / write reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign), :class => "link", :style => "margin-left: 10px;" %>
+<h2 id="reviews">Reviews</h2>
+
+<ul id="comments">
+
+<% @campaign.reviews.each do |c| %>
+<li>
+	<%= c.message %><br />
+	<% @reviewer = User.find(c.reviewer_id) %>
+	<%= link_to @reviewer.login, user_path(@reviewer) %>
+	<span class="date"><%= c.created_at.to_date %></span>
+</li>
+<% end %>
+
+</ul>
+<div class="clear"></div>
+<%= link_to "view all reviews (#{@campaign.reviews.count})", campaign_reviews_path(@campaign), :class => "link", :style => "margin-left: 10px;" %>
 
 <h2 id="business_name"><%= link_to "#{@campaign.business.name}", business_path(@campaign.business) %></h2>
 
@@ -90,10 +105,6 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	</span>
 </h2>
 
-<h2 class="campaign_details_header">
-	When:
-	<span class="campaign_description"><%= campaign_time(@campaign) %></span>
-</h2>
 
 <h2 class="campaign_details_header">
 	Type:
@@ -132,4 +143,3 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </div>
 
 <div class="clear"></div>
-

@@ -29,16 +29,8 @@ class BusinessesController < ApplicationController
         @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
         @campaign.lat = @geocode.lat
         @campaign.lng = @geocode.lng
-        if @campaign.kind == "Text Club"
-          current_user.points = current_user.points + 50
-          current_user.save
-        elsif @campaign.kind == "Discount/Coupon"
-          current_user.points = current_user.points + 100
-          current_user.save
-        elsif @campaign.kind == "Enter to Win"
-          current_user.points = current_user.points + 200
-          current_user.save
-        end
+        current_user.points = current_user.points + 100
+        current_user.save
         @campaign.save!
         session[:created_campaign] = nil
         session[:business_name] = nil
