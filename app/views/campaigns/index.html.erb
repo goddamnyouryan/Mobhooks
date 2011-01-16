@@ -6,6 +6,8 @@
 <h3>Your search '<%= params[:search] %>' yielded <%= @campaigns.count %> results</h3>
 <% end %>
 
+<% unless @campaigns.count == 0 %>
+
 <% unless @zip.nil? %>
 <% if params[:near] %>
 <% unless params[:near] == "near..." %>
@@ -24,8 +26,16 @@
 
 <%= render :partial=>'campaigns/list', :locals => { :campaign => @campaigns } %>
 
-<div style="float:left;margin-left:30px;">
 <%= render :partial => "campaigns/tag_cloud" %>
+
+<% else %>
+
+<div id="tag_cloud" style="float:left !important;">
+<% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
+   <%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => css_class %>
+ <% end %>
 </div>
+
+<% end %>
 
 <div class="clear"></div>
