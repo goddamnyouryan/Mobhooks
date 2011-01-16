@@ -243,7 +243,7 @@ div#search { float: right;margin-top:-28px; height:16px;}
 
 #search form input#search, #search form input#near, input#comment_message, input#review_message{
 	border:3px solid #C0C0C0;
-	color:#C0C0C0;
+	color:#000;
 	margin-top:3px;
 	padding:3px;
 }
@@ -253,7 +253,7 @@ div#search { float: right;margin-top:-28px; height:16px;}
 	font-size: 30px;
 	padding: 5px;
 	border: 5px solid #c0c0c0;
-	color: #c0c0c0;
+	color: #000;
 }
 
 #splash_search form input#near, input#user_session_login, input#user_session_password, input#user_login, input#user_email, input#user_password, input#user_password_confirmation, input#campaign_business_name, .large_form { 
@@ -261,7 +261,7 @@ div#search { float: right;margin-top:-28px; height:16px;}
 	font-size: 30px;
 	padding: 5px;
 	border: 5px solid #c0c0c0;
-	color: #c0c0c0; 
+	color: #000; 
 }
 
 #splash_search form .button, input#user_session_submit, input#user_submit, input#campaign_submit, input#business_submit, input#affiliate_submit, input#profile_submit { 
