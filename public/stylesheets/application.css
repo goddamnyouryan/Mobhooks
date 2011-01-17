@@ -155,7 +155,7 @@ ul#nav {
 	float: right;
 	background: #808080;
 	font-size: 14px;
-	padding: 13px 10px 3px;
+	padding: 13px 5px 3px;
 	margin: 0;
 	height:25px;
 }
@@ -608,7 +608,7 @@ h2#reviews {
 	text-indent: -9999px;
 	width:193px;
 	height:40px;
-	margin: 25px 0 0;
+	margin: 25px 0 10px;
 }
 
 ul#comments {

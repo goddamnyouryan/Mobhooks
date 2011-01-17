@@ -53,7 +53,7 @@
 
 <% else %>
 <div class="clear"></div>
-<%= link_to "no reviews yet. be the first, click here!", campaign_reviews_path(@campaign), :class => "link", :style => "margin: 0 0 0 10px;" %>
+<%= link_to "no reviews yet. be the first, click here!", campaign_reviews_path(@campaign), :class => "link", :style => "margin: 0;" %>
 
 <% end %>
 
@@ -102,7 +102,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like href="<%= request.url %>" show_faces="true" width="450"></fb:like>
 </p>
 
-<p>
+<p style="margin:0;">
 	<% if @campaign.business.address? %>	
 		<%= @map.div(:width => 540, :height => 200) %>
 	<% else %>
