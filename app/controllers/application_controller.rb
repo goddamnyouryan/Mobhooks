@@ -21,12 +21,5 @@ class ApplicationController < ActionController::Base
     return @current_user if defined?(@current_user)
     @current_user = current_user_session && current_user_session.record
   end
-  
-  def location
-    return @location if defined?(@location)
-    @ip_addr = request.env['REMOTE_ADDR']
-    @location_geocode = Geokit::Geocoders::MultiGeocoder.geocode(@ip_addr)
-    @location = "#{@location_geocode.city}, #{@location_geocode.state}"
-  end
     
 end

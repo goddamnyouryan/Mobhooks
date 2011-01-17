@@ -2,7 +2,7 @@
 <div style="float:left;">
 
 <h2 id="featured">Featured Deals</h2>
-
+<%= request.env['REMOTE_ADDR'] %>
 <ul id="sponsored">
 	<% @sponsored.each do |s| %>
 	<li>
