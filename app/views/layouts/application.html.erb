@@ -49,12 +49,12 @@
 		    </span>
 		    <span id="near_field">
 		    <% unless current_user %>
-		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
+		    <%= text_field_tag :near, params[:near], :value => "#{location}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
 		    <% else %>
 		    <% unless current_user.profile.zip.nil? %>
 		    <%= text_field_tag :near, params[:near], :value => "#{current_user.profile.zip}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
 		    <% else %>
-		    <%= text_field_tag :near, params[:near], :value => "near...", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
+		    <%= text_field_tag :near, params[:near], :value => "#{location}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
 		    <% end %>
 		    <% end %>
 		    </span>

@@ -38,6 +38,8 @@
 <%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5000 %>
 </p>
 
+<p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
+
 <div id="tag_cloud" style="float:left !important;">
 <% tag_cloud @tags, %w(css1 css2 css3 css4) do |tag, css_class| %>
    <%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => css_class %>
