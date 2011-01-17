@@ -2,7 +2,11 @@
 <div style="float:left;">
 
 <h2 id="featured">Featured Deals</h2>
-<p><%= location("#{request.remote_ip}") %></p>
+
+<%= @ip_addr = "#{request.remote_ip}" %>
+<%= @location_geocode = Geokit::Geocoders::MultiGeocoder.geocode(@ip_addr) %>
+<%= @location = "#{@location_geocode.city}, #{@location_geocode.state}" %>
+<p><%= @location %></p>
 <ul id="sponsored">
 	<% @sponsored.each do |s| %>
 	<li>
