@@ -2,7 +2,7 @@
 <div style="float:left;">
 
 <h2 id="featured">Featured Deals</h2>
-<p><%= location(request.remote_ip) %>
+<p><%= location("#{request.remote_ip}") %></p>
 <ul id="sponsored">
 	<% @sponsored.each do |s| %>
 	<li>
