@@ -94,6 +94,9 @@ class CampaignsController < ApplicationController
     elsif current_user
     	@zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
     end
+    if params[:search].nil? && params[:distance].nil? && params[:near].nil?
+      @campaigns = Campaign.find(:all, :limit => 25)
+    end
     @tags = Campaign.tag_counts
   end
   
@@ -112,7 +115,7 @@ class CampaignsController < ApplicationController
     current_user.vote_for(@campaign)
     current_user.points = current_user.points + 1
     current_user.save
-    @user.points = @user.points + 5
+    @user.points = @user.points + 1
     @user.save
     render :update do |page| 
      page.replace_html "voting", ""

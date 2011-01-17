@@ -25,6 +25,8 @@
 
 <%= link_to "Business Owners: Want to Start Your Own Text Campaign? Click Here!", new_affiliate_path, :class => "button affiliates" %>
 
+<%= render :partial => "campaigns/tag_cloud" %>
+
 <script type="text/javascript"><!--
 google_ad_client = "ca-pub-2919877323911591";
 /* Mobhooks */
@@ -36,9 +38,6 @@ google_ad_height = 250;
 <script type="text/javascript"
 src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 </script>
-
-
-<%= render :partial => "campaigns/tag_cloud" %>
 
 </div>
 

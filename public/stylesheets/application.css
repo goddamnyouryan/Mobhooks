@@ -349,7 +349,7 @@ h2#browse {
 	background:url("../images/browse.jpg") no-repeat scroll 0 0 transparent;
 	float:right;
 	height:40px;
-	margin-bottom:0;
+	margin-top:0;
 	margin-right:125px;
 	text-indent:-9999px;
 	width:175px;
@@ -467,6 +467,7 @@ div#profile p {
 	float:left;
 	font-weight:bold;
 	margin:7px 0 0 5px;
+	width:200px;
 }
 
 div#profile p a { color: #808080; } 
@@ -547,11 +548,34 @@ table#stats {
 	width: 303px;
 }
 
-ul#badges {  }
+h2#badges {
+	background: url(../images/badges.jpg) no-repeat;
+	text-indent: -9999px;
+	width:252px;
+	height:40px;
+	margin: 0 0 10px;
+}
+
+ul#badges { 
+	margin: 10px 0 0 -15px;
+	padding: 0;
+	width: 315px;
+}
 
 ul#badges li {
-	display: inline;
+	float: left;
+    list-style-type: none;
+    margin: 0 0 10px 25px;
+    text-align: center;
 }
+
+ul#badges li p {
+	font-size: 10px;
+	font-weight: bold;
+}
+
+ul#badges li p a { color: #000; }
+ul#badges li p a:hover { color: #EDA02C; }
 
 h2#comments {
 	background: url(../images/comments.jpg) no-repeat;

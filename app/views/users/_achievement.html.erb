@@ -1,4 +1,12 @@
+<ul id="badges">
 <% @user.achievements.each do |f| %>
   <% klass = Kernel.const_get f.kind %>
-  <%= link_to "#{image_tag klass.small_image}", :controller => "achievements", :action => "show", :id => f.id %>
+  <li>
+  	<%= link_to "#{image_tag klass.small_image}", :controller => "achievements", :action => "show", :id => f.id %>
+  	<p><%= link_to "#{f.kind}", :controller => "achievements", :action => "show", :id => f.id %></p>
+  </li>
 <% end %>
+
+</ul>
+
+<div class="clear"></div>

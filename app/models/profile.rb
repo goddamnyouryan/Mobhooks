@@ -21,5 +21,7 @@ class Profile < ActiveRecord::Base
 												 :in => VALID_DATES,
 												 :allow_nil => true,
 												 :message => 'is invalid!'
+												 
+	validates_length_of :quote, :maximum => 60
 	
 end

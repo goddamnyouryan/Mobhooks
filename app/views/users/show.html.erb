@@ -60,15 +60,11 @@
   <td><%=h @commented.size %></td>
 </tr>
 
-<tr>
-  <td><strong>Badges:</strong></td>
-</tr>
-<tr>
-  <td>
-  <%= render :partial => "achievement" %>
-  </td>
-</tr>
 </table>
+
+<h2 id="badges">Badges</h2>
+
+<%= render :partial => "achievement" %>
 
 <h2 id="comments">Comments</h2>
 

@@ -43,6 +43,10 @@ module ApplicationHelper
   		"this campaign has expired."
   	end
   end
+  
+  def reviewed?(campaign)
+    campaign.reviews.find_by_reviewer_id(current_user.id)
+  end
   	
   		
   

@@ -15,7 +15,7 @@
 <% end %>
 
 <% if current_user %>
-
+<% unless reviewed?(@campaign) %>
 <% form_for @review do |f| %>
   <%= f.error_messages %>
   <%= hidden_field_tag(:campaign_id, @campaign.id) %>
@@ -24,7 +24,7 @@
   </p>
   <p><%= f.submit "Submit Review", :class => "button" %></p>
 <% end %>
-
+<% end %>
 <% end %>
 
 </ul>

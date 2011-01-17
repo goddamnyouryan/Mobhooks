@@ -6,7 +6,7 @@
 <h3>Your search '<%= params[:search] %>' yielded <%= @campaigns.count %> results</h3>
 <% end %>
 
-<% unless @campaigns.count == 0 %>
+<% unless @campaigns.size == 0 %>
 
 <% unless @zip.nil? %>
 <% if params[:near] %>
