@@ -48,11 +48,10 @@ module ApplicationHelper
     campaign.reviews.find_by_reviewer_id(current_user.id)
   end
   
-  def location
-    return @location if defined?(@location)
-    @ip_addr = request.env['REMOTE_ADDR']
+  def location(ip_address)
+    @ip_addr = ip_address
     @location_geocode = Geokit::Geocoders::MultiGeocoder.geocode(@ip_addr)
-    @location = "#{@location_geocode.city}, #{@location_geocode.state}"
+    "#{@location_geocode.city}, #{@location_geocode.state}"
   end
   	
   		

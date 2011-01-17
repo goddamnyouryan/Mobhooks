@@ -2,11 +2,7 @@
 <div style="float:left;">
 
 <h2 id="featured">Featured Deals</h2>
-<p>IPs:<br />
-request.env['REMOTE_ADDR']: <%= request.env['REMOTE_ADDR'] %><br />
-request.remote_addr: <%= request.remote_addr %><br />
-request.remote_ip: <%= request.remote_ip %><br />
-request.env["HTTP_X_FORWARDED_FOR"]: <%= request.env["HTTP_X_FORWARDED_FOR"] %></p>
+<p><%= location(request.remote_ip) %>
 <ul id="sponsored">
 	<% @sponsored.each do |s| %>
 	<li>
