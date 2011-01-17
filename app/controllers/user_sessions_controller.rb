@@ -6,8 +6,14 @@ class UserSessionsController < ApplicationController
   def create
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
-      flash[:notice] = "Successfully logged in. Welcome #{current_user.login}!"
-      redirect_to root_url
+      @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
+      if @achievements.empty?
+        flash[:notice] = "Successfully logged in. Welcome #{current_user.login}!"
+        redirect_to root_url
+      else
+        flash[:notice] = "Successfully logged in. Welcome #{current_user.login}! You've been awarded a new badge!"
+        redirect_to @achievements[0]
+      end
     else
       render :action => 'new'
     end

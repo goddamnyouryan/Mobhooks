@@ -72,6 +72,8 @@
 
 <h2 id="comments">Comments</h2>
 
+<% unless @user.comments.size == 0 %>
+
 <ul id="comments">
 
 <% @user.comments.each do |c| %>
@@ -84,6 +86,11 @@
 <% end %>
 
 </ul>
+
+<% else %>
+<p>No Comments yet.  Leave one for <%= @user.login %> below!</p>
+
+<% end %>
 
 <% if current_user %>
 

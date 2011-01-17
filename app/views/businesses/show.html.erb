@@ -6,18 +6,11 @@
 
 <p><%= image_tag @business.photo.url(:medium)%>
 
-
+<% if @business.address? %>
 <h3><%=h @business.address %> <%=h @business.city %> <%=h @business.state %> <%=h @business.zip %></h3>
-
-<% unless @business.tag_list.empty? %>
-	<h3>Tags:
-			<% @business.tag_counts.each do |tag| %>
-				<%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => "link", :style => "font-size:18px;" %>
-			<% end %>
-	</h3>
+<% else %>
+<h3><%= link_to "Click to enter this businesses address!", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
 <% end %>
-
-<h3><%=h @business.description %></h3>
 
 <p>
   <%= link_to "Edit", edit_business_path(@business) %> |

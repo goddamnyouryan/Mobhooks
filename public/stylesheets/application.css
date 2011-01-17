@@ -501,6 +501,7 @@ background: url(../images/levels/stats_soldier.png) no-repeat;
 text-indent: -9999px;
 width:300px;
 height:105px;
+margin:0;
 }
 
 h2#Associate {
@@ -508,30 +509,35 @@ background: url(../images/levels/stats_associate.png) no-repeat;
 text-indent: -9999px;
 width:300px;
 height:105px;
+margin:0;
 }
 h2#Capo {
 background: url(../images/levels/stats_capo.png) no-repeat;
 text-indent: -9999px;
 width:300px;
 height:105px;
+margin:0;
 }
 h2#Consigliere {
 background: url(../images/levels/stats_consigliere.png) no-repeat;
 text-indent: -9999px;
 width:300px;
 height:105px;
+margin:0;
 }
 h2#Don {
 background: url(../images/levels/stats_don.png) no-repeat;
 text-indent: -9999px;
 width:300px;
 height:105px;
+margin:0;
 }
 h2#Underboss {
 background: url(../images/levels/stats_underboss.png) no-repeat;
 text-indent: -9999px;
 width:300px;
 height:105px;
+margin:0;
 }
 
 
@@ -552,6 +558,7 @@ h2#comments {
 	text-indent: -9999px;
 	width:252px;
 	height:40px;
+	margin: 0 0 10px;
 }
 
 h2#reviews {
@@ -559,6 +566,7 @@ h2#reviews {
 	text-indent: -9999px;
 	width:193px;
 	height:40px;
+	margin: 0 0 10px;
 }
 
 ul#comments {

@@ -11,6 +11,8 @@ GEM
     activeresource (2.3.8)
       activesupport (= 2.3.8)
     activesupport (2.3.8)
+    acts_as_state_machine (2.2.0)
+      activerecord (>= 2.1)
     authlogic (2.1.6)
       activesupport
     aws-s3 (0.6.2)
@@ -53,6 +55,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  acts_as_state_machine
   authlogic
   aws-s3
   geokit

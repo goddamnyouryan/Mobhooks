@@ -1,23 +1,19 @@
-<% form_for @business, :html => { :multipart => true } do |f| %>
+<% form_for @business do |f| %>
   <%= f.error_messages %>
   <p>
-    <h3 style="margin:0;">Name of Business:</h3>
-    <%= f.text_field :name, :value => "#{@business_name}", :class => "large_form" %>
-  </p>
-  <p>
-    <h3 style="margin:0;">Business Address:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Business Address:</h3>
     <%= f.text_field :address, :class => "large_form" %>
   </p>
   <p>
-    <h3 style="margin:0;">City:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>City:</h3>
     <%= f.text_field :city, :class => "large_form" %>
   </p>
   <p>
-    <h3 style="margin:0;">State:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>State:</h3>
     <%= f.text_field :state, :class => "large_form" %>
   </p>
   <p>
-    <h3 style="margin:0;">Zip Code:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Zip Code:</h3>
     <%= f.text_field :zip, :class => "large_form" %>
   </p>
 <!--  <p>

@@ -8,7 +8,7 @@
 	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag 'prototip' %>
     <%= yield(:head) %>
-	<% if params[:controller] == "campaigns" && params[:action] == "show" && @map.exists? %>
+	<% if params[:controller] == "campaigns" && params[:action] == "show" && !@map.nil? %>
 		<%= GMap.header %>
 		<%= @map.to_html %>
 	<% end %>

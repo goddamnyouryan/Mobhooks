@@ -1,4 +1,5 @@
 class BusinessesController < ApplicationController
+  after_filter :clear_campaign_session, :only => :create
 	
   def index
     @businesses = Business.all
@@ -19,9 +20,7 @@ class BusinessesController < ApplicationController
   end
   
   def create
-    @business = Business.new(params[:business])
-    @business.tag_list = params[:business][:tag_list]
-    @business.save!
+    @business = Business.find(params[:business])
     if @business.save
       if session[:created_campaign]
         @campaign = session[:created_campaign]
@@ -31,12 +30,9 @@ class BusinessesController < ApplicationController
         @campaign.lng = @geocode.lng
         current_user.points = current_user.points + 100
         current_user.save
-        @campaign.save!
-        session[:created_campaign] = nil
+        @campaign.save
         session[:business_name] = nil
       end
-      flash[:notice] = "Successfully created business."
-      redirect_to @business
     else
       render :action => 'new'
     end
@@ -57,8 +53,17 @@ class BusinessesController < ApplicationController
         campaign.lng = @geocode.lng
         campaign.save!
       end
-      flash[:notice] = "Successfully updated business."
-      redirect_to @business
+      current_user.points = current_user.points + 100
+      current_user.save
+      @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
+      if @achievements.empty?
+        flash[:notice] = "Successfully added business address."
+        redirect_to @business
+      else
+        flash[:notice] = "Successfully added business address. And you've been awarded a new badge!"
+        session[:campaign_continue] = @business.campaigns.last.id
+        redirect_to @achievements[0]
+      end
     else
       render :action => 'edit'
     end
@@ -70,5 +75,13 @@ class BusinessesController < ApplicationController
     flash[:notice] = "Successfully destroyed business."
     redirect_to businesses_url
   end
+  
+  private
+  
+   def clear_campaign_session
+     if session[:created_campaign]
+       session[:created_campaign] = nil
+      end
+   end
   
 end

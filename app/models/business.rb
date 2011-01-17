@@ -12,5 +12,8 @@ class Business < ActiveRecord::Base
                             :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
                             :path => ':id/:style'
   
+  validates_presence_of :address, :city, :state, :zip, :on => :update
+  validates_presence_of :name
+  
   
 end

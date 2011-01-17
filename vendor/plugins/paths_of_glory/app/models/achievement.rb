@@ -1,9 +1,14 @@
 class Achievement < ActiveRecord::Base
+  unloadable
 	
-	has_attached_file :photo, :styles => { :small => "20x20#" }, 
-                            :storage => :s3, 
-                            :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
-                            :path => ':id/:style'
+  acts_as_state_machine :initial => :unread, :column => :state
+
+    state :unread
+    state :read
+
+    event :view do
+     transitions :to => :read, :from => :unread
+    end
 
   belongs_to :user
   

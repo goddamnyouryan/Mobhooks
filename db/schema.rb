@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110114072736) do
+ActiveRecord::Schema.define(:version => 20110116232456) do
 
   create_table "achievements", :force => true do |t|
     t.string   "kind"
@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(:version => 20110114072736) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state",      :default => "unread"
   end
 
   create_table "affiliates", :force => true do |t|

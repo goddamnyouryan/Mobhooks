@@ -15,6 +15,9 @@ class Campaign < ActiveRecord::Base
                             :storage => :s3, 
                             :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
                             :path => ':id/:style'
+                            
+  validates_presence_of :offer, :shortcode, :keyword, :type, :tag_list, :business_id
+  validates_numericality_of :shortcode
 
                                      
                             

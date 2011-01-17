@@ -19,19 +19,34 @@ class CampaignsController < ApplicationController
     @business_name = params[:campaign][:business_name]
     unless @business.nil?
       @campaign.business_id = @business.id
-      @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
-      @campaign.lat = @geocode.lat
-      @campaign.lng = @geocode.lng
-      @campaign.save!
-      current_user.points = current_user.points + 100
-      current_user.save
-      flash[:notice] = "Successfully posted campaign."
-      redirect_to @campaign
+      if @campaign.save
+        @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
+        @campaign.lat = @geocode.lat
+        @campaign.lng = @geocode.lng
+        @campaign.save!
+        current_user.points = current_user.points + 100
+        current_user.save
+        @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", @campaign.user.id, "unread"])
+        if @achievements.empty?
+          flash[:notice] = "Successfully posted campaign."
+          redirect_to @campaign
+        else
+          flash[:notice] = "Successfully posted campaign. And you've been awarded a new badge!"
+          session[:campaign_continue] = @campaign.id
+          redirect_to @achievements[0]
+        end
+      else
+        render :action => 'new'
+      end
     else
-      flash[:notice] = "Successfully posted campaign. Now please fill out the business info for this campaign."
-      session[:business_name] = @business_name
-      session[:created_campaign] = @campaign
-      redirect_to new_business_path
+      @new_business = Business.create(:name => @business_name)
+      @campaign.business_id = @new_business.id
+      if @campaign.save
+        flash[:notice] = "Successfully posted campaign. Now please fill out the address for this campaigns business."
+        redirect_to edit_business_path(@new_business)
+      else
+        render :action => 'new'
+      end
     end
   end
   
@@ -54,14 +69,16 @@ class CampaignsController < ApplicationController
   def show
     @campaign = Campaign.find(params[:id])
     @business = @campaign.business
-    if current_user
+    if current_user && @business.address?
       @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
       @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
     end
-    @map = GMap.new("map_div")
-    @map.control_init(:large_map => true,:map_type => true)
-    @map.center_zoom_init([@campaign.lat, @campaign.lng],15)
-    @map.overlay_init(GMarker.new([@campaign.lat, @campaign.lng], :title => "#{@campaign.business.name}", :info_window => "#{@campaign.business.name}"))
+    if @business.address?
+      @map = GMap.new("map_div")
+      @map.control_init(:large_map => true,:map_type => true)
+      @map.center_zoom_init([@campaign.lat, @campaign.lng],15)
+      @map.overlay_init(GMarker.new([@campaign.lat, @campaign.lng], :title => "#{@campaign.business.name}", :info_window => "#{@campaign.business.name}"))
+    end
     @related = Campaign.find_tagged_with(@campaign.tag_list, :limit => 3)
   end
   

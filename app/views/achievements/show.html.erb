@@ -1,7 +1,14 @@
 <% title "#{@achievement.kind} Badge" %>
 
 <h2><%= @achievement.kind %> Badge</h2>
-<%= link_to "View all Badges", about_path, :class => "link" %>
+<% if session[:campaign_continue] %>
+<%= link_to "Continue on to the Campaign you just posted", campaign_path(session[:campaign_continue]), :class => "button", :style => "float:right;" %>
+<% end %>
+
+<% if @achievements.size > 1 %>
+	<%= link_to "You have #{@achievements.size - 1} more new badges. Click Here to view the next one.", achievement_path(@next), :class => 'link' %>
+<% end %>
+
 <h3><%= @klass.description %></h3>
 
 <div style="float: right;">
