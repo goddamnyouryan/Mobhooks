@@ -6,6 +6,7 @@ ActionController::Routing::Routes.draw do |map|
   map.thefamily 'thefamily', :controller => 'users', :action => 'index'
   map.about 'about', :controller => "achievements", :action => 'index'
   map.faq 'faq', :controller => "home", :action => 'show'
+  map.business_owners 'business_owners', :controller => 'affiliates', :action => 'new'
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'

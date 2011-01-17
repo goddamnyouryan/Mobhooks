@@ -154,8 +154,8 @@ h1#title a {display: block; width:186px; height: 62px; }
 ul#nav {
 	float: right;
 	background: #808080;
-	font-size: 18px;
-	padding: 7px 10px 3px;
+	font-size: 14px;
+	padding: 13px 10px 3px;
 	margin: 0;
 	height:25px;
 }
@@ -434,6 +434,22 @@ ul#campaign_list li p.view_deal a {
 }
 
 /****************THE FAMILY ***************************/
+
+h2#leaderboard{
+	background: url(../images/leaderboard.jpg) no-repeat;
+	text-indent: -9999px;
+	width:292px;
+	height:40px;
+}
+
+h2#the_family {
+	background: url(../images/thefamily.jpg) no-repeat;
+	text-indent: -9999px;
+	width:256px;
+	height:47px;
+}
+
+
 ul#leaderboard { padding:0; }
 
 ul#leaderboard li {
@@ -501,7 +517,7 @@ h2#Soldier {
 background: url(../images/levels/stats_soldier.png) no-repeat;
 text-indent: -9999px;
 width:300px;
-height:105px;
+height:130px;
 margin:0;
 }
 
@@ -509,35 +525,35 @@ h2#Associate {
 background: url(../images/levels/stats_associate.png) no-repeat;
 text-indent: -9999px;
 width:300px;
-height:105px;
+height:130px;
 margin:0;
 }
 h2#Capo {
 background: url(../images/levels/stats_capo.png) no-repeat;
 text-indent: -9999px;
 width:300px;
-height:105px;
+height:130px;
 margin:0;
 }
 h2#Consigliere {
 background: url(../images/levels/stats_consigliere.png) no-repeat;
 text-indent: -9999px;
 width:300px;
-height:105px;
+height:130px;
 margin:0;
 }
 h2#Don {
 background: url(../images/levels/stats_don.png) no-repeat;
 text-indent: -9999px;
 width:300px;
-height:105px;
+height:130px;
 margin:0;
 }
 h2#Underboss {
 background: url(../images/levels/stats_underboss.png) no-repeat;
 text-indent: -9999px;
 width:300px;
-height:105px;
+height:130px;
 margin:0;
 }
 
@@ -551,9 +567,9 @@ table#stats {
 h2#badges {
 	background: url(../images/badges.jpg) no-repeat;
 	text-indent: -9999px;
-	width:252px;
-	height:40px;
-	margin: 0 0 10px;
+	width:172px;
+	height:49px;
+	margin: 30px 0 0;
 }
 
 ul#badges { 
@@ -567,11 +583,13 @@ ul#badges li {
     list-style-type: none;
     margin: 0 0 10px 25px;
     text-align: center;
+	width: 75px;
 }
 
 ul#badges li p {
 	font-size: 10px;
 	font-weight: bold;
+	margin: 0;
 }
 
 ul#badges li p a { color: #000; }
@@ -590,7 +608,7 @@ h2#reviews {
 	text-indent: -9999px;
 	width:193px;
 	height:40px;
-	margin: 0 0 10px;
+	margin: 25px 0 0;
 }
 
 ul#comments {
@@ -656,7 +674,7 @@ div#voting a#vote_up {
 	height:36px;
 	display:block;
 	color: #fff;
-	text-indent:45px;
+	text-indent:-9999px;
 	padding: 12px 0 0 0;
 }
 
@@ -666,12 +684,12 @@ div#voting a#vote_down {
 	height:36px;
 	display:block;
 	color: #fff;
-	text-indent:45px;
+	text-indent:-9999px;
 	padding: 12px 0 0 0;
 	margin:-20px 0 0;
 }
 
-h2#business_name { margin: 25px 0 -10px; }
+h2#business_name { margin: 0; }
 
 h2#business_name a { color: #000; }
 h2#business_name a:hover { color: #EDA02C; }

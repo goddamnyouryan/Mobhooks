@@ -12,11 +12,11 @@ with more info about your interest in becoming an affiliate.</h3>
   </p>
   <p>
     <h3 style="margin:0;">Business Name:</h3>
-    <%= f.text_field :business_name, :class => "large_form" %>
+    <%= f.text_field :business_name, :value => params[:business_name], :class => "large_form" %>
   </p>
   <p>
     <h3 style="margin:0;">Full Business Address:</h3>
-    <%= f.text_field :address, :class => "large_form" %>
+    <%= f.text_field :address, :value => params[:business_address], :class => "large_form" %>
   </p>
   <p>
     <h3 style="margin:0;">Phone Number:</h3>

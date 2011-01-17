@@ -11,7 +11,7 @@
 <% else %>
 <h3><%= link_to "Click to enter this businesses address!", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
 <% end %>
-
+<h3 class="button" style="text-align:center;"><%= link_to "Own this business? Click here!", :controller => "affiliates", :action => "new", :business_name => @business.name, :business_address => "#{@business.address} #{@business.city} #{@business.state} #{@business.zip}" %></h3>
 <p>
   <%= link_to "Edit", edit_business_path(@business) %> |
   <%= link_to "Destroy", @business, :confirm => 'Are you sure?', :method => :delete %> |

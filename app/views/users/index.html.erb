@@ -1,7 +1,7 @@
 <% title "The Family" %>
 
 <div style="float:left;">
-<h2>Leaderboard</h2>
+<h2 id="leaderboard">Leaderboard</h2>
 <ul id="leaderboard">
 <% @leaderboard.each do |l| %>
 	<li>
@@ -16,10 +16,39 @@
 <% end %>
 </div>
 
-<div style="float:right;">
-<h2>Recent Campaign Submissions</h2>
+<div style="float:right;width: 600px;">
+<h2 id="the_family">The Family</h2>
 <p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
-<%= render :partial=>'campaigns/list', :locals => { :campaign => @recent } %> 
+<p>You don’t have to whack anyone to be a part of dis family. All you needs to do is sign up and start submitting and sharing text (SMS/MMS) offers, clubs and contests that you sees or hears on the tv, radio, newspaper, magazines, Internet, restaurant & bar menus, etc. The little rat suckers are everywhere dese days and they can save you money and keep you in the know about announcements from your favorite brands and local businesses. They’re like your own personal informants…</p>
+	
+<p>As a member of THE FAMILY, you will earn points, badges and free stuff for submitting campaigns to the site, sharing campaigns you find on the site with friends, and other tasks. Earning points will allow you to climb the ladder in hierarchy of THE FAMILY. The member with the most points will be the Boss or Don of MobHooks. There will also be other levels that can be achieved as outlined below. All visitors will be able to view the leaderboard to see where members rank and what tasks they have accomplished. Each registered member will have their own profile page to show off their points, badges, awards, and rank.</p>
+
+<h2>Ranks</h2>
+<ol>
+<li>Boss or Don – most points overall (only one at this level)</li>
+<li>Underboss – second most points overall (only one at this level)</li>
+<li>Consigliere – person that refers the most businesses to MobHooks that close (only one)</li>
+<li>Capo – 5000 points (unlimited number at this level)</li>
+<li>Soldier – 1000 points (unlimited number at this level)</li>
+<li>Associate – every registered member is automatically an Associate</li>
+</ol>
+ 
+<h2>How to Earn Points</h2>
+
+<ul>
+  <li>Sign up to become a family member = <strong>100 pts</strong></li>
+  <li>Optin to receive our newsletter = <strong>100 pts</strong></li>
+  <li>Connect your account via Facebook connect = <strong>100 pts</strong></li>
+  <li>Share campaigns on Mobhooks with Facebook or Twitter = <strong>10 pts per share</strong></li>
+  <li>Leave a review for a campaign = <strong>5 pts</strong> (max one review per campaign)</li>
+  <li>Thumbs UP/DOWN feedback = <strong>1 pt</strong> (max one vote per campaign)</li>
+  <li>When someone thumb UP a campaign you submitted = <strong>1 pt</strong></li>
+  <li>*Submit a campaign to Mobhooks site = 100 pts**
+		<p>*all campaigns submitted will be verified by a live person within 24 hours of submission. Submitting a false campaign will result in double points deduction from your account on the first offense. Second offense will result in triple points deduction. Third offense will get you whacked, meaning you will be banned for life from MobHooks.</p></li>
+		<p>**Receive double points for submitting correct business address = 100 pts</p>
+   <li>Refer a local merchant that signs up to MobHooks’ SMS service = <strong>1000 points</strong></li>
+
+</ul>
 </div>
 
 <div class="clear"></div>

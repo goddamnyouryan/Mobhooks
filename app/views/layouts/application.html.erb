@@ -20,15 +20,19 @@
 	<% end %>
 	 <div id="container">
 	 <h1 id="title"><%= link_to "Mobhooks", root_path %></h1>
+	<% unless params[:controller] == "home" %>
+		<a href="mailto:brady@mobhooks.com"><%= image_tag "suggestions.png", :style => "float:left;margin: 35px 0 0 105px;" %></a>
+	<% end %>
 		<ul id="nav">
 		  <% if current_user %>
-		  <li><%= link_to "Submit a Campaign", new_campaign_path %></li>
+		  	<li><%= link_to "Submit Offer", new_campaign_path %></li>
 			<li><%= link_to "Offers", campaigns_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Profile", user_path(current_user) %></li>
 			<li><%= link_to "Logout", logout_path %></li>
 		  <% else %>
-		  <li><%= link_to "Submit a Campaign", new_campaign_path %></li>
+		  	<li><%= link_to "Submit Offer", new_campaign_path %></li>
+			<li><%= link_to "What is Mobhooks?", about_path %></li>
 			<li><%= link_to "Offers", campaigns_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Register", new_user_path %></li>
@@ -86,8 +90,8 @@
 	    <li><%= link_to "Privacy Policy", terms_path %></li>
 	    <li><%= link_to "About Mobhooks", about_path %></li>
 	    <li><%= link_to "FAQ", faq_path %></li>
-	    <li><%= link_to "Submit a New Campaign", new_campaign_path %></li>
-	    <li><%= link_to "Get Your Own Shortcode", new_affiliate_path %></li>
+	    <li><%= link_to "Submit Offer", new_campaign_path %></li>
+	    <li><%= link_to "Business Owners", business_owners_path %></li>
 	    <li><a href="mailto:ryan.macinnes@gmail.com">Contact</a></li>
 		</ul>
 		</div>
