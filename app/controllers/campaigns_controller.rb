@@ -88,7 +88,7 @@ class CampaignsController < ApplicationController
       @campaigns = Campaign.location_search(params[:search], params[:near], params[:distance]) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => params[:distance])
     elsif params[:search] && params[:near]
       @campaigns = Campaign.location_search(params[:search], params[:near], 25) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => 25)
-    elsif params[:search]
+    elsif params[:search] || params[:near] == ""
       @campaigns = Campaign.search(params[:search]) | Campaign.find_tagged_with(params[:search])
     else
       @campaigns = Campaign.find(:all, :limit => 25)
