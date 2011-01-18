@@ -689,7 +689,7 @@ div#voting a#vote_down {
 	margin:-20px 0 0;
 }
 
-h2#business_name { margin: 0; }
+h2#business_name {  }
 
 h2#business_name a { color: #000; }
 h2#business_name a:hover { color: #EDA02C; }
@@ -727,7 +727,6 @@ ul#similar li h5 {
 }
 
 h2#offer {
-	margin:0 0 -10px;
 	width:520px;
 }
 

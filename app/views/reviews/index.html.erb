@@ -24,7 +24,11 @@
   </p>
   <p><%= f.submit "Submit Review", :class => "button" %></p>
 <% end %>
+<% else %>
+<h3>You've already reviewed this campaign.</h3>
 <% end %>
+<% else %>
+<h3>You must be <%= link_to "logged in", login_path, :class => 'link' %> to review this campaign.</h3>
 <% end %>
 
 </ul>

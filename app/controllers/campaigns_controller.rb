@@ -42,6 +42,8 @@ class CampaignsController < ApplicationController
       @new_business = Business.create(:name => @business_name)
       @campaign.business_id = @new_business.id
       if @campaign.save
+        current_user.points = current_user.points + 100
+        current_user.save
         flash[:notice] = "Successfully posted campaign. Now please fill out the address for this campaigns business."
         redirect_to edit_business_path(@new_business)
       else
