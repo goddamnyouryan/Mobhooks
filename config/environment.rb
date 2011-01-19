@@ -37,6 +37,8 @@ Rails::Initializer.run do |config|
   config.load_paths += %W( #{RAILS_ROOT}/app/models/achievements )
   config.active_record.observers = :shakedown_observer, :firstscore_observer, :heist_observer,:bookie_observer, :bribe_observer, :medico_observer, :muscle_observer, :chop_shop_observer, :boot_leg_observer, :bellezza_observer, :charity_observer, :wise_guy_observer, :giardino_observer, :witness_protection_observer, :street_observer, :canary_observer, :show_biz_observer, :animali_observer, :rat_observer, :teamster_observer, :casa_observer, :dapper_observer, :ballz_observer, :fatico_observer
   
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
   # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
   # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
   # config.i18n.default_locale = :de

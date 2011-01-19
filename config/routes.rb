@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.about 'about', :controller => "achievements", :action => 'index'
   map.faq 'faq', :controller => "home", :action => 'show'
   map.business_owners 'business_owners', :controller => 'affiliates', :action => 'new'
+  map.reset_password 'reset_password', :controller => 'password_resets', :action => 'new'
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'
@@ -22,6 +23,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :reviews
   map.resources :achievements
   map.resources :affiliates
+  map.resources :password_resets
   
   map.root :controller => 'home', :action => 'index'
 

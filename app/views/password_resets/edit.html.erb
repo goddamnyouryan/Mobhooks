@@ -1,0 +1,16 @@
+<% title "Change my Password" %>
+
+<h2>Change My Password</h2>
+
+<% form_for @user, :url => password_reset_path, :method => :put do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Password:</h3>
+	<%= f.password_field :password, :class => "large_form" %>
+  </p>
+  <p>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Confirm Password:</h3>
+	<%= f.password_field :password_confirmation, :class => "large_form"  %>
+  </p>
+  <p><%= f.submit "Update my password and log me in", :class => 'button', :style => "font-size:24px;" %></p>
+<% end %>
