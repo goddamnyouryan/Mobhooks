@@ -1,5 +1,5 @@
 class Notifier < ActionMailer::Base
-  default_url_options[:host] = "http://warm-waterfall-261.heroku.com"
+  default_url_options[:host] = "warm-waterfall-261.heroku.com"
 
   def password_reset_instructions(user)
     subject       "Password Reset Instructions"
