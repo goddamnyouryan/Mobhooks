@@ -86,7 +86,7 @@ class BusinessesController < ApplicationController
       flash[:notice] = "Skipped business address Entry."
       redirect_to @campaign
     else
-      flash[:notice] = "Successfully added business address. And you've been awarded a new badge!"
+      flash[:notice] = "You've been awarded a new badge!"
       redirect_to @achievements[0]
     end
   end
