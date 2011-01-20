@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110119053530) do
+ActiveRecord::Schema.define(:version => 20110120052801) do
 
   create_table "achievements", :force => true do |t|
     t.string   "kind"
@@ -93,6 +93,13 @@ ActiveRecord::Schema.define(:version => 20110119053530) do
   create_table "reviews", :force => true do |t|
     t.integer  "campaign_id"
     t.integer  "reviewer_id"
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "suggestions", :force => true do |t|
+    t.integer  "user_id"
     t.text     "message"
     t.datetime "created_at"
     t.datetime "updated_at"

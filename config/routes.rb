@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :suggestions
+
 
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
@@ -8,6 +10,8 @@ ActionController::Routing::Routes.draw do |map|
   map.faq 'faq', :controller => "home", :action => 'show'
   map.business_owners 'business_owners', :controller => 'affiliates', :action => 'new'
   map.reset_password 'reset_password', :controller => 'password_resets', :action => 'new'
+  map.leave_suggestions 'leave_suggestions', :controller => 'suggestions', :action => 'new'
+  map.skip_business 'skip_business', :controller => 'businesses', :action => 'skip_business'
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'

@@ -1,0 +1,14 @@
+<% title "New Suggestions" %>
+
+<h2>Suggestions for how we can make Mobhooks better? Submit them below!</h2>
+
+<% form_for @suggestions do |f| %>
+  <%= f.error_messages %>
+  <p>
+	<h3 style="margin:0;">Suggestions:</h3>
+    <%= f.text_field :message, :class => "large_form", :style => 'height: 200px;' %>
+  </p>
+  <p><%= f.submit %></p>
+<% end %>
+
+

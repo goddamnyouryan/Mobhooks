@@ -45,6 +45,7 @@ class CampaignsController < ApplicationController
         current_user.points = current_user.points + 100
         current_user.save
         flash[:notice] = "Successfully posted campaign. Now please fill out the address for this campaigns business."
+        session[:campaign_continue] = @campaign.id
         redirect_to edit_business_path(@new_business)
       else
         render :action => 'new'

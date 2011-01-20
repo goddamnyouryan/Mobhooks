@@ -13,7 +13,7 @@ class AffiliatesController < ApplicationController
     	@affiliate.user_id = current_user.id
     end
     if @affiliate.save
-      flash[:notice] = "Successfully submitted affiliate info. A Mobhooks Rep will contact you shortly."
+      flash[:notice] = "Successfully submitted business info. A Mobhooks Rep will contact you shortly."
       redirect_to root_path
     else
       render :action => 'new'

@@ -691,6 +691,8 @@ div#voting a#vote_down {
 
 h2#business_name {  }
 
+.edit_business { float: left;}
+
 h2#business_name a { color: #000; }
 h2#business_name a:hover { color: #EDA02C; }
 

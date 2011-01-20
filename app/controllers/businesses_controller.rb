@@ -1,5 +1,5 @@
 class BusinessesController < ApplicationController
-  after_filter :clear_campaign_session, :only => :create
+  after_filter :clear_campaign_session, :only => :update
 	
   def index
     @businesses = Business.all
@@ -41,6 +41,9 @@ class BusinessesController < ApplicationController
   def edit
     @business = Business.find(params[:id])
     @business_name = @business.name
+    if session[:campaign_continue]
+      @campaign = Campaign.find(session[:campaign_continue])
+    end
   end
   
   def update
@@ -76,12 +79,24 @@ class BusinessesController < ApplicationController
     redirect_to businesses_url
   end
   
+  def skip_business
+    @campaign = current_user.campaigns.last
+    @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
+    if @achievements.empty?
+      flash[:notice] = "Skipped business address Entry."
+      redirect_to @campaign
+    else
+      flash[:notice] = "Successfully added business address. And you've been awarded a new badge!"
+      redirect_to @achievements[0]
+    end
+  end
+  
   private
   
    def clear_campaign_session
      if session[:created_campaign]
        session[:created_campaign] = nil
-      end
+     end
    end
   
 end
