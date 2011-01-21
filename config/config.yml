@@ -1,0 +1,17 @@
+development: &non_production_settings
+  site_url: http://localhost:3000/
+  site_name: Mobhooks
+  admin_email: ryan.macinnes@gmail.com
+  
+test:
+  <<: *non_production_settings
+
+staging:
+  site_url: http://staging.mobhooks.com
+  site_name: Mobhooks
+  admin_email: ryan.macinnes@gmail.com  
+  
+production:
+  site_url: http://www.mobhooks.com
+  site_name: Mobhooks
+  admin_email: ryan.macinnes@gmail.com
