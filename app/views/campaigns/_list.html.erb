@@ -2,7 +2,7 @@
 <ul id="campaign_list">
 <% campaign.each do |c| %>
 <li>
-	<%= link_to "#{image_tag c.business.photo.url(:main)}", campaign_path(c) %>
+	<%= link_to "#{thumbnail(c)}", campaign_path(c) %>
 	<div class="campaign_titles">
 		<h3><%= link_to "#{c.business.name}", campaign_path(c) %></h3>
 		<h4><%= link_to "#{c.offer}", campaign_path(c) %></h4>

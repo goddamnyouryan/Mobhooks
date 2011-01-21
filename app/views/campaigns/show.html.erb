@@ -151,11 +151,13 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
   <%= link_to @campaign.user.login, user_path(@campaign.user) %>
 </p>
 
+<% if current_user == @campaign.user %>
 <p>
   <%= link_to "Edit", edit_campaign_path(@campaign) %> |
-  <%= link_to "Destroy", @campaign, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", campaigns_path %>
+  <%= link_to "Delete", @campaign, :confirm => 'Are you sure?', :method => :delete %> |
 </p>
+
+<% end %>
 	
 </div>
 

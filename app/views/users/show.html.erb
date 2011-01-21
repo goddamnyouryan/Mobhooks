@@ -109,10 +109,12 @@
 
 <div class="clear"></div>
 
+<% if current_user == @user %>
 <p>
-  <%= link_to "Edit", edit_user_path(@user) %> |
-  <%= link_to "Destroy", @user, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", users_path %>
+  <%= link_to "Edit Account", edit_user_path(@user) %> |
+  <%= link_to "Delete Account", @user, :confirm => 'Are you sure?', :method => :delete %> |
 </p> 
+
+<% end %>
 
 
