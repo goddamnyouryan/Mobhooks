@@ -48,7 +48,7 @@ module CampaignsHelper
     elsif campaign.tag_list.include?("food") || campaign.tag_list.include?("restaurant") || campaign.tag_list.include?("diner") || campaign.tag_list.include?("dinner") || campaign.tag_list.include?("supper") || campaign.tag_list.include?("lunch") || campaign.tag_list.include?("brunch") || campaign.tag_list.include?("breakfast") || campaign.tag_list.include?("deli")
       image_tag "campaigns/shakedown.png"
     else
-      image_tag "campaigns/thumb_missing.png"
+      image_tag "campaigns/firstscore.png"
     end
   end
     
