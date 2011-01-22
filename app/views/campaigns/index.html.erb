@@ -16,7 +16,7 @@
 <%= link_to "5 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5 %> | 
 <%= link_to "25 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 25 %> | 
 <%= link_to "100 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 100 %> | 
-<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => nil %>
+<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => nil %>
 </p>
 <% end %>
 <% end %>
@@ -29,14 +29,6 @@
 <%= render :partial => "campaigns/tag_cloud" %>
 
 <% else %>
-
-<p>Within: 
-<%= link_to "1 mile", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 1 %> | 
-<%= link_to "5 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5 %> | 
-<%= link_to "25 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 25 %> | 
-<%= link_to "100 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 100 %> | 
-<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => nil %>
-</p>
 
 <p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
 
