@@ -5,7 +5,11 @@
 <ul id="leaderboard">
 <% @leaderboard.each do |l| %>
 	<li>
-	<%= link_to "#{image_tag l.profile.photo.url(:thumb)}", user_path(l) %>
+	<% unless l.profile.nil?%>
+		<%= link_to "#{image_tag l.profile.photo.url(:thumb)}", user_path(l) %>
+	<% else %>
+		<%= image_tag "profile_missing.png" %>
+	<% end %>
 	<div class="info">
 	<h3><%= link_to "#{l.login}", user_path(l) %></h3>
 	<%= level(l) %><br />
