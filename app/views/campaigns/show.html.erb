@@ -116,7 +116,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 	Where:
 	<% if @campaign.business.address? %>
 	<span class="campaign_description"><%= @campaign.business.address %> <%= @campaign.business.city %> <%= @campaign.business.state %>, <%= @campaign.business.zip %>
-		<% if current_user && current_user.profile.zip? %>
+		<% if current_user && current_user.profile? && current_user.profile.zip? %>
 			<em>(<%= pluralize(@distance, "mile") %>)</em>
 		<% end %>
 	</span>

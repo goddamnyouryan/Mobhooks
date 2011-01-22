@@ -73,8 +73,10 @@ class CampaignsController < ApplicationController
     @campaign = Campaign.find(params[:id])
     @business = @campaign.business
     if current_user && @business.address?
-      @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
-      @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
+      unless current_user.profile.nil?
+        @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
+        @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
+      end
     end
     if @business.address?
       @map = GMap.new("map_div")
@@ -102,7 +104,9 @@ class CampaignsController < ApplicationController
     if params[:near]
     	@zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:near]}"
     elsif current_user
-    	@zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
+      unless current_user.profile.nil?
+    	  @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
+    	end
     else
       @zip = nil
     end
