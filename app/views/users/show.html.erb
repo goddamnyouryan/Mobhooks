@@ -5,9 +5,14 @@
 <div style="float:left;width:400px;">
 
 <div id="profile">
-
+	
+<% unless @user.profile.nil? %>
 <%= render :partial=>'users/image', :locals => { :user => @user } %>
+<% else %>
+<%= image_tag "missing_profile.png" %>
+<% end %>
 
+<% unless @user.profile.nil? %>
 <p><% if @user.profile.website %>
 		<%= link_to @user.profile.name, @user.profile.website %><br />
 	<% else %>
@@ -21,6 +26,7 @@
 	<%=h @user.profile.quote %>
 	<br />
 	<br /> 
+	<% end %>
 	<% if current_user == @user %>
 		<%= link_to "edit info", edit_profile_path, :class => "link" %>
 	<% end %>
