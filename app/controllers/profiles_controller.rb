@@ -1,13 +1,15 @@
 class ProfilesController < ApplicationController
   def new
-    @profile = current_user.profile.new
+    @profile = Profile.new
   end
   
   def create
     @profile = Profile.new(params[:profile])
     if @profile.save
+      @profile.user_id = current_user.id
+      @profile.save
       flash[:notice] = "Successfully created profile."
-      redirect_to root_url
+      redirect_to user_url(current_user)
     else
       render :action => 'new'
     end
