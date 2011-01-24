@@ -97,7 +97,14 @@ class CampaignsController < ApplicationController
       unless @business.locations.nil?
         @map = GMap.new("map_div")
         @map.control_init(:large_map => true,:map_type => true)
-        @location = Location.find_closest(:origin => @location, :conditions => ["business_id =?", @business.id])
+        if current_user
+          unless current_user.profile.zip.nil?
+            @zip = current_user.profile.zip
+            @location = Location.find_closest(:origin => @zip, :conditions => ["business_id =?", @business.id])
+          end
+        else
+          @location = @business.locations.first
+        end
         @map.center_zoom_init([@location.lat, @location.lng],15)
         @map.overlay_init(GMarker.new([@location.lat, @location.lng], :title => "#{@location.business.name}", :info_window => "#{@location.business.name}"))
       end
