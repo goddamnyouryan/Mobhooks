@@ -101,6 +101,8 @@ class CampaignsController < ApplicationController
           unless current_user.profile.zip.nil?
             @zip = current_user.profile.zip
             @location = Location.find_closest(:origin => @zip, :conditions => ["business_id =?", @business.id])
+          else
+            @location = @business.locations.first
           end
         else
           @location = @business.locations.first
