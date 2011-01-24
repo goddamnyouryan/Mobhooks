@@ -12,7 +12,7 @@
 	<span class="campaign_description"><%= @location.address %> <%= @location.city %> <%= @location.state %>, <%= @location.zip %>
 		<% if current_user && ! current_user.profile.nil? && current_user.profile.zip? %>
 			<em>(<%= pluralize(@distance, "mile") %>)</em><br/>
-			<span style="font-size:12px;"This is the closest location of this business. <%= link_to "Click here to see all locations.", business_path(@business), :class => 'link' %>
+			<span style="font-size:14px;">This is the closest location of this business. <%= link_to "Click here to see all locations.", business_path(@business), :class => 'link' %></span>
 		<% end %>
 	</span>
 	<% else %>
