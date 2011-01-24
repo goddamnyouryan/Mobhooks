@@ -1,6 +1,8 @@
 <% title "Edit Business" %>
 
-<h2>Enter the address for <%= @business.name%> and get an extra 100 points!</h2>
+<% if @business.kind == "local" %>
+
+<h2>Enter the address for <%= @business.name%> and get an extra 10 points!</h2>
 <h3>Not to mention a feeling of satisfaction and completeness.</h3>
 
 <%= render :partial => 'form' %>
@@ -12,3 +14,24 @@
 <% end %>
 
 <div class="clear"></div>
+
+<% elsif @business.kind == "brand" || @business.kind == "chain" %>
+
+<h2>Enter the website and logo for <%= @business.name%> and get an extra 10 points!</h2>
+<h3>Not to mention a feeling of satisfaction and completeness.</h3>
+
+<%= render :partial => 'brand' %>
+
+<% if session[:campaign_continue] %>
+<p>
+  <%= link_to "Don't know the website? <br />Click here to skip to the campaign page.", skip_business_path, :business => session[:campaign_continue], :class => "button", :style => "float:right;text-align:center;" %>
+</p>
+<% end %>
+
+<div class="clear"></div>
+
+<% else %>
+
+Sorry you shouldn't be here!
+
+<% end %>

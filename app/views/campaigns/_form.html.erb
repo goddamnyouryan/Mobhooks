@@ -2,8 +2,13 @@
   <%= f.error_messages %>
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Name of Business:<%= image_tag "tooltip.png", :id => "business_name_tooltip" %></h3>
-    <%= text_field_with_auto_complete :campaign, :business_name, {}, { :url => formatted_businesses_path(:js), :method => :get, :with => "'search=' + element.value" } %>
+    <%= text_field_with_auto_complete :campaign, :business_name, {}, { :url => formatted_businesses_path(:js), :method => :get, :with => "'search=' + element.value", :after_update_element => "function(element){document.getElementById('business_type').style.display = 'none'; document.getElementById('campaign_business_kind').style.display = 'none';}" } %>
   </p>
+	<p>
+		<h3 style="margin:0;" id="business_type"><span style="color:#EDA02C;font-size: 24px;">*</span>Business Type:</h3>
+		<% @business_kind_options = [['Local', 'local'], ['National Brand/Non-Chain', 'brand'], ['Chain', 'chain']] %>
+	    <%= f.select :business_kind, options_for_select(@business_kind_options) %>
+	</p>
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Offer:<%= image_tag "tooltip.png", :id => "offer_tooltip" %></h3>
     <%= f.text_field :offer, :class => "large_form" %>

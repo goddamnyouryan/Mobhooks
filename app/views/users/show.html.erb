@@ -27,11 +27,13 @@
 	<br />
 	<br /> 
 	<% end %>
+	<% if current_user == @user %>
 	<% if current_user.profile.nil?%>
 		<%= link_to "create your profile", new_profile_path, :class => "link" %>
 	<% else %>
 	<% if current_user == @user %>
 		<%= link_to "edit info", edit_profile_path, :class => "link" %>
+	<% end %>
 	<% end %>
 	<% end %>
 </p>

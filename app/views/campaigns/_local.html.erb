@@ -1,0 +1,56 @@
+<p style="margin:0;">
+	<% if @campaign.business.address? %>	
+		<%= @map.div(:width => 540, :height => 200) %>
+	<% else %>
+		<%= image_tag @campaign.photo.url(:show) %>
+	<% end %>
+</p>
+
+<h2 class="campaign_details_header">
+	Where:
+	<% if @campaign.business.address? %>
+	<span class="campaign_description"><%= @campaign.business.address %> <%= @campaign.business.city %> <%= @campaign.business.state %>, <%= @campaign.business.zip %>
+		<% if current_user && ! current_user.profile.nil? && current_user.profile.zip? %>
+			<em>(<%= pluralize(@distance, "mile") %>)</em>
+		<% end %>
+	</span>
+	<% else %>
+	<span class="campaign_description">
+		<%= link_to "Enter the correct business address and get 100 points!", edit_business_path(@campaign.business), :class => "link", :style => "font-size:18px;" %>
+	<% end %>
+</h2>
+
+
+<h2 class="campaign_details_header">
+	Type:
+	<span class="campaign_description"><%=h @campaign.kind %></span>
+</h2>
+
+<h2 class="campaign_details_header">
+	Tags:
+	<span class="campaign_description">
+		<% unless @campaign.tag_list.empty? %>
+			<% @campaign.tag_counts.each do |tag| %>
+				<%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => "link", :style => "font-size:18px;" %>
+			<% end %>
+		<% end %>
+	</span>
+</h2>
+
+<h2 class="campaign_details_header">Details:</h2>
+	<span class="campaign_description"><%=h @campaign.details %></span>
+
+<p>
+  <strong>Submitted by:</strong>
+  <%= link_to @campaign.user.login, user_path(@campaign.user) %>
+</p>
+
+<% if current_user == @campaign.user %>
+<p>
+  <%= link_to "Edit", edit_campaign_path(@campaign) %> |
+  <%= link_to "Delete", @campaign, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+
+<% end %>
+	
+</div>

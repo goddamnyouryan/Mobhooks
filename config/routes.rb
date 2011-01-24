@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :suggestions
-
 
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
@@ -20,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   
   map.resources :user_sessions
   map.resources :campaigns, :has_many => :reviews
-  map.resources :businesses
+  map.resources :businesses, :has_many => :locations
   map.resources :users, :has_many => :comments
   map.resources :profiles
   map.resources :comments
@@ -28,6 +26,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :achievements
   map.resources :affiliates
   map.resources :password_resets
+  map.resources :locations
+  map.resources :suggestions
   
   map.root :controller => 'home', :action => 'index'
 

@@ -1,0 +1,14 @@
+<% form_for @business, :html => { :multipart => true } do |f| %>
+	
+	  <%= f.error_messages %>
+	  <p>
+	    <h3 style="margin:0;">Business website address:</h3>
+	    <%= f.text_field :url, :value => "http://", :class => "large_form" %>
+	  </p>
+	  <p>
+		<h3 style="margin:0;">Upload Business Logo:</h3>
+		<%= f.file_field :photo %>
+	  </p>
+
+	  <p><%= f.submit "Submit Business", :class => 'button' %></p>
+	<% end %>

@@ -56,7 +56,7 @@ class BusinessesController < ApplicationController
         campaign.lng = @geocode.lng
         campaign.save!
       end
-      current_user.points = current_user.points + 100
+      current_user.points = current_user.points + 10
       current_user.save
       @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
       if @achievements.empty?

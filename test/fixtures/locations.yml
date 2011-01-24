@@ -1,0 +1,13 @@
+one:
+  business_id: 1
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: 1
+
+two:
+  business_id: 1
+  address: MyString
+  city: MyString
+  state: MyString
+  zip: 1

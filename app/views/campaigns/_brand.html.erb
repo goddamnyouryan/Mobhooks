@@ -1,0 +1,39 @@
+<p style="margin:0;">
+
+<%= image_tag @campaign.photo.url(:show) %>
+
+</p>
+
+<h2 class="campaign_details_header">
+	Type:
+	<span class="campaign_description"><%=h @campaign.kind %></span>
+</h2>
+
+<h2 class="campaign_details_header">
+	Tags:
+	<span class="campaign_description">
+		<% unless @campaign.tag_list.empty? %>
+			<% @campaign.tag_counts.each do |tag| %>
+				<%= link_to tag.name, { :controller => 'campaigns', :action => 'index', :search => tag.name }, :class => "link", :style => "font-size:18px;" %>
+			<% end %>
+		<% end %>
+	</span>
+</h2>
+
+<h2 class="campaign_details_header">Details:</h2>
+	<span class="campaign_description"><%=h @campaign.details %></span>
+
+<p>
+  <strong>Submitted by:</strong>
+  <%= link_to @campaign.user.login, user_path(@campaign.user) %>
+</p>
+
+<% if current_user == @campaign.user %>
+<p>
+  <%= link_to "Edit", edit_campaign_path(@campaign) %> |
+  <%= link_to "Delete", @campaign, :confirm => 'Are you sure?', :method => :delete %>
+</p>
+
+<% end %>
+	
+</div>

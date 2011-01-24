@@ -18,11 +18,16 @@ class Campaign < ActiveRecord::Base
                             
   validates_presence_of :offer, :shortcode, :keyword, :type, :tag_list, :business_id
   validates_numericality_of :shortcode
+  validates_uniqueness_of :keyword, :scope => :shortcode, :case_sensitive => false, :message => "- This campaign has already been submitted."
 
                                      
                             
   def business_name
     business.name if business
+  end
+  
+  def business_kind
+    business.kind if business
   end
  
   def business_name=(name)

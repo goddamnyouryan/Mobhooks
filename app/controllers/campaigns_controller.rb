@@ -17,6 +17,7 @@ class CampaignsController < ApplicationController
     @campaign.tag_list = params[:campaign][:tag_list].downcase
     @campaign.kind = params[:campaign][:kind]
     @business_name = params[:campaign][:business_name]
+    @business_kind = params[:campaign][:business_kind]
     unless @business.nil?
       @campaign.business_id = @business.id
       if @campaign.save
@@ -39,14 +40,21 @@ class CampaignsController < ApplicationController
         render :action => 'new'
       end
     else
-      @new_business = Business.create(:name => @business_name)
+      @new_business = Business.create(:name => @business_name, :kind => @business_kind)
       @campaign.business_id = @new_business.id
       if @campaign.save
         current_user.points = current_user.points + 100
         current_user.save
-        flash[:notice] = "Successfully posted campaign. Now please fill out the address for this campaigns business."
         session[:campaign_continue] = @campaign.id
-        redirect_to edit_business_path(@new_business)
+        if @new_business.kind == "local"
+          flash[:notice] = "Successfully posted campaign. Now please fill out the address for this campaigns business."
+          redirect_to edit_business_path(@new_business)
+        elsif @new_business.kind == "brand" || @new_business.kind == "chain"
+          flash[:notice] = "Sucessfully posted campaign. Please enter the web address for this business and upload the logo."
+          redirect_to edit_business_path(@new_business)
+        else
+          redirect_to @campaign
+        end
       else
         render :action => 'new'
       end
@@ -78,11 +86,21 @@ class CampaignsController < ApplicationController
         @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
       end
     end
-    if @business.address?
-      @map = GMap.new("map_div")
-      @map.control_init(:large_map => true,:map_type => true)
-      @map.center_zoom_init([@campaign.lat, @campaign.lng],15)
-      @map.overlay_init(GMarker.new([@campaign.lat, @campaign.lng], :title => "#{@campaign.business.name}", :info_window => "#{@campaign.business.name}"))
+    if @business.kind == 'local'
+      if @business.address?
+        @map = GMap.new("map_div")
+        @map.control_init(:large_map => true,:map_type => true)
+        @map.center_zoom_init([@campaign.lat, @campaign.lng],15)
+        @map.overlay_init(GMarker.new([@campaign.lat, @campaign.lng], :title => "#{@campaign.business.name}", :info_window => "#{@campaign.business.name}"))
+      end
+    elsif @business.kind == 'chain'
+      unless @business.locations.nil?
+        @map = GMap.new("map_div")
+        @map.control_init(:large_map => true,:map_type => true)
+        @location = Location.find_closest(:origin => @location, :conditions => ["business_id =?", @business.id])
+        @map.center_zoom_init([@location.lat, @location.lng],15)
+        @map.overlay_init(GMarker.new([@location.lat, @location.lng], :title => "#{@location.business.name}", :info_window => "#{@location.business.name}"))
+      end
     end
     @related = Campaign.find_tagged_with(@campaign.tag_list, :limit => 3)
   end
