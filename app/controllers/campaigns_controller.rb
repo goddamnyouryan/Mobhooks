@@ -99,7 +99,7 @@ class CampaignsController < ApplicationController
         @map.control_init(:large_map => true,:map_type => true)
         if current_user
           unless current_user.profile.zip.nil?
-            @zip = current_user.profile.zip
+            @zip = "#{current_user.profile.zip}"
             @location = Location.find_closest(:origin => @zip, :conditions => ["business_id =?", @business.id])
           else
             @location = @business.locations.first
