@@ -9,8 +9,7 @@ class Campaign < ActiveRecord::Base
   has_many :locations, :through => :business
   
   acts_as_voteable
-  acts_as_mappable :through => :locations
-  
+  acts_as_mappable
   acts_as_taggable
   
   has_attached_file :photo, :styles => { :thumbnail => "90x90#", :show => "540x200#" }, 
