@@ -6,7 +6,7 @@ class Business < ActiveRecord::Base
   attr_accessible :name, :address, :city, :state, :zip, :description, :photo, :kind, :url
   
   has_many :campaigns
-  has_many :locations
+  has_many :locations, :as => :locatable
   belongs_to :users
   
   acts_as_mappable :through => :location
