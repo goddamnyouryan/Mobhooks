@@ -1,7 +1,6 @@
 class Business < ActiveRecord::Base
   
   acts_as_taggable
-  acts_as_mappable :through => :location
   
   
   attr_accessible :name, :address, :city, :state, :zip, :description, :photo, :kind, :url
@@ -9,6 +8,8 @@ class Business < ActiveRecord::Base
   has_many :campaigns
   has_many :locations
   belongs_to :users
+  
+  acts_as_mappable :through => :location
   
   has_attached_file :photo, :styles => { :tiny => "30x30#", :main => "90x90#", :small => "200x200#", :medium => "370x370#" }, 
                             :storage => :s3, 
