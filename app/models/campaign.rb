@@ -4,12 +4,11 @@ class Campaign < ActiveRecord::Base
   
   belongs_to :user
   belongs_to :business
-  has_one :location, :as => :locatable
   
   has_many :reviews
   
   acts_as_voteable
-  acts_as_mappable :through => :location
+  acts_as_mappable
   acts_as_taggable
   
   has_attached_file :photo, :styles => { :thumbnail => "90x90#", :show => "540x200#" }, 

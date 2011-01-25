@@ -1,8 +1,7 @@
 class Business < ActiveRecord::Base
   
   acts_as_taggable
-  
-  
+
   attr_accessible :name, :address, :city, :state, :zip, :description, :photo, :kind, :url
   
   has_many :campaigns
