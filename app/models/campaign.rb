@@ -6,6 +6,7 @@ class Campaign < ActiveRecord::Base
   belongs_to :business
   
   has_many :reviews
+  has_many :locations, :through => :business
   
   acts_as_voteable
   acts_as_mappable
