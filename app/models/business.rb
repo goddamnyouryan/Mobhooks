@@ -1,6 +1,8 @@
 class Business < ActiveRecord::Base
   
   acts_as_taggable
+  acts_as_mappable :through => :location
+  
   
   attr_accessible :name, :address, :city, :state, :zip, :description, :photo, :kind, :url
   
