@@ -75,7 +75,7 @@ class Campaign < ActiveRecord::Base
     if search
       find(:all, 
            :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND business.kind = ?', 
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND businesses.kind = ?', 
                              "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "chain"
                             ]
       )
@@ -88,7 +88,7 @@ class Campaign < ActiveRecord::Base
     if search
       find(:all, 
            :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND business.kind = ?', 
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND businesses.kind = ?', 
                              "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "brand"
                             ]
       )
