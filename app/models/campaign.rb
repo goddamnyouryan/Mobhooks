@@ -71,7 +71,7 @@ class Campaign < ActiveRecord::Base
     end
   end
   
-  def chain_search(search)
+  def self.chain_search(search)
     if search
       find(:all, 
            :include => :business, 
@@ -84,7 +84,7 @@ class Campaign < ActiveRecord::Base
     end
   end
   
-  def brand_search(search)
+  def self.brand_search(search)
     if search
       find(:all, 
            :include => :business, 
