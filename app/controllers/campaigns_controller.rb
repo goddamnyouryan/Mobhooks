@@ -123,13 +123,13 @@ class CampaignsController < ApplicationController
     elsif params[:search] == "Search for an Offer..."
       @campaigns = Campaign.find(:all, :limit => 25)
     elsif params[:search] && params[:near] && params[:distance]
-      @campaigns = Campaign.location_search(params[:search], params[:near], params[:distance]) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => params[:distance]) | Campaign.brand_search(params[:search]) | Campaign.chain_search(params[:search])
+      @campaigns = Campaign.location_search(params[:search], params[:near], params[:distance]) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => params[:distance]) | Campaign.no_address_search(params[:search])
     elsif params[:search] && params[:near] == ""
-      @campaigns = Campaign.search(params[:search]) | Campaign.find_tagged_with(params[:search])  | Campaign.brand_search(params[:search]) | Campaign.chain_search(params[:search])
+      @campaigns = Campaign.search(params[:search]) | Campaign.find_tagged_with(params[:search])  | Campaign.no_address_search(params[:search])
     elsif params[:search] && params[:near]
-      @campaigns = Campaign.location_search(params[:search], params[:near], 25) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => 25)  | Campaign.brand_search(params[:search]) | Campaign.chain_search(params[:search])
+      @campaigns = Campaign.location_search(params[:search], params[:near], 25) | Campaign.find_tagged_with(params[:search], :origin => params[:near], :within => 25)  | Campaign.no_address_search(params[:search])
     elsif params[:search] || params[:near] == ""
-      @campaigns = Campaign.search(params[:search]) | Campaign.find_tagged_with(params[:search])  | Campaign.brand_search(params[:search]) | Campaign.chain_search(params[:search])
+      @campaigns = Campaign.search(params[:search]) | Campaign.find_tagged_with(params[:search])  | Campaign.no_address_search(params[:search])
     else
       @campaigns = Campaign.find(:all, :limit => 25)
     end

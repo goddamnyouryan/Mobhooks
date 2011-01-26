@@ -71,12 +71,12 @@ class Campaign < ActiveRecord::Base
     end
   end
   
-  def self.chain_search(search)
+  def self.no_address_search(search)
     if search
       find(:all, 
            :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND businesses.kind = ?', 
-                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "chain"
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND businesses.kind IS ?', 
+                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", nil
                             ]
       )
     else
@@ -84,17 +84,5 @@ class Campaign < ActiveRecord::Base
     end
   end
   
-  def self.brand_search(search)
-    if search
-      find(:all, 
-           :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND businesses.kind = ?', 
-                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "brand"
-                            ]
-      )
-    else
-      find(:all)
-    end
-  end
   
 end
