@@ -17,22 +17,7 @@
 <% end %>
 <h3 class="button" style="text-align:center;"><%= link_to "Own this business? Click here!", :controller => "affiliates", :action => "new", :business_name => @business.name, :business_address => "#{@business.address} #{@business.city} #{@business.state} #{@business.zip}" %></h3>
 
-<% if @business.kind == "chain" %>
-<h2>Locations(<%= @business.locations.count %>)</h2>
-
-<ul id="locations">
-<% @business.locations.each do |l| %>
-<li>
-	<%= l.address %><br />
-	<%= l.city %> <%= l.state %>, <%= l.zip %>
-</li>
-<% end %>
-</ul>
-
-
-<%= link_to "Add a new location for #{@business.name} and get 5 points", business_locations_path(@business), :class => 'link' %>
-
-<% end %>
+<%= # render :partial => 'locations' %>
 
 </div>
 

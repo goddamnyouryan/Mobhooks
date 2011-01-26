@@ -71,4 +71,30 @@ class Campaign < ActiveRecord::Base
     end
   end
   
+  def chain_search(search)
+    if search
+      find(:all, 
+           :include => :business, 
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND business.kind = ?', 
+                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "chain"
+                            ],
+      )
+    else
+      find(:all)
+    end
+  end
+  
+  def brand_search(search)
+    if search
+      find(:all, 
+           :include => :business, 
+           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? AND business.kind = ?', 
+                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "brand"
+                            ],
+      )
+    else
+      find(:all)
+    end
+  end
+  
 end
