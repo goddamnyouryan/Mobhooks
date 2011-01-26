@@ -16,7 +16,7 @@
 <%= link_to "5 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5 %> | 
 <%= link_to "25 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 25 %> | 
 <%= link_to "100 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 100 %> | 
-<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => nil %>
+<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5000 %>
 </p>
 <% end %>
 <% end %>
@@ -35,8 +35,10 @@
 <%= link_to "5 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5 %> | 
 <%= link_to "25 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 25 %> | 
 <%= link_to "100 miles", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 100 %> | 
-<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => nil %>
+<%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5000 %>
 </p>
+
+<h2> No results for '<%= params[:search] %>'. Try a wider search area.
 
 <p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
 
