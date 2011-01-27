@@ -8,8 +8,13 @@ class UserSessionsController < ApplicationController
     if @user_session.save
       @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
       if @achievements.empty?
-        flash[:notice] = "Successfully logged in. Welcome #{current_user.login}!"
-        redirect_to root_url
+        if session[:return_to]
+          flash[:notice] = "Successfully logged in. Welcome #{current_user.login}!"
+          redirect_to session[:return_to]
+        else
+          flash[:notice] = "Successfully logged in. Welcome #{current_user.login}!"
+          redirect_to root_url
+        end
       else
         flash[:notice] = "Successfully logged in. Welcome #{current_user.login}! You've been awarded a new badge!"
         redirect_to @achievements[0]

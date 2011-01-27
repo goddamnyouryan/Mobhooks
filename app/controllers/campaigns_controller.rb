@@ -1,4 +1,7 @@
 class CampaignsController < ApplicationController
+  before_filter :require_user, :only => :create
+  
+  
   def new
     if current_user
       @campaign = Campaign.new
