@@ -24,7 +24,7 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
-    if @user.save
+    if verify_recaptcha(:model => @user, :message => 'Whoops, you might be a robot. Try again.') && @user.save
       @profile = Profile.create
       @profile.user_id = @user.id
       @profile.save

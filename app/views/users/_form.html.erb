@@ -16,6 +16,11 @@
     <h3 style="margin:0;">Confirm Password:</h3>
     <%= f.password_field :password_confirmation %>
   </p>
+  <p>
+	<h3 style="margin:0;">Prove you aren't a robot:</h3>
+	<%= recaptcha_tags %>
+  </p>
+
   <h3 style="margin:25px 0;"><%= f.check_box :terms %>You have read and agree to our <%= link_to 'terms of service', terms_path, :class => 'link' %></h3>
   <p><%= f.submit "Sign Up", :class => 'button' %></p>
 <% end %>
