@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   after_filter :clear_campaign_session, :only => :update
-   before_filter :require_no_user, :only => :edit
+   before_filter :require_user, :only => :edit
 	
   def index
     @businesses = Business.all
