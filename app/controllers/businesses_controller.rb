@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
   after_filter :clear_campaign_session, :only => :update
-   before_filter :require_user, :only => :edit
+  before_filter :require_user, :only => :edit
 	
   def index
     @businesses = Business.all
@@ -61,8 +61,10 @@ class BusinessesController < ApplicationController
         current_user.points = current_user.points + 10
         current_user.save
       elsif params[:business][:url]
-        current_user.points = current_user.points + 5
-        current_user.save
+        unless params[:business][:url] == "http://" || params[:business][:url] == ""
+          current_user.points = current_user.points + 5
+          current_user.save
+        end
       elsif params[:business][:photo]
         current_user.points = current_user.points + 5
         current_user.save

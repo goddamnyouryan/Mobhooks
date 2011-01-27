@@ -6,7 +6,7 @@
 
 <h2 class="campaign_details_header">
 	Website:
-	<% unless @campaign.business.url.nil?  || @campaign.business.url == "http://"  %>
+	<% unless @campaign.business.url.nil?  || @campaign.business.url == "http://" || @campaign.business.url == "" %>
 	<span class="campaign_description"><%= link_to "#{@campaign.business.url}", @campaign.business.url %>
 	<% else %>
 	<span class="campaign_description">
