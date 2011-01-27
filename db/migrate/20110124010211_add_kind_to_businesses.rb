@@ -1,6 +1,6 @@
 class AddKindToBusinesses < ActiveRecord::Migration
   def self.up
-    add_column :businesses, :kind, :string
+    add_column :businesses, :kind, :string, :default => "brand"
     add_column :businesses, :url, :string
   end
 

@@ -38,7 +38,7 @@
 </h2>
 
 <h2 class="campaign_details_header">Details:</h2>
-	<% if campaign.details? %>
+	<% if @campaign.details? %>
 		<span class="campaign_description"><%=h @campaign.details %></span><br />
 		<span class="campaign_description">Offer may not be valid at all locations</span>
 	<% else %>
