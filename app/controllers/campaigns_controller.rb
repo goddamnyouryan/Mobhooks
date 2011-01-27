@@ -94,7 +94,7 @@ class CampaignsController < ApplicationController
         @map.overlay_init(GMarker.new([@campaign.lat, @campaign.lng], :title => "#{@campaign.business.name}", :info_window => "#{@campaign.business.name}"))
       end
     elsif @business.kind == 'chain'
-      unless @business.locations.nil?
+      if @business.locations.exists?
         @map = GMap.new("map_div")
         @map.control_init(:large_map => true,:map_type => true)
         if current_user
