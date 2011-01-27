@@ -27,7 +27,8 @@ gem "aws-s3"
 gem "geokit"
 gem "paths_of_glory"
 gem "acts_as_state_machine"
-gem "recaptcha"
+gem "recaptcha", :lib => "recaptcha/rails"
+
 
 # Add a git repository as a source. Valid options include :branch, :tag,
 # and :ref. Next, add any gems that you want from that repo.
