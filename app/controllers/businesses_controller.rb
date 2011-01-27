@@ -56,8 +56,16 @@ class BusinessesController < ApplicationController
         campaign.lng = @geocode.lng
         campaign.save!
       end
-      current_user.points = current_user.points + 10
-      current_user.save
+      if params[:business][:address]
+        current_user.points = current_user.points + 10
+        current_user.save
+      elsif params[:business][:url]
+        current_user.points = current_user.points + 5
+        current_user.save
+      elsif params[:business][:photo]
+        current_user.points = current_user.points + 5
+        current_user.save
+      end
       @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
       if @achievements.empty?
         flash[:notice] = "Successfully added business address."
