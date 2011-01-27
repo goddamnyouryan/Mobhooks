@@ -7,17 +7,12 @@
 </p>
 
 <h2 class="campaign_details_header">
-	Where:
-	<% unless @location.nil? %>
-	<span class="campaign_description"><%= @location.address %> <%= @location.city %> <%= @location.state %>, <%= @location.zip %>
-		<% if current_user && ! current_user.profile.nil? && current_user.profile.zip? %>
-			<em>(<%= pluralize(@distance, "mile") %>)</em><br/>
-			<span style="font-size:14px;">This is the closest location of this business. <%= link_to "Click here to see all locations.", business_path(@business), :class => 'link' %></span>
-		<% end %>
-	</span>
+	Website:
+	<% unless @campaign.business.url.nil? %>
+	<span class="campaign_description"><%= link_to "#{@campaign.business.url}", @campaign.business.url %>
 	<% else %>
 	<span class="campaign_description">
-		<%= link_to "Add a location for this business", edit_business_path(@campaign.business), :class => "link", :style => "font-size:18px;" %>
+		<%= link_to "Click to add the website for this business.", edit_business_path(@campaign.business), :class => "link", :style => "font-size:18px;" %>
 	<% end %>
 </h2>
 

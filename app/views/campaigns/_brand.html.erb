@@ -5,6 +5,16 @@
 </p>
 
 <h2 class="campaign_details_header">
+	Website:
+	<% unless @campaign.business.url.nil? %>
+	<span class="campaign_description"><%= link_to "#{@campaign.business.url}", @campaign.business.url %>
+	<% else %>
+	<span class="campaign_description">
+		<%= link_to "Click to add the website for this business.", edit_business_path(@campaign.business), :class => "link", :style => "font-size:18px;" %>
+	<% end %>
+</h2>
+
+<h2 class="campaign_details_header">
 	Type:
 	<span class="campaign_description"><%=h @campaign.kind %></span>
 </h2>
