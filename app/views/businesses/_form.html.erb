@@ -19,15 +19,15 @@
 <!--  <p>
     <h3 style="margin:0;">Tags (separate with commas):</h3>
     <%= f.text_field :tag_list, :class => "large_form" %>
-  </p>
+  </p> -->
   <p>
-    <h3 style="margin:0;">Description:</h3>
-    <%= f.text_area :description, :class => "large_form", :style => "height:200px;" %>
+    <h3 style="margin:0;">Business Website:</h3>
+    <%= f.text_field :url, :class => "large_form" %>
   </p>
   <p>
 	<h3 style="margin:0;">Upload Business Photo:</h3>
 	<%= f.file_field :photo %>
-  </p> -->
+  </p>
 
   <p><%= f.submit "Submit Business", :class => 'button', :style => "font-size:24px;" %></p>
 <% end %>
