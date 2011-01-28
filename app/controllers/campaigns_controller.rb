@@ -17,11 +17,13 @@ class CampaignsController < ApplicationController
   def create
     @campaign = current_user.campaigns.new(params[:campaign])
     @business = Business.find_by_name(params[:campaign][:business_name])
+    @shortcode = Campaign.find_by_shortcode(params[:campaign][:shortcode])
     @campaign.tag_list = params[:campaign][:tag_list].downcase
     @campaign.kind = params[:campaign][:kind]
     @business_name = params[:campaign][:business_name]
     @business_kind = params[:campaign][:business_kind]
     unless @business.nil?
+      if !@shortcode.nil?
       @campaign.business_id = @business.id
       if @campaign.save
         @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
@@ -42,6 +44,27 @@ class CampaignsController < ApplicationController
       else
         render :action => 'new'
       end
+      else
+        @new_business = Business.create(:name => @business_name, :kind => @business_kind)
+        @campaign.business_id = @new_business.id
+        if @campaign.save
+          current_user.points = current_user.points + 100
+          current_user.save
+          session[:campaign_continue] = @campaign.id
+          if @new_business.kind == "local"
+            flash[:notice] = "Successfully posted campaign. Now please fill out the address for this campaigns business."
+            redirect_to edit_business_path(@new_business)
+          elsif @new_business.kind == "brand" || @new_business.kind == "chain"
+            flash[:notice] = "Sucessfully posted campaign. Please enter the web address for this business and upload the logo."
+            redirect_to edit_business_path(@new_business)
+          else
+            redirect_to @campaign
+          end
+        else
+          render :action => 'new'
+        end
+      end
+        
     else
       @new_business = Business.create(:name => @business_name, :kind => @business_kind)
       @campaign.business_id = @new_business.id
