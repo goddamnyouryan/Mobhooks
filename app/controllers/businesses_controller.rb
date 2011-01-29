@@ -51,8 +51,8 @@ class BusinessesController < ApplicationController
     @business = Business.find(params[:id])
     @business.tag_list = params[:business][:tag_list]
     if @business.update_attributes(params[:business])
+      @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.state} #{@business.zip}"
       @business.campaigns.each do |campaign|
-        @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{params[:business][:address]} #{params[:business][:city]} #{params[:business][:state]} #{params[:business][:zip]}"
         campaign.lat = @geocode.lat
         campaign.lng = @geocode.lng
         campaign.save!
