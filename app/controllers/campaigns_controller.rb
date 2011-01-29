@@ -52,7 +52,7 @@ class CampaignsController < ApplicationController
           current_user.save
           session[:campaign_continue] = @campaign.id
           if @new_business.kind == "local"
-            flash[:notice] = "Successfully posted campaign. Now please fill out the address for this campaigns business."
+            flash[:notice] = "Successfully posted campaign. Now please fill out more information about this business below."
             redirect_to edit_business_path(@new_business)
           elsif @new_business.kind == "brand" || @new_business.kind == "chain"
             flash[:notice] = "Sucessfully posted campaign. Please enter the web address for this business and upload the logo."
