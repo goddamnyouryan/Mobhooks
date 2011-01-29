@@ -2,9 +2,6 @@
 
 <% if @business.kind == "local" %>
 
-Enter the address for <%= @business.name%> and get an extra 10 points!<br /><% end %>  Enter the website and logo for <%= @business.name%> and get an extra 10 points! (5 pts for each)</h2>
-<h3>No fake or derogatory info or you will get whacked!</h3>
-
 <h2><% unless @business.address? %>Earn up to 20 easy points now!
 Enter the address for <%= @business.name%> and get 10 points!<br /><% end %>
 <% unless @business.url? %>Enter the website for <%= @business.name%> and get 5 points!<br /><% end %>
