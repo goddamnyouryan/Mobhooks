@@ -77,7 +77,7 @@ class BusinessesController < ApplicationController
           flash[:notice] = "Successfully added business address."
           redirect_to @business
         elsif params[:business][:url]
-          if params[:business][:photo] == ""
+          if params[:business][:photo].nil?
              flash[:notice] = "Successfully added business website."
              redirect_to @business
            else
