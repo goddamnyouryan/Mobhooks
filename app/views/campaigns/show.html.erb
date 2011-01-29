@@ -13,7 +13,7 @@
 	<%= link_to "view all #{@campaign.business.name} campaigns", business_path(@campaign.business), :class => "link", :style => "margin: 10px; float:left;"  %>
 	<br/ >
 	<% unless @campaign.business.photo.exists? %>
-		<%= link_to "Upload the logo for #{@campaign.business.name} for 5 points!", edit_business_path(@campaign.business), :class => "link" %>
+		<%= link_to "Upload the logo for #{@campaign.business.name} for 5 points!", edit_business_path(@campaign.business), :class => "link", :style => "margin: 10px; float:left;" %>
 	<% end %>
 	
 	<div class="clear"></div>
