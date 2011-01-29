@@ -2,7 +2,7 @@
 
 <% if @business.kind == "local" %>
 
-<h2>Enter the address for <%= @business.name%> and get an extra 10 points! <br /> Enter the website and logo for <%= @business.name%> and get an extra 10 points! (5 pts for each)</h2>
+<h2><% unless @business.address? %>Enter the address for <%= @business.name%> and get an extra 10 points!<% end %> <br /> Enter the website and logo for <%= @business.name%> and get an extra 10 points! (5 pts for each)</h2>
 <h3>No fake or derogatory info or you will get whacked!</h3>
 
 <%= render :partial => 'form' %>
