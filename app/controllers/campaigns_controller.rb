@@ -109,7 +109,9 @@ class CampaignsController < ApplicationController
     if current_user && @business.address?
       unless current_user.profile.nil?
         @zip = Geokit::Geocoders::GoogleGeocoder.geocode "#{current_user.profile.zip}"
-        @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
+        if @campaign.lat?
+          @distance = @zip.distance_from("#{@campaign.lat}, #{@campaign.lng}").round
+        end
       end
     end
     if @business.kind == 'local'
