@@ -9,20 +9,30 @@
 <% if @business.kind == "local" %>	
 	<% if @business.address? %>
 	<h3><a href="<%= @business.url %>" target="_blank"><%= @business.url %></a><br/><%=h @business.address %> <%=h @business.city %> <%=h @business.state %> <%=h @business.zip %></h3>
-	<% unless @business.url? %>
+	<% if @business.url? && @business.photo.exists? %>
+	<h3><a href="<%= @business.url %>" target="_blank"></h3>
+	<% elsif @business.url? %>
+	<h3><%= link_to "Click to upload business logo", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
+	<% elsif @business.photo.exists? %>
+	<h3><%= link_to "Click to upload business website", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
+	<% else %>
 	<h3><%= link_to "Click to add this businesses website and logo", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
 	<% end %>
 	<% else %>
 	<h3><%= link_to "Click to enter this businesses address!", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
 	<% end %>
 <% else %>
-	<% if @business.url? %>
-	<h3><a href="<%= @business.url %>" target="_blank"></h3>
-	<% else %>
-	<h3><%= link_to "Click to add this businesses website and logo", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
-	<% end %>
+<% if @business.url? && @business.photo.exists? %>
+<h3><a href="<%= @business.url %>" target="_blank"></h3>
+<% elsif @business.url? %>
+<h3><%= link_to "Click to upload business logo", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
+<% elsif @business.photo.exists? %>
+<h3><%= link_to "Click to upload business website", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
+<% else %>
+<h3><%= link_to "Click to add this businesses website and logo", edit_business_path(@business), :class => "link", :style => "font-size:18px;" %></h3>
+<% end %>
 <% end %>	
-	
+
 	
 <h3 class="button" style="text-align:center;"><%= link_to "Own this business? Click here!", :controller => "affiliates", :action => "new", :business_name => @business.name, :business_address => "#{@business.address} #{@business.city} #{@business.state} #{@business.zip}" %></h3>
 
