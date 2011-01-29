@@ -66,8 +66,10 @@ class BusinessesController < ApplicationController
           current_user.save
         end
       elsif params[:business][:photo]
-        current_user.points = current_user.points + 5
-        current_user.save
+        unless params[:business][:photo] == ""
+          current_user.points = current_user.points + 5
+          current_user.save
+        end
       end
       @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
       if @achievements.empty?
