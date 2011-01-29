@@ -12,7 +12,7 @@ Enter the address for <%= @business.name%> and get 10 points!<br /><% end %>
 
 <% if session[:campaign_continue] %>
 <p>
-  <%= link_to "Don't know the address? <br />Click here to skip to the campaign page.", skip_business_path, :business => session[:campaign_continue], :class => "button", :style => "float:right;text-align:center;" %>
+  <%= link_to "Don't know this info? <br />Click here to skip to the campaign page.", skip_business_path, :business => session[:campaign_continue], :class => "button", :style => "float:right;text-align:center;" %>
 </p>
 <% end %>
 
@@ -28,7 +28,7 @@ Enter the address for <%= @business.name%> and get 10 points!<br /><% end %>
 
 <% if session[:campaign_continue] %>
 <p>
-  <%= link_to "Don't know the either? <br />Click here to skip to the campaign page.", skip_business_path, :business => session[:campaign_continue], :class => "button", :style => "float:right;text-align:center;" %>
+  <%= link_to "Don't know this info? <br />Click here to skip to the campaign page.", skip_business_path, :business => session[:campaign_continue], :class => "button", :style => "float:right;text-align:center;" %>
 </p>
 <% end %>
 
