@@ -71,8 +71,21 @@ class BusinessesController < ApplicationController
       end
       @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", current_user.id, "unread"])
       if @achievements.empty?
-        flash[:notice] = "Successfully added business address."
-        redirect_to @business
+        if params[:business][:address]
+          flash[:notice] = "Successfully added business address."
+          redirect_to @business
+        elsif params[:business][:url] && params[:business][:photo]
+          flash[:notice] = "Successfully added business photo and website."
+          redirect_to @business
+        elsif params[:business][:url]
+          flash[:notice] = "Successfully added business website."
+          redirect_to @business
+        elsif params[:business][:photo]
+          flash[:notice] = "Successfully added business photo."
+          redirect_to @business
+        else
+          redirect_to @business
+        end
       else
         flash[:notice] = "Successfully added business address. And you've been awarded a new badge!"
         session[:campaign_continue] = @business.campaigns.last.id

@@ -1,5 +1,7 @@
 <% form_for @business do |f| %>
   <%= f.error_messages %>
+  
+<% unless @business.address? %>
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Business Address:</h3>
     <%= f.text_field :address, :class => "large_form" %>
@@ -20,14 +22,23 @@
     <h3 style="margin:0;">Tags (separate with commas):</h3>
     <%= f.text_field :tag_list, :class => "large_form" %>
   </p> -->
+
+<% end %>
+
+<% unless @business.url? %>
   <p>
     <h3 style="margin:0;">Business Website:</h3>
     <%= f.text_field :url, :class => "large_form" %>
   </p>
+<% end %>
+
+<% unless @business.photo.exists? %>
   <p>
 	<h3 style="margin:0;">Upload Business Photo:</h3>
 	<%= f.file_field :photo %>
   </p>
 
   <p><%= f.submit "Submit Business", :class => 'button', :style => "font-size:24px;" %></p>
+<% end %>
+
 <% end %>

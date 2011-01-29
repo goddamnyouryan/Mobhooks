@@ -7,6 +7,17 @@
 </p>
 
 <h2 class="campaign_details_header">
+	Website:
+	<% unless @campaign.business.url.nil? || @campaign.business.url == "http://" || @campaign.business.url == "" %>
+	<span class="campaign_description"><%= link_to "#{@campaign.business.url}", @campaign.business.url %>
+	<% else %>
+	<span class="campaign_description">
+		<%= link_to "Click to add the website for this business.", edit_business_path(@campaign.business), :class => "link", :style => "font-size:18px;" %>
+	<% end %>
+</h2>
+
+
+<h2 class="campaign_details_header">
 	Where:
 	<% if @campaign.business.address? %>
 	<span class="campaign_description"><%= @campaign.business.address %> <%= @campaign.business.city %> <%= @campaign.business.state %>, <%= @campaign.business.zip %>
@@ -16,7 +27,7 @@
 	</span>
 	<% else %>
 	<span class="campaign_description">
-		<%= link_to "Enter the correct business address and get 100 points!", edit_business_path(@campaign.business), :class => "link", :style => "font-size:18px;" %>
+		<%= link_to "Enter the correct business address and get 10 points!", edit_business_path(@campaign.business), :class => "link", :style => "font-size:18px;" %>
 	<% end %>
 </h2>
 

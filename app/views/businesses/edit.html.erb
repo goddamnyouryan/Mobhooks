@@ -2,8 +2,8 @@
 
 <% if @business.kind == "local" %>
 
-<h2>Enter the address for <%= @business.name%> and get an extra 10 points!</h2>
-<h3>Not to mention a feeling of satisfaction and completeness.</h3>
+<h2>Enter the address for <%= @business.name%> and get an extra 10 points! <br /> Enter the website and logo for <%= @business.name%> and get an extra 10 points! (5 pts for each)</h2>
+<h3>No fake or derogatory info or you will get whacked!</h3>
 
 <%= render :partial => 'form' %>
 
@@ -17,7 +17,7 @@
 
 <% elsif @business.kind == "brand" || @business.kind == "chain" %>
 
-<h2>Enter the website and logo for <%= @business.name%> and get an extra 5 points for each!</h2>
+<h2>Enter the website and logo for <%= @business.name%> and get an extra 10 points! (5 pts for each)</h2>
 <h3>Not to mention a feeling of satisfaction and completeness.</h3>
 
 <%= render :partial => 'brand' %>
