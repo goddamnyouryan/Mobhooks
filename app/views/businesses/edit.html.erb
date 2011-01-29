@@ -20,8 +20,9 @@ Enter the address for <%= @business.name%> and get 10 points!<br /><% end %>
 
 <% elsif @business.kind == "brand" || @business.kind == "chain" %>
 
-<h2>Enter the website and logo for <%= @business.name%> and get an extra 10 points! (5 pts for each)</h2>
-<h3>Not to mention a feeling of satisfaction and completeness.</h3>
+<h2><% unless @business.url? %>Enter the website for <%= @business.name%> and get 5 points!<br /><% end %>
+<% unless @business.photo.exists? %>Upload the logo or storefront picture for <%= @business.name%> and get 5 points!<% end %>
+</h2>
 
 <%= render :partial => 'brand' %>
 
