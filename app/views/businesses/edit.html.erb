@@ -2,11 +2,21 @@
 
 <% if @business.kind == "local" %>
 
-<h2><% unless @business.address? %>Earn up to 20 easy points now!
-Enter the address for <%= @business.name%> and get 10 points!<br /><% end %>
-<% unless @business.url? %>Enter the website for <%= @business.name%> and get 5 points!<br /><% end %>
-<% unless @business.photo.exists? %>Upload the logo or storefront picture for <%= @business.name%> and get 5 points!<% end %>
-</h2>
+<% if @business.address == nil && @business.url == nil and !@business.photo.exists? %>
+<h2>Earn up to 20 easy points now!</h2>
+<% elsif @business.address? && @business.url == nil and !@business.photo.exists? %>
+<h2>Earn up to 10 easy points now!</h2>
+<% elsif @business.address? && @business.url? || @business.photo.exists? %>
+<h2>Earn up to 5 easy points now!</h2>
+<% end %>
+
+
+
+<ul>
+<% unless @business.address? %><li>Enter the address for <%= @business.name%> and get 10 points!</li><% end %>
+<% unless @business.url? %><li>Enter the website for <%= @business.name%> and get 5 points!</li><% end %>
+<% unless @business.photo.exists? %><li>Upload the logo or storefront picture for <%= @business.name%> and get 5 points!</li><% end %>
+</ul>
 
 <%= render :partial => 'form' %>
 
@@ -20,9 +30,16 @@ Enter the address for <%= @business.name%> and get 10 points!<br /><% end %>
 
 <% elsif @business.kind == "brand" || @business.kind == "chain" %>
 
-<h2><% unless @business.url? %>Enter the website for <%= @business.name%> and get 5 points!<br /><% end %>
-<% unless @business.photo.exists? %>Upload the logo or storefront picture for <%= @business.name%> and get 5 points!<% end %>
-</h2>
+<% if @business.url == nil and !@business.photo.exists? %>
+<h2>Earn up to 10 easy points now!</h2>
+<% elsif @business.url? || @business.photo.exists? %>
+<h2>Earn up to 5 easy points now!</h2>
+<% end %>
+
+<ul>
+<% unless @business.url? %><li>Enter the website for <%= @business.name%> and get 5 points!</li><% end %>
+<% unless @business.photo.exists? %><li>Upload the logo or storefront picture for <%= @business.name%> and get 5 points!</li><% end %>
+</ul>
 
 <%= render :partial => 'brand' %>
 
