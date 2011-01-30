@@ -6,7 +6,7 @@
   </p>
 	<p>
 		<h3 style="margin:0;" id="business_type"><span style="color:#EDA02C;font-size: 24px;">*</span>Business Type:<%= image_tag "tooltip.png", :id => "business_type_tooltip" %></h3>
-		<% @business_kind_options = [['Local', 'local'], ['National Brand/Non-Chain', 'brand'], ['National Chain', 'chain']] %>
+		<% @business_kind_options = [['Local', 'local'], ['National Chain', 'chain'], ['National Brand/Non-Chain', 'brand']] %>
 	    <%= f.select :business_kind, options_for_select(@business_kind_options) %>
 	</p>
   <p>
