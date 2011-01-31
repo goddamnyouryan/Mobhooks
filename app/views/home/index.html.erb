@@ -23,6 +23,12 @@
 
 <%= render :partial=>'campaigns/list', :locals => { :campaign => @popular } %>
 
+<div class="clear"></div>
+
+<h2>Recent Submissions</h2>
+
+<%= render :partial=>'campaigns/list', :locals => { :campaign => @recent } %>
+
 </div> 
 
 <div style="float:left;margin:95px 0 0 100px;width:300px;">
