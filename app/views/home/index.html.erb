@@ -6,7 +6,11 @@
 <ul id="sponsored">
 	<% @sponsored.each do |s| %>
 	<li>
-		<%= link_to "#{thumbnail(s)}", campaign_path(s) %>
+		<% if s.photo.exists? %>
+			<%= link_to "#{image_tag s.business.photo.url(:main)}", campaign_path(s) %>
+		<% else %>
+			<%= link_to "#{thumbnail(s)}", campaign_path(s) %>
+		<% end %>
 		<h3><%= link_to "#{s.business.name}", campaign_path(s) %></h3>
 		<h4><%= link_to "#{s.offer}", campaign_path(s) %></h4>
 	</li>
