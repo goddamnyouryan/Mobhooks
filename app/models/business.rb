@@ -15,7 +15,8 @@ class Business < ActiveRecord::Base
   
   validates_presence_of :address, :city, :state, :zip, :on => :update, :if => Proc.new { |business| business.kind == "local" }
   validates_presence_of :url, :photo, :on => :update, :if => Proc.new { |business| business.kind == "brand" }
-  validates_presence_of :name, :kind
+  validates_presence_of :name
+  validates_presence_of :kind, :message => "You must select A Business Type"
   
   
 end

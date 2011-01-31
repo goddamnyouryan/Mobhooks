@@ -2,11 +2,11 @@
   <%= f.error_messages %>
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Name of Business:<%= image_tag "tooltip.png", :id => "business_name_tooltip" %></h3>
-    <%= text_field_with_auto_complete :campaign, :business_name, {}, { :url => formatted_businesses_path(:js), :method => :get, :with => "'search=' + element.value" } %>
+	<%= text_field_with_auto_complete :campaign, :business_name, {}, { :url => formatted_businesses_path(:js), :method => :get, :with => "'search=' + element.value" } %>
   </p>
 	<p>
 		<h3 style="margin:0;" id="business_type"><span style="color:#EDA02C;font-size: 24px;">*</span>Business Type:<%= image_tag "tooltip.png", :id => "business_type_tooltip" %></h3>
-		<% @business_kind_options = [['Local', 'local'], ['National Chain', 'chain'], ['National Brand/Non-Chain', 'brand']] %>
+		<% @business_kind_options = [[],['Local', 'local'], ['National Chain', 'chain'], ['National Brand/Non-Chain', 'brand']] %>
 	    <%= f.select :business_kind, options_for_select(@business_kind_options) %>
 	</p>
   <p>
@@ -31,7 +31,7 @@
   </p> -->
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Offer Type:</h3>
-    <%= f.select :kind, options_for_select([['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
+    <%= f.select :kind, options_for_select([[], ['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
   </p>
   <p>
 	<h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Tags (separate with commas):<%= image_tag "tooltip.png", :id => "tags_tooltip" %></h3> 

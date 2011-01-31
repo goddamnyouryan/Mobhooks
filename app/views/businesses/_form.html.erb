@@ -32,7 +32,7 @@
   </p>
 <% end %>
 
-<% unless @business.photo.exists? %>
+<% if params[:business][:photo] %>
   <p>
 	<h3 style="margin:0;">Upload Business Logo or Photo:</h3>
 	<%= f.file_field :photo %>
@@ -40,7 +40,17 @@
 	<a href="http://www.google.com/images?hl=en&source=imghp&biw=1440&bih=747&q=<%= @business.name %>+logo&gbv=2&aq=f&aqi=g10&aql=&oq=" class="link" target="_blank" style="margin-top:15px;">Click here to search the web for the <%= @business.name %> logo.</a></p>
   </p>
 
-  <p><%= f.submit "Submit Business", :class => 'button', :style => "font-size:24px;" %></p>
+<% else %>
+<% unless @business.photo.exists? %>
+  <p>
+	<h3 style="margin:0;">Upload Business Logo or Photo:</h3>
+	<%= f.file_field :photo %>
+	<p>
+	<a href="http://www.google.com/images?hl=en&source=imghp&biw=1440&bih=747&q=<%= @business.name %>+logo&gbv=2&aq=f&aqi=g10&aql=&oq=" class="link" target="_blank" style="margin-top:15px;">Click here to search the web for the <%= @business.name %> logo.</a></p>
+  </p>
 <% end %>
+<% end %>
+
+  <p><%= f.submit "Submit Business", :class => 'button', :style => "font-size:24px;" %></p>
 
 <% end %>

@@ -17,9 +17,8 @@ class Campaign < ActiveRecord::Base
                             :s3_credentials => "#{RAILS_ROOT}/config/s3.yml", 
                             :path => ':id/:style'
                             
-  validates_presence_of :offer, :shortcode, :keyword, :type, :tag_list, :business_id
+  validates_presence_of :offer, :shortcode, :keyword, :type, :tag_list, :business_id, :kind
   validates_numericality_of :shortcode
-  validates_length_of :shortcode, :in => 5..6
   validates_uniqueness_of :keyword, :scope => :shortcode, :case_sensitive => false, :message => "- This campaign has already been submitted."
 
                                      

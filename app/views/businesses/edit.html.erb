@@ -2,12 +2,18 @@
 
 <% if @business.kind == "local" %>
 
-<% if @business.address == nil && @business.url == nil and !@business.photo.exists? %>
+<% if @business.address == nil && @business.url == nil && !@business.photo.exists? %>
 <h2>Earn up to 20 easy points now!</h2>
-<% elsif @business.address? && @business.url == nil and !@business.photo.exists? %>
+<% elsif @business.address ==  nil && (@business.url == "" || @business.url == nil) && @business.photo.exists? %>
+<h2>Earn up to 15 easy points now!</h2>
+<% elsif @business.address ==  nil && @business.url? && !@business.photo.exists? %>
+<h2>Earn up to 15 easy points now!</h2>
+<% elsif @business.address? && @business.url == "" && !@business.photo.exists? %>
 <h2>Earn up to 10 easy points now!</h2>
-<% elsif @business.address? && @business.url? || @business.photo.exists? %>
+<% elsif @business.address? && (@business.url? || @business.photo.exists?) %>
 <h2>Earn up to 5 easy points now!</h2>
+<% else %>
+<h2>Enter the Business Info and earn points!</h2>
 <% end %>
 
 
