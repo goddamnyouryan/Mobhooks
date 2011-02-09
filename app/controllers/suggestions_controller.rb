@@ -9,6 +9,7 @@ class SuggestionsController < ApplicationController
     	@suggestions.user_id = current_user.id
     end
     if @suggestions.save
+      @suggestions.deliver_new_suggestions!
       flash[:notice] = "Successfully submitted suggestions. Thanks for your input!"
       redirect_to root_url
     else

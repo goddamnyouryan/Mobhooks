@@ -9,5 +9,17 @@ class Notifier < ActionMailer::Base
     body          :edit_password_reset_url => edit_password_reset_url(user.perishable_token)
   end
   
+  def new_suggestion(suggestion)
+    subject       "New Suggestion From Mobhooks User"
+    from          "MobHooks"
+    recipients    "ryan.macinnes@gmail.com, branier@hotmail.com"
+    sent_on       Time.now
+    if suggestion.user_id?
+      body          :user => User.find(suggestion.user_id), :message => suggestion.message
+    else
+      body          :message => suggestion.message
+    end
+  end
+  
 
 end
