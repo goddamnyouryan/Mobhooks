@@ -641,6 +641,8 @@ h2#submitted_campaigns {
 	margin:0;
 }
 
+form#new_user_session { width: 600px;}
+
 /**********************CAMPAIGNS***********************************/
 h2#mobile_campaign {
 	background: url(../images/mobile_campaign.jpg) no-repeat;

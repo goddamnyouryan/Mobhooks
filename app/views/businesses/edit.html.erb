@@ -49,11 +49,26 @@
 
 <%= render :partial => 'brand' %>
 
+<div style="float:right;">
 <% if session[:campaign_continue] %>
 <p>
-  <%= link_to "Don't know this info? <br />Click here to skip to the campaign page.", skip_business_path, :business => session[:campaign_continue], :class => "button", :style => "float:right;text-align:center;" %>
+  <%= link_to "Don't know this info? <br />Click here to skip to the campaign page.", skip_business_path, :business => session[:campaign_continue], :class => "button", :style => "text-align:center;float:right;margin-bottom:20px;" %>
 </p>
 <% end %>
+
+<br />
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-2919877323911591";
+/* Mobhooks */
+google_ad_slot = "6421093481";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+</div>
 
 <div class="clear"></div>
 
