@@ -367,6 +367,7 @@ div#tag_cloud {
 	border: 7px solid #c0c0c0;
 	padding: 10px;
 	width:264px;
+	margin-bottom:20px;
 }
 
 div#tag_cloud a { color: #000; }
