@@ -52,7 +52,7 @@ src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
 <%= link_to "unlimited", :controller => 'campaigns', :action => "index", :search => params[:search], :near => params[:near], :distance => 5000 %>
 </p>
 
-<h2> No results for '<%= params[:search] %>'. Try a wider search area.
+<h2> No results for '<%= params[:search] %>'. Try a wider search area.</h2>
 
 <p><%= link_to "Submit a New Campaign", new_campaign_path, :class => "button", :style => "font-size:24px;" %></p>
 

@@ -14,7 +14,11 @@
 	
 	<div class="campaign_list_right">
 		<%= render :partial => "campaigns/score", :locals => { :campaign => c } %>
-		<p class="button"><%= link_to "View Offer", campaign_path(c) %></p>
+		<h3 id="votes_count" style="margin: 3px 0 0 0;">
+			<span id="votes_for" style="color:#00ff00"><%= image_tag "votes_up.gif", :style => "float:none;" %><%= c.votes_for %></span>
+			<span id="votes_against" style="color:#ff0000"><%= image_tag "votes_down.gif", :style => "margin-top:3px;position:relative;top:6px; float:none;" %><%= c.votes_against %></span>
+		</h3>
+		<p class="button" style="margin:3px 0 0 0;"><%= link_to "View Offer", campaign_path(c) %></p>
 	</div>
 </li>
 <div class="clear"></div>

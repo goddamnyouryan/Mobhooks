@@ -658,12 +658,13 @@ div#votes {
 }
 
 h2#score_percentage {
-	font-size:32px;
+	font-size:24px;
 	margin:0;
 }
 
 h3#votes_count {
 	margin:0 0 20px;
+	text-align: center;
 }
 
 div#voting {
