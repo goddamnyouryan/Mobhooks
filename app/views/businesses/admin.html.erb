@@ -1,5 +1,7 @@
 <% title "Businesses" %>
 
+<h2>Business Admin</h2>
+
 <table>
   <tr>
     <th>Name</th>
@@ -7,7 +9,7 @@
     <th>City</th>
     <th>State</th>
     <th>Zip</th>
-    <th>Description</th>
+    <th>Type</th>
   </tr>
   <% for business in @businesses %>
     <tr>
@@ -16,12 +18,10 @@
       <td><%=h business.city %></td>
       <td><%=h business.state %></td>
       <td><%=h business.zip %></td>
-      <td><%=h business.description %></td>
-      <td><%= link_to "Show", business %></td>
+      <td><%=h business.kind %></td>
+      <td><%= link_to "View", business %></td>
       <td><%= link_to "Edit", edit_business_path(business) %></td>
-      <td><%= link_to "Destroy", business, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Delete", business, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
-
-<p><%= link_to "New Business", new_business_path %></p>
