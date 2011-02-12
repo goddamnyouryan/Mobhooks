@@ -8,7 +8,14 @@ class BusinessesController < ApplicationController
   end
   
   def admin
-    @businesses = Business.all
+     @ryan = User.find 1
+     @tom = User.find 2
+     @brady = User.find 3
+     if current_user == @ryan || current_user == @tom || current_user == @brady
+      @businesses = Business.all
+    else
+      redirect_to root_url
+    end
   end
   
   def show

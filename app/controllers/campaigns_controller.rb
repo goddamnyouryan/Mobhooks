@@ -11,7 +11,14 @@ class CampaignsController < ApplicationController
   end
   
   def admin
+    @ryan = User.find 1
+    @tom = User.find 2
+    @brady = User.find 3
+    if current_user == @ryan || current_user == @tom || current_user == @brady
      @campaigns = Campaign.all
+   else
+     redirect_to root_url
+   end
   end
   
   def create
@@ -179,6 +186,10 @@ class CampaignsController < ApplicationController
   
   def destroy
     @campaign = Campaign.find(params[:id])
+    @votes = Vote.find :all, :conditions => ["voteable_id = ?", params[:id]]
+    @votes.each do |v|
+      v.destroy
+    end
     @campaign.destroy
     flash[:notice] = "Successfully deleted campaign."
     redirect_to root_url
