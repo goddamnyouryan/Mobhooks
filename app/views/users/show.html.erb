@@ -6,11 +6,7 @@
 
 <div id="profile">
 	
-<% unless @user.profile.nil? %>
 <%= render :partial=>'users/image', :locals => { :user => @user } %>
-<% else %>
-<%= image_tag "missing_profile.png" %>
-<% end %>
 
 <% unless @user.profile.nil? %>
 <p><% if @user.profile.website %>

@@ -464,7 +464,7 @@ ul#leaderboard li img {
 
 ul#leaderboard li .info {
 	float:left;
-	margin: 0 0 0 10px;
+	margin: -10px 0 0 10px;
 }
 
 ul#leaderboard li h3 {

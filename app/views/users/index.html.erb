@@ -6,9 +6,11 @@
 <% @leaderboard.each do |l| %>
 	<li>
 	<% unless l.profile.nil?%>
-		<%= link_to "#{image_tag l.profile.photo.url(:thumb)}", user_path(l) %>
-	<% else %>
-		<%= image_tag "missing_profile.png" %>
+		<% unless l.profile.photo.exists? %>
+			<%= image_tag "missing_leaderboard.png" %>
+		<% else %>
+			<%= link_to "#{image_tag l.profile.photo.url(:leaderboard)}", user_path(l) %>
+		<% end %>
 	<% end %>
 	<div class="info">
 	<h3><%= link_to "#{l.login}", user_path(l) %></h3>
