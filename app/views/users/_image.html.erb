@@ -5,6 +5,8 @@
 		<% else %>
 			<%= image_tag @user.profile.photo.url(:thumb) %>
 		<% end %>
+	<% else %>
+		<%= image_tag "missing_profile.png" %>
 	<% end %>
 	<h4><%= @user.points %></h4>
 </div>
