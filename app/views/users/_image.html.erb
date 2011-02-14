@@ -1,12 +1,12 @@
 <div class="user_image">
 	<% unless @user.profile.nil? %>
 		<% unless @user.profile.photo.exists? %>
-			<%= image_tag "missing_profile.png" %>
+			<%= random_profile_image %>
 		<% else %>
 			<%= image_tag @user.profile.photo.url(:thumb) %>
 		<% end %>
 	<% else %>
-		<%= image_tag "missing_profile.png" %>
+		<%= random_profile_image %>
 	<% end %>
 	<h4><%= @user.points %></h4>
 </div>

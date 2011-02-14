@@ -5,19 +5,21 @@
 <ul id="leaderboard">
 <% @leaderboard.each do |l| %>
 	<li>
+	<div class="user_leaderboard_image">
 	<% unless l.profile.nil?%>
 		<% unless l.profile.photo.exists? %>
-			<%= image_tag "missing_leaderboard.png" %>
+			<%= link_to "#{random_leaderboard_image}", user_path(l) %>
 		<% else %>
 			<%= link_to "#{image_tag l.profile.photo.url(:leaderboard)}", user_path(l) %>
 		<% end %>
 	<% else %>
-		<%= image_tag "missing_leaderboard.png" %>
+		<%= link_to "#{random_leaderboard_image}", user_path(l) %>
 	<% end %>
+	<h4><%= l.points %></h4>
+	</div>
 	<div class="info">
 	<h3><%= link_to "#{l.login}", user_path(l) %></h3>
-	<%= level(l) %><br />
-	<%= l.points %> points
+	<%= level(l) %>
 	</div>
 	</li>
 	<div class="clear"></div>

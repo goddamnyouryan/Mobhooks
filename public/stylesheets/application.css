@@ -464,7 +464,7 @@ ul#leaderboard li img {
 
 ul#leaderboard li .info {
 	float:left;
-	margin: -10px 0 0 10px;
+	margin: 20px 0 0 10px;
 }
 
 ul#leaderboard li h3 {
@@ -502,6 +502,23 @@ div#profile p a:hover { color: #EDA02C; }
 }
 
 .user_image h4 {
+	margin: 0;
+	text-align:center;
+	padding: 0 0 10px 0;
+}
+
+.user_leaderboard_image {
+	width: 80px;
+	background:#c1c1c1;
+	color: #808080;
+	float: left;
+}
+
+.user_leaderboard_image img {
+	padding: 10px 0 10px 10px;
+}
+
+.user_leaderboard_image h4 {
 	margin: 0;
 	text-align:center;
 	padding: 0 0 10px 0;

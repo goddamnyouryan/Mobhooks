@@ -48,4 +48,12 @@ module ApplicationHelper
     campaign.reviews.find_by_reviewer_id(current_user.id)
   end
   
+  def random_profile_image
+    ["#{image_tag "missing_profile.png"}", "#{image_tag "missing_profile1.png"}", "#{image_tag "missing_profile2.png"}", "#{image_tag "missing_profile3.png"}"].rand
+  end
+  
+  def random_leaderboard_image
+    ["#{image_tag "missing_leaderboard.png"}", "#{image_tag "missing_leaderboard1.png"}", "#{image_tag "missing_leaderboard2.png"}", "#{image_tag "missing_leaderboard3.png"}"].rand
+  end
+  
 end
