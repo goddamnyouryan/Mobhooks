@@ -166,7 +166,7 @@ class CampaignsController < ApplicationController
     elsif params[:search] || params[:near] == ""
       @campaigns = Campaign.search(params[:search]) | Campaign.find_tagged_with(params[:search])  | Campaign.no_address_search(params[:search])
     else
-      @campaigns = Campaign.find(:all, :limit => 25)
+      @campaigns = Campaign.find(:all, :limit => 25, :order => "created_at DESC")
     end
     
     if params[:near]

@@ -392,7 +392,6 @@ ul#campaign_list a:hover { color: #EDA02C; }
 
 ul#campaign_list li { 
 	border: 7px solid #C0C0C0;
-	height: 90px;
 	list-style-type: none;
 	margin-top: 25px;
 	padding: 10px;
@@ -410,13 +409,13 @@ ul#campaign_list li img {
 ul#campaign_list li .campaign_titles {
 	float:left;
 	margin:25px 0 0 5px;
-	width:320px;
+	width:315px;
 }
 
 ul#campaign_list li div.campaign_list_right {
 	float:right;
 	margin: 10px 0 0;
-	width: 85px;
+	width: 90px;
 }
 
 ul#campaign_list li div.campaign_list_right h2 {

@@ -18,8 +18,9 @@
 			<span id="votes_for" style="color:#00ff00"><%= image_tag "votes_up.gif", :style => "float:none;" %><%= c.votes_for %></span>
 			<span id="votes_against" style="color:#ff0000"><%= image_tag "votes_down.gif", :style => "margin-top:3px;position:relative;top:6px; float:none;" %><%= c.votes_against %></span>
 		</h3>
-		<p class="button" style="margin:3px 0 0 0;"><%= link_to "View Offer", campaign_path(c) %></p>
+		<p class="button" style="margin:3px 0 0 0;text-align:center;"><%= link_to "View Offer", campaign_path(c) %></p>
 	</div>
+	<div class="clear"></div>
 </li>
 <div class="clear"></div>
 
