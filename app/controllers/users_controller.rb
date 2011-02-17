@@ -6,7 +6,14 @@ class UsersController < ApplicationController
   end
   
   def admin 
-    @users = User.all
+     @ryan = User.find 1
+     @tom = User.find 2
+     @brady = User.find 3
+     if current_user == @ryan || current_user == @tom || current_user == @brady
+      @users = User.all
+    else
+      redirect_to root_url
+    end
   end
   
   def show

@@ -1,17 +1,23 @@
 <% title "Users" %>
 
+<h2>Users Admin</h2>
+
 <table>
   <tr>
     <th>Login</th>
     <th>Email</th>
+	<th>Points</th>
+	<th>Level</th>
   </tr>
   <% for user in @users %>
     <tr>
       <td><%=h user.login %></td>
       <td><%=h user.email %></td>
-      <td><%= link_to "Show", user %></td>
+	  <td><%= h user.points %></td>
+	  <td><%= h level(user) %></td>
+      <td><%= link_to "View", user %></td>
       <td><%= link_to "Edit", edit_user_path(user) %></td>
-      <td><%= link_to "Destroy", user, :confirm => 'Are you sure?', :method => :delete %></td>
+      <td><%= link_to "Delete", user, :confirm => 'Are you sure?', :method => :delete %></td>
     </tr>
   <% end %>
 </table>
