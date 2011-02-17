@@ -3,6 +3,7 @@
 <h2><%= @achievement.kind %> Badge</h2>
 <% if session[:campaign_continue] %>
 <%= link_to "Continue on to the Campaign you just posted", campaign_path(session[:campaign_continue]), :class => "button", :style => "float:right;" %>
+<div class="clear"></div>
 <% end %>
 
 <% if @achievements.size > 1 %>
