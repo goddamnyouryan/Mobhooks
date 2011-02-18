@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @tags = Campaign.tag_counts
-    @popular = Campaign.find(:all, :joins => :votes, :limit => 5)
+    @popular = Campaign.find :all, :joins => :votes, :conditions => ["votes.created_at >=?", 1.week.ago], :limit => 5
     @sponsored1 = Campaign.find 1
     @sponsored2 = Campaign.find 4
     @sponsored3 = Campaign.find 6

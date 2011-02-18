@@ -31,7 +31,7 @@
 
 <% if current_user %>
 <div id="voting">
-	<% unless current_user.voted_for?(@campaign) %>
+	<% unless current_user.voted_for?(@campaign) || current_user.voted_against?(@campaign) %>
 		<%= link_to_remote "this deal worked for me.", :url => { :controller => 'campaigns', :action => 'vote_up', :campaign => @campaign }, :html => { :id => "vote_up" } %><br />
 		<%= link_to_remote "this deal did not work.", :url => { :controller => 'campaigns', :action => 'vote_down', :campaign => @campaign }, :html => { :id => "vote_down" } %>
 	<% end %>	
