@@ -1,0 +1,15 @@
+<% title "Confirm Business Address" %>
+
+<h2>Is this the correct address for this business?</h2>
+<h3>If not, please enter the correct address below</h3>
+
+<p><%= @confirm_business.name %><br />
+	<%= @confirm_business.address %><br />
+	<%= @confirm_business.city%> <%= @confirm_business.state %>, <% @confirm_business.zip %>
+</p>
+
+<%= link_to "Yes this is the correct address for this business", @campaign, :class => "button" %>
+
+<h2>Is the business address different from the one above? Please enter it below</h2>
+
+<%= render :partial => "form" %>

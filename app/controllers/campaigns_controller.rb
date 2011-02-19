@@ -41,8 +41,13 @@ class CampaignsController < ApplicationController
         current_user.save
         @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", @campaign.user.id, "unread"])
         if @achievements.empty?
-          flash[:notice] = "Successfully posted campaign."
-          redirect_to @campaign
+          if @business.kind == "local"
+            flash[:notice] = "Sucessfully posted campaign. Please confirm business address"
+            redirect_to confirm_path
+          else
+            flash[:notice] = "Successfully posted campaign."
+            redirect_to @campaign
+          end
         else
           flash[:notice] = "Successfully posted campaign. And you've been awarded a new badge!"
           session[:campaign_continue] = @campaign.id
@@ -71,7 +76,6 @@ class CampaignsController < ApplicationController
           render :action => 'new'
         end
       end
-        
     else
       @new_business = Business.create(:name => @business_name, :kind => @business_kind)
       @campaign.business_id = @new_business.id
