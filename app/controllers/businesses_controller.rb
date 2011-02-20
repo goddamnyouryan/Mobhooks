@@ -31,8 +31,10 @@ class BusinessesController < ApplicationController
     @business = Business.create(:name => current_user.campaigns.last.business.name, :kind => "local")
     @campaign = current_user.campaigns.last
     @campaign.business_id = @business.id
+    @campaign.lat = nil
+    @campaign.lng = nil
     @campaign.save
-    redirect_to @campaign
+    redirect_to edit_business_path(@business)
   end
   
   def confirm
