@@ -42,7 +42,7 @@ class CampaignsController < ApplicationController
         @achievements = Achievement.find(:all, :conditions => ["user_id = ? AND  state = ?", @campaign.user.id, "unread"])
         if @achievements.empty?
           if @business.kind == "local"
-            flash[:notice] = "Sucessfully posted campaign. Please select an option below to complete submission."
+            flash[:notice] = "Please select an option below to complete submission."
             redirect_to confirm_path
           else
             flash[:notice] = "Successfully posted campaign."
