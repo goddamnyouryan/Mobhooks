@@ -27,24 +27,12 @@ class BusinessesController < ApplicationController
     @business_name = session[:business_name]
   end
   
-  def create
-    @business = Business.create(params[:business])
-    @business.kind = "local"
-    @business.name = current_user.campaigns.last.business.name
-    if @business.save
-        @campaign = current_user.campaigns.last
-        @campaign.business_id = @business.id
-        @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
-        @campaign.lat = @geocode.lat
-        @campaign.lng = @geocode.lng
-        current_user.points = current_user.points + 100
-        current_user.save
-        @campaign.save
-        flash[:notice] = "New Business Address added"
-        redirect_to @campaign
-    else
-      render :action => 'new'
-    end
+  def disconfirm
+    @business = Business.create(:name => current_user.campaigns.last.business.name, :kind => "local")
+    @campaign = current_user.campaigns.last
+    @campaign.business_id = @business.id
+    @campaign.save
+    redirect_to @campaign
   end
   
   def confirm

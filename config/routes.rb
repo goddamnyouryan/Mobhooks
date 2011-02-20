@@ -11,6 +11,7 @@ ActionController::Routing::Routes.draw do |map|
   map.leave_suggestions 'leave_suggestions', :controller => 'suggestions', :action => 'new'
   map.skip_business 'skip_business', :controller => 'businesses', :action => 'skip_business'
   map.confirm 'businesses/confirm', :controller => 'businesses', :action => 'confirm'
+  map.disconfirm 'businesses/disconfirm', :controller => 'businesses', :action => 'disconfirm'
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'

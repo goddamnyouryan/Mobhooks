@@ -1,15 +1,12 @@
 <% title "Confirm Business Address" %>
 
 <h2>Is this the correct address for this business?</h2>
-<h3>Please help us keep MobHooks accurate and verify or enter the correct address for the business you just submitted.<br /> Get up to 20 points for entering the correct information below.</h3>
+<h3>Please help us keep MobHooks accurate and verify the correct address for the business you just submitted.</h3>
 
 <p><%= @confirm_business.name %><br />
 	<%= @confirm_business.address %><br />
 	<%= @confirm_business.city%> <%= @confirm_business.state %>, <% @confirm_business.zip %>
 </p>
 
-<%= link_to "Yes this is the correct address for this business", @campaign, :class => "button" %>
-
-<h2>Is the business address different from the one above? Please enter it below.</h2>
-
-<%= render :partial => "form" %>
+<p><%= link_to "Yes this is the correct address for this business", @campaign, :class => "button" %></p>
+<p><%= link_to "No the business address is different from above / I don't know", disconfirm_path, :class => "button" %></p>
