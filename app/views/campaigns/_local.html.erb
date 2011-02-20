@@ -19,7 +19,7 @@
 
 <h2 class="campaign_details_header">
 	Where:
-	<% if @campaign.lat? %>
+	<% if @campaign.business.address? %>
 	<span class="campaign_description"><%= @campaign.business.address %> <%= @campaign.business.city %> <%= @campaign.business.state %>, <%= @campaign.business.zip %>
 		<% if current_user && ! current_user.profile.nil? && current_user.profile.zip? %>
 			<em>(<%= pluralize(@distance, "mile") %>)</em>
