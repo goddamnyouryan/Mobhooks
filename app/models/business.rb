@@ -17,6 +17,6 @@ class Business < ActiveRecord::Base
   validates_presence_of :url, :photo, :on => :update, :if => Proc.new { |business| business.kind == "brand" }
   validates_presence_of :name
   validates_presence_of :kind, :message => "You must select A Business Type"
-  # validates_uri_existence_of :url, :with => %r{(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&amp;:/~\+#]*[\w\-\@?^=%&amp;/~\+#])?}x
+  validates_uri_existence_of :url, :with => %r{^http\://[a-zA-Z0-9\-\.]+\.[a-zA-Z]{2,3}(/\S*)?$}x
   
 end

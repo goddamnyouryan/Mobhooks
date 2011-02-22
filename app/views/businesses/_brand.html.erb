@@ -1,14 +1,14 @@
 <% form_for @business, :html => { :multipart => true } do |f| %>
 	
 	  <%= f.error_messages %>
-	  <% if @business.url.nil? || @business.url == "http://" %>
+	  <% if @business.url.nil? || @business.url == "http://" || current_user.role == "admin" %>
 	  <p>
 	    <h3 style="margin:0;">Business website address:</h3>
 	    <%= f.text_field :url, :value => "http://", :class => "large_form" %>
 	  </p>
 	  <% end %>
 	
-	<% unless @business.photo.exists? %>
+	<% if !@business.photo.exists? || current_user.role == "admin" %>
 	  <p>
 		<h3 style="margin:0;">Upload Business Logo or Photo:</h3>
 		<%= f.file_field :photo %>

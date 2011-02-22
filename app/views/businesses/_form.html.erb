@@ -1,7 +1,7 @@
 <% form_for @business, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   
-<% unless @business.address? %>
+<% if !@business.address? || current_user.role == "admin" %>
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Business Address:</h3>
     <%= f.text_field :address, :class => "large_form" %>
@@ -25,14 +25,14 @@
 
 <% end %>
 
-<% unless @business.url? %>
+<% if !@business.url? || current_user.role == "admin" %>
   <p>
     <h3 style="margin:0;">Business Website:</h3>
     <%= f.text_field :url, :class => "large_form" %>
   </p>
 <% end %>
 
-<% unless @business.photo.exists? %>
+<% if !@business.photo.exists? || current_user.role == "admin" %>
   <p>
 	<h3 style="margin:0;">Upload Business Logo or Photo:</h3>
 	<%= f.file_field :photo %>
