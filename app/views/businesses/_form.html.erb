@@ -27,7 +27,7 @@
 
 <% if !@business.url? || current_user.role == "admin" %>
   <p>
-    <h3 style="margin:0;">Business Website:</h3>
+    <h3 style="margin:0;">Business Website (must start with 'http://'):</h3>
     <%= f.text_field :url, :class => "large_form" %>
   </p>
 <% end %>
