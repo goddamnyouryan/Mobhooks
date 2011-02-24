@@ -14,13 +14,12 @@ body {
 
 body#home h1#title {
 background:url(../images/splash_title.png) no-repeat;
-width: 270px;
-height:136px;
+width: 404px;
+height:203px;
 text-indent:-9999px;
-margin-top: 45px;
 }
 
-body#home h1#title a { display:block; width: 270px; height:136px;}
+body#home h1#title a { display:block; width: 404px; height:203px;}
 
 a img {
   border: none;
@@ -172,7 +171,7 @@ ul#nav li {
 #splash_search {
 	float: right;
 	width:395px;
-	margin-top:-130px;
+	margin-top:-164px;
 }
 
 #splash_search form {  }
