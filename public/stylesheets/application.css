@@ -14,12 +14,13 @@ body {
 
 body#home h1#title {
 background:url(../images/splash_title.png) no-repeat;
-width: 404px;
-height:203px;
+width: 270px;
+height:136px;
 text-indent:-9999px;
+margin-top: 45px;
 }
 
-body#home h1#title a { display:block; width: 404px; height:203px;}
+body#home h1#title a { display:block; width: 270px; height:136px;}
 
 a img {
   border: none;
@@ -53,7 +54,6 @@ h2 {
 #container {
   width: 960px;
   margin: 0 auto;
-  position: relative;
 }
 
 #flash_notice, #flash_error {
@@ -159,8 +159,6 @@ ul#nav {
 	padding: 13px 5px 3px;
 	margin: 0;
 	height:25px;
-	position: absolute;
-	right: 0;
 }
 
 ul#nav a { color: #fff; text-decoration:none; }
@@ -174,7 +172,7 @@ ul#nav li {
 #splash_search {
 	float: right;
 	width:395px;
-	margin-top:-164px;
+	margin-top:-130px;
 }
 
 #splash_search form {  }
