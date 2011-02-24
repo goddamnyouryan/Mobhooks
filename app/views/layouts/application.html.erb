@@ -33,13 +33,12 @@
 	<% end %>
 	 <div id="container">
 	 <h1 id="title"><%= link_to "MobHooks", root_path %></h1>
-	<% unless params[:controller] == "home" %>
-		<%= link_to "#{image_tag "suggestions.png"}", leave_suggestions_path, :style => "float:left;margin: 35px 0 0 100px;" %>
-	<% end %>
+
 		<ul id="nav">
 		  <% if current_user %>
 		  	<li><%= link_to "Submit Offer", new_campaign_path %></li>
 			<li><%= link_to "Offers", campaigns_path %></li>
+			<li><%= link_to "Printable Coupons", printable_coupons_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Profile", user_path(current_user) %></li>
 			<li><%= link_to "Logout", logout_path %></li>
@@ -47,6 +46,7 @@
 		  	<li><%= link_to "Submit Offer", new_campaign_path %></li>
 			<li><%= link_to "What is MobHooks?", about_path %></li>
 			<li><%= link_to "Offers", campaigns_path %></li>
+			<li><%= link_to "Printable Coupons", printable_coupons_path %></li>
 			<li><%= link_to "The Family", thefamily_path %></li>
 			<li><%= link_to "Register", new_user_path %></li>
 			<li><%= link_to "Login", login_path %></li>

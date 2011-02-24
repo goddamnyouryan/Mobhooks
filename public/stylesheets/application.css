@@ -53,6 +53,7 @@ h2 {
 #container {
   width: 960px;
   margin: 0 auto;
+  position: relative;
 }
 
 #flash_notice, #flash_error {
@@ -158,6 +159,8 @@ ul#nav {
 	padding: 13px 5px 3px;
 	margin: 0;
 	height:25px;
+	position: absolute;
+	right: 0;
 }
 
 ul#nav a { color: #fff; text-decoration:none; }
