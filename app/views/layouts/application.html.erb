@@ -7,7 +7,7 @@
     <%= stylesheet_link_tag 'prototip' %>
 	<% if params[:controller] == "campaigns" && params[:action] == "show" %>
 		<% if @campaign.business.photo.exists? %>
-			<link rel="image_src" href="#{@campaign.business.photo.url(:main)}" />
+			<link rel="image_src" href="<%= @campaign.business.photo.url(:main) %>" />
 		<% else %>
 			<link rel="image_src" href="http://www.mobhooks.com/images/share.jpg" />
 		<% end %>
