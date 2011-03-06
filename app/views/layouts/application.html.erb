@@ -5,7 +5,15 @@
     <title>MobHooks - <%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'prototip' %>
-	<link rel="image_src" href="http://www.mobhooks.com/images/share.jpg"/>
+	<% if params[:controller] == "campaigns" && params[:action] == "show" %>
+		<% if campaign.business.photo.exists? %>
+			<link rel="image_src" href="#{@campaign.business.photo.url(:main)}" />
+		<% else %>
+			<link rel="image_src" href="http://www.mobhooks.com/images/share.jpg" />
+		<% end %>
+	<% else%>
+		<link rel="image_src" href="http://www.mobhooks.com/images/share.jpg" />
+	<% end %>
 	<%= javascript_include_tag :defaults %>
 	<%= javascript_include_tag 'prototip' %>
     <%= yield(:head) %>
