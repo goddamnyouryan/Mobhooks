@@ -144,12 +144,12 @@ h1#title {
 	float:left;
 	background:url(../images/title.png) no-repeat;
 	height:62px;
-	width:186px;
+	width:149px;
 	text-indent:-9999px;
 	margin:12px 0 0;
 }
 
-h1#title a {display: block; width:186px; height: 62px; }
+h1#title a {display: block; width:149px; height: 62px; }
 
 ul#nav {
 	float: right;

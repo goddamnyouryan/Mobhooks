@@ -13,6 +13,7 @@ ActionController::Routing::Routes.draw do |map|
   map.confirm 'businesses/confirm', :controller => 'businesses', :action => 'confirm'
   map.disconfirm 'businesses/disconfirm', :controller => 'businesses', :action => 'disconfirm'
   map.printable_coupons 'printable_coupons', :controller => 'campaigns', :action => 'printable_coupons'
+  map.contest 'contest', :controller => "home", :action => "contest"
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'
