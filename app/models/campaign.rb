@@ -53,7 +53,7 @@ class Campaign < ActiveRecord::Base
     if search && near && near != "" && near != "near..."
       find(:all, 
            :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR shortcode LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
+           :conditions => ['LOWER(offer) LIKE ? OR shortcode = ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
                             "%#{search.to_s.downcase}%", "%#{search}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                            ],
            :origin => "#{near}",
@@ -62,7 +62,7 @@ class Campaign < ActiveRecord::Base
     elsif search
       find(:all, 
            :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR shortcode LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
+           :conditions => ['LOWER(offer) LIKE ? OR shortcode = ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
                              "%#{search.to_s.downcase}%", "%#{search}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                             ]
            )       
@@ -75,7 +75,7 @@ class Campaign < ActiveRecord::Base
     if search
       find(:all, 
            :include => :business, 
-           :conditions => ['(LOWER(offer) LIKE ? OR shortcode LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ?) AND businesses.address IS ?', 
+           :conditions => ['(LOWER(offer) LIKE ? OR shortcode = ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ?) AND businesses.address IS ?', 
                              "%#{search.to_s.downcase}%", "%#{search}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", nil
                             ]
       )
