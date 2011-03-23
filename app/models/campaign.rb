@@ -53,8 +53,8 @@ class Campaign < ActiveRecord::Base
     if search && near && near != "" && near != "near..."
       find(:all, 
            :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
-                            "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
+           :conditions => ['LOWER(offer) LIKE ? OR shortcode LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
+                            "%#{search.to_s.downcase}%", "%#{search}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                            ],
            :origin => "#{near}",
            :within => distance
@@ -62,8 +62,8 @@ class Campaign < ActiveRecord::Base
     elsif search
       find(:all, 
            :include => :business, 
-           :conditions => ['LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
-                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
+           :conditions => ['LOWER(offer) LIKE ? OR shortcode LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ? OR LOWER(businesses.description) LIKE ?', 
+                             "%#{search.to_s.downcase}%", "%#{search}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%"
                             ]
            )       
     else
@@ -75,8 +75,8 @@ class Campaign < ActiveRecord::Base
     if search
       find(:all, 
            :include => :business, 
-           :conditions => ['(LOWER(offer) LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ?) AND businesses.address IS ?', 
-                             "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", nil
+           :conditions => ['(LOWER(offer) LIKE ? OR shortcode LIKE ? OR LOWER(details) LIKE ? OR LOWER(businesses.name) LIKE ?) AND businesses.address IS ?', 
+                             "%#{search.to_s.downcase}%", "%#{search}%", "%#{search.to_s.downcase}%", "%#{search.to_s.downcase}%", nil
                             ]
       )
     else
