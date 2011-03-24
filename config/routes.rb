@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :newsletters
+
 
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
@@ -13,7 +15,7 @@ ActionController::Routing::Routes.draw do |map|
   map.confirm 'businesses/confirm', :controller => 'businesses', :action => 'confirm'
   map.disconfirm 'businesses/disconfirm', :controller => 'businesses', :action => 'disconfirm'
   map.printable_coupons 'printable_coupons', :controller => 'campaigns', :action => 'printable_coupons'
-  map.contest 'contest', :controller => "home", :action => "contest"
+  map.newsletter 'newsletter', :controller => "newsletters", :action => "new"
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'

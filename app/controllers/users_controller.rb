@@ -33,6 +33,9 @@ class UsersController < ApplicationController
       @profile.user_id = @user.id
       @profile.save
       @user.points = @user.points + 100
+      if params[:newsletter] == 0
+        @user.newsletter = false
+      end
       @user.save
       flash[:notice] = "Registration Successful! Welcome #{current_user.login}!"
       redirect_to root_url

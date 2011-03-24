@@ -12,7 +12,5 @@ class HomeController < ApplicationController
     @recent = Campaign.find :all, :order => "created_at DESC", :limit => 10
   end
   
-  def contest
-  end
 
 end

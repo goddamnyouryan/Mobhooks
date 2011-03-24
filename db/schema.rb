@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110221231715) do
+ActiveRecord::Schema.define(:version => 20110324061815) do
 
   create_table "achievements", :force => true do |t|
     t.string   "kind"
@@ -88,6 +88,12 @@ ActiveRecord::Schema.define(:version => 20110221231715) do
     t.decimal  "lng"
   end
 
+  create_table "newsletters", :force => true do |t|
+    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "profiles", :force => true do |t|
     t.integer  "user_id"
     t.string   "name"
@@ -151,6 +157,10 @@ ActiveRecord::Schema.define(:version => 20110221231715) do
     t.integer  "points",             :default => 0
     t.string   "perishable_token",   :default => "",     :null => false
     t.string   "role",               :default => "user", :null => false
+    t.datetime "birthday"
+    t.string   "sex"
+    t.string   "phonenumber"
+    t.boolean  "newsletter",         :default => true
   end
 
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"

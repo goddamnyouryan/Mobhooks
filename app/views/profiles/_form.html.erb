@@ -9,20 +9,6 @@
     <%= f.text_field :zip, :class => "large_form" %>
   </p>
   <p>
-    <h3 style="margin:0;">Gender:</h3>
-    <%= f.radio_button :sex, "Male" %> Male
-	<%= f.radio_button :sex, "Female" %> Female
-  </p>
-  <p>
-    <h3 style="margin:0;">Birthday:</h3>
-    <%= f.date_select :birthday, 
-										:start_year => Time.now.year,
-										:end_year => Profile::START_YEAR,
-										:include_blank => true,
-										:order => [:month, :day, :year]											
-	%>
-  </p>
-  <p>
     <h3 style="margin:0;">Website:</h3>
     <%= f.text_field :website, :class => "large_form" %>
   </p>

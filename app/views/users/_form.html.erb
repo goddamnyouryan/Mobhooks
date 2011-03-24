@@ -1,26 +1,47 @@
 <% form_for @user do |f| %>
   <%= f.error_messages %>
   <p>
-    <h3 style="margin:0;">Username:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Username:</h3>
     <%= f.text_field :login %>
   </p>
   <p>
-    <h3 style="margin:0;">Email Address:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Email Address:</h3>
     <%= f.text_field :email %>
   </p>
   <p>
-    <h3 style="margin:0;">Password:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Password:</h3>
     <%= f.password_field :password %>
   </p>
   <p>
-    <h3 style="margin:0;">Confirm Password:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Confirm Password:</h3>
     <%= f.password_field :password_confirmation %>
   </p>
   <p>
-	<h3 style="margin:0;">Prove you aren't a robot:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Gender:</h3>
+    <%= f.radio_button :sex, "Male" %> Male
+	<%= f.radio_button :sex, "Female" %> Female
+  </p>
+  <p>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Birthday:</h3>
+    <%= f.date_select :birthday, 
+										:start_year => Time.now.year,
+										:end_year => Profile::START_YEAR,
+										:include_blank => true,
+										:order => [:month, :day, :year]											
+	%>
+  </p>
+  <p>
+    <h3 style="margin:0;">Phone Number:</h3>
+    <%= f.text_field :phonenumber %>
+  </p>
+  <p>
+	<h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Prove you aren't a robot:</h3>
 	<%= recaptcha_tags %>
   </p>
 
   <h3 style="margin:25px 0;"><%= f.check_box :terms %>You have read and agree to our <%= link_to 'terms of service', terms_path, :class => 'link' %></h3>
+  <h3 style="margin:25px 0;"><%= f.check_box :newsletter %>You would like to sign up for our newsletter to receive emails about the best deals in your area!</h3>
   <p><%= f.submit "Sign Up", :class => 'button' %></p>
+
+
 <% end %>
