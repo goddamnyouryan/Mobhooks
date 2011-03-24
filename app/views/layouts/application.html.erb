@@ -45,6 +45,8 @@
 	 <h1 id="title"><%= link_to "MobHooks", root_path %></h1>
 	<% if params[:controller] == "home" && params[:action] == "index" %>
 		<%= link_to "#{image_tag "contest-splash.gif"}", thefamily_path %>
+	<% else %>
+		<%= link_to "#{image_tag "contest.gif"}", thefamily_path %>
 	<% end %>
 	</div>
 	
@@ -87,12 +89,12 @@
 				<% @location = "#{@location_geocode.city}, #{@location_geocode.state}" %>
 			
 		    <% unless current_user %>
-		    <%= text_field_tag :near, params[:near], :value => "#{@location}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
+		    <%= text_field_tag :near, params[:near], :value => "#{@location}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>enter city, state, or zip</p>
 		    <% else %>
 		    <% unless current_user.profile.nil? || current_user.profile.zip.nil? %>
-		    <%= text_field_tag :near, params[:near], :value => "#{current_user.profile.zip}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
+		    <%= text_field_tag :near, params[:near], :value => "#{current_user.profile.zip}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>enter city, state, or zip</p>
 		    <% else %>
-		    <%= text_field_tag :near, params[:near], :value => "#{@location}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>ex: address, city, state, zip.</p>
+		    <%= text_field_tag :near, params[:near], :value => "#{@location}", :onfocus => "if (this.value == 'near...') this.value = ''" %><p>enter city, state, or zip</p>
 		    <% end %>
 		    <% end %>
 		    </span>
