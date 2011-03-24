@@ -41,7 +41,13 @@
 		<body>
 	<% end %>
 	 <div id="container">
+	<div id="contest">
 	 <h1 id="title"><%= link_to "MobHooks", root_path %></h1>
+	<% if params[:controller] == "home" && params[:action] == "index" %>
+		<%= link_to "#{image_tag "contest-splash.gif"}", thefamily_path %>
+	<% end %>
+	</div>
+	
 
 		<ul id="nav">
 		  <% if current_user %>
