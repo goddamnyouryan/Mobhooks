@@ -1,15 +1,61 @@
-<% title "Sign up for the Newsletter" %>
+<h2>Sign Up for the MobHooks Newsletter</h2>
+<h3>and get cool deals in your area!</h3>
 
-<h2>Sign Up for the MobHooks Newletter</h2>
-<h3>And get emails about awesome text deals in your area</h3>
+<form method=post action="https://app.icontact.com/icp/signup.php" name="icpsignup" id="icpsignup1657" accept-charset="UTF-8" onsubmit="return verifyRequired1657();" >
+<input type=hidden name=redirect value="http://mobhooks.com" />
+<input type=hidden name=errorredirect value="http://mobhooks.com" />
 
-<% form_for @newsletter do |f| %>
-  <%= f.error_messages %>
-  <p>
-    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Email Address:</h3>
-    <%= f.text_field :email %>
-  </p>
-  <p><%= f.submit "Sign Up", :class => 'button' %></p>
-<% end %>
+<p>
+  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Email:</h3>
+  <input type=text name="fields_email" id="user_login">
+</p>
+<p>
+  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>First Name:</h3>
+  <input type=text name="fields_fname" id="user_login">
+</p>
 
+<p>
+  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>City:</h3>
+  <input type=text name="fields_city" id="user_login">
+</p>
+
+<p>
+  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>State:</h3>
+  <input type=text name="fields_state" id="user_login">
+</p>
+
+<p>
+  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Zip Code:</h3>
+  <input type=text name="fields_zip" id="user_login">
+</p>
+
+    <input type=hidden name="listid" value="21580">
+    <input type=hidden name="specialid:21580" value="QXF9">
+
+    <input type=hidden name=clientid value="877136">
+    <input type=hidden name=formid value="1657">
+    <input type=hidden name=reallistid value="1">
+    <input type=hidden name=doubleopt value="1">
+
+<p><input type="submit" name="Submit" value="Submit" class="button"></p>
+
+</form>
+<script type="text/javascript">
+
+var icpForm1657 = document.getElementById('icpsignup1657');
+
+if (document.location.protocol === "https:")
+
+	icpForm1657.action = "https://app.icontact.com/icp/signup.php";
+function verifyRequired1657() {
+  if (icpForm1657["fields_email"].value == "") {
+    icpForm1657["fields_email"].focus();
+    alert("The Email field is required.");
+    return false;
+  }
+
+
+return true;
+}
+</script>
 

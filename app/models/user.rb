@@ -11,7 +11,9 @@ class User < ActiveRecord::Base
     has_one :profile
     has_many :comments
     
-    validates_presence_of :login, :email, :password, :password_confirmation, :sex, :birthday
+    validates_presence_of :login, :email, :password, :password_confirmation, :sex, :birthday, :terms
+    validates_inclusion_of :terms, :in => "true", :message => "- You must agree to our terms to sign up."
+    
     
     def deliver_password_reset_instructions!
       reset_perishable_token!

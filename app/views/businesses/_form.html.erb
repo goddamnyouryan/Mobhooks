@@ -1,7 +1,7 @@
 <% form_for @business, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   
-<% if !@business.address? || current_user.role == "admin" %>
+<% if @business.address != nil || current_user.role == "admin" %>
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Business Address:</h3>
     <%= f.text_field :address, :class => "large_form" %>
@@ -25,7 +25,7 @@
 
 <% end %>
 
-<% if !@business.url? || current_user.role == "admin" %>
+<% if @business.url != nil || current_user.role == "admin" %>
   <p>
     <h3 style="margin:0;">Business Website (must start with 'http://'):</h3>
     <%= f.text_field :url, :class => "large_form" %>
