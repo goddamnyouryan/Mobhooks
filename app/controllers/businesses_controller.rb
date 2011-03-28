@@ -66,15 +66,17 @@ class BusinessesController < ApplicationController
       if params[:business][:address]
         current_user.points = current_user.points + 10
         current_user.save
-      elsif params[:business][:url]
-        if params[:business][:url] == "http://" || params[:business][:url] == ""
+      end
+      if params[:business][:url]
+        if @business.url == "http://" || @business.url == ""
           @business.url = nil
           @business.save!
         else
           current_user.points = current_user.points + 5
           current_user.save
         end
-      elsif params[:business][:photo]
+      end
+      if params[:business][:photo]
         unless params[:business][:photo] == ""
           current_user.points = current_user.points + 5
           current_user.save
