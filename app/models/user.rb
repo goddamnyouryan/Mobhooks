@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
     has_many :comments
     
     validates_presence_of :login, :email, :password, :password_confirmation, :sex, :birthday, :terms
-    validates_inclusion_of :terms, :in => "true", :message => "- You must agree to our terms to sign up."
+    validates_inclusion_of :terms, :in => "true", :on => :create, :message => "- You must agree to our terms to sign up."
     
     
     def deliver_password_reset_instructions!
