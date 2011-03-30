@@ -37,8 +37,15 @@ class UsersController < ApplicationController
         @user.newsletter = false
       end
       @user.save
-      flash[:notice] = "Registration Successful! Welcome #{current_user.login}!"
-      redirect_to root_url
+      if @user.newletter == true
+        @user.points = @user.points + 100
+        @user.save!
+        flash[:notice] = "Registration Successful! Welcome #{current_user.login}! Thanks for subscribing to our newsletter. You may unsubscribe at any time from within our emails."
+        redirect_to root_url
+      else
+        flash[:notice] = "Registration Successful! Welcome #{current_user.login}!"
+        redirect_to root_url
+      end
     else
       render :action => 'new'
     end

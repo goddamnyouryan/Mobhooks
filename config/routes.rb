@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.disconfirm 'businesses/disconfirm', :controller => 'businesses', :action => 'disconfirm'
   map.printable_coupons 'printable_coupons', :controller => 'campaigns', :action => 'printable_coupons'
   map.newsletter 'newsletter', :controller => "newsletters", :action => "new"
+  map.signed_up 'signed_up', :controller => "newsletters", :action => "signed_up"
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'

@@ -31,7 +31,11 @@
 	%>
   </p>
   <p>
-    <h3 style="margin:0;">Phone Number:</h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Zip Code:</h3>
+    <%= f.text_field :zip %>
+  </p>
+  <p>
+    <h3 style="margin:0;">Phone Number: (optional)</h3>
     <%= f.text_field :phonenumber %>
   </p>
   <p>
@@ -40,7 +44,7 @@
   </p>
 
   <h3 style="margin:25px 0;"><%= f.check_box :terms %>I have read and agree to MobHooks' <%= link_to 'terms of service', terms_path, :class => 'link' %></h3>
-  <h3 style="margin:25px 0;"><%= f.check_box :newsletter %>I would like to sign up for the MobHooks newsletter to receive information about the best deals in my area! (MobHooks will never share your personal information with third parties)</h3>
+  <h3 style="margin:25px 0;"><%= f.check_box :newsletter %>I would like to subscribe to the MobHooks Family newsletter to receive information about future contests, rewards, and the best deals in my area! GET 100 pts for signing up! (MobHooks will never share your personal information with third parties)</h3>
   <p><%= f.submit "Sign Up", :class => 'button' %></p>
 
 

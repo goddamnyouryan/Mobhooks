@@ -44,9 +44,9 @@
 	<div id="contest">
 	 <h1 id="title"><%= link_to "MobHooks", root_path %></h1>
 	<% if params[:controller] == "home" && params[:action] == "index" %>
-		<%= link_to "#{image_tag "contest-splash.gif"}", thefamily_path %>
+		<%= link_to "#{image_tag "contest-splash.gif"}", thefamily_path, :class => "contest_gif" %>
 	<% else %>
-		<%= link_to "#{image_tag "contest.gif"}", thefamily_path %>
+		<%= link_to "#{image_tag "contest.gif"}", thefamily_path, :class => "contest_gif" %>
 	<% end %>
 	</div>
 	

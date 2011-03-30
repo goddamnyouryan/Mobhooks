@@ -151,7 +151,7 @@ h1#title {
 
 #contest { position: relative;}
 
-#contest a { position: absolute; left:313px;}
+.contest_gif { position: absolute; left:313px;}
 
 h1#title a {display: block; width:149px; height: 62px; }
 

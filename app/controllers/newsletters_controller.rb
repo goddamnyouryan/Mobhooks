@@ -2,6 +2,9 @@ class NewslettersController < ApplicationController
   def new
     @newsletter = Newsletter.new
   end
+  
+  def signed_up
+  end
 
   def create
     @newsletter = Newsletter.new(params[:newsletter])

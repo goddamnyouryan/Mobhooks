@@ -1,9 +1,11 @@
 <h2>Sign Up for the MobHooks Newsletter</h2>
 <h3>and get cool deals in your area!</h3>
 
+<div style="float:left;">
+
 <form method=post action="https://app.icontact.com/icp/signup.php" name="icpsignup" id="icpsignup1657" accept-charset="UTF-8" onsubmit="return verifyRequired1657();" >
-<input type=hidden name=redirect value="http://mobhooks.com" />
-<input type=hidden name=errorredirect value="http://mobhooks.com" />
+<input type=hidden name=redirect value="<%= signed_up_url %>" />
+<input type=hidden name=errorredirect value="<%= signed_up_url %>" />
 
 <p>
   <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Email:</h3>
@@ -12,16 +14,6 @@
 <p>
   <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>First Name:</h3>
   <input type=text name="fields_fname" id="user_login">
-</p>
-
-<p>
-  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>City:</h3>
-  <input type=text name="fields_city" id="user_login">
-</p>
-
-<p>
-  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>State:</h3>
-  <input type=text name="fields_state" id="user_login">
 </p>
 
 <p>
@@ -59,3 +51,24 @@ return true;
 }
 </script>
 
+</div>
+
+<div style="float:left;width:400px;margin-left:50px;">
+
+<h2>Sign Up for the MobHooks Newsletter and receive...</h2>
+
+<ul>
+
+<li>50-90% off deals from local merchants in your area sent directly to your inbox</li>
+
+<li>Info on the best text-only offers and enter to win contests from national brands and merchants in your area</li>
+	
+<li>Up to date info about special offers and exclusive offers from MobHooks.</li>
+
+</ul>
+
+<p>*MobHooks will never share your personal information with third parties.</p>
+
+</div>
+
+<div class="clear"></div>
