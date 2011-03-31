@@ -33,7 +33,9 @@
 
 <div style="float:left;margin:95px 0 0 100px;width:300px;">
 	
-<%= link_to "Sign Up for our Newsletter and get deals in your area!", new_newsletter_path, :class => "button affiliates" %>
+<% unless current_user %>
+	<%= link_to "Sign Up for our Newsletter and get deals in your area!", new_newsletter_path, :class => "button affiliates" %>
+<% end %>
 
 <%= link_to "Business Owners: Want to Start Your Own Text Campaign? Click Here!", business_owners_path, :class => "button affiliates" %>
 
