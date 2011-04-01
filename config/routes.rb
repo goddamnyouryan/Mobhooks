@@ -5,6 +5,7 @@ ActionController::Routing::Routes.draw do |map|
   map.login 'login', :controller => 'user_sessions', :action => 'new'
   map.logout 'logout', :controller => 'user_sessions', :action => 'destroy'
   map.terms 'terms', :controller => 'users', :action => 'terms'
+  map.privacy 'privacy', :controller => 'users', :action => 'privacy'
   map.thefamily 'thefamily', :controller => 'users', :action => 'index'
   map.about 'about', :controller => "achievements", :action => 'index'
   map.faq 'faq', :controller => "home", :action => 'show'
