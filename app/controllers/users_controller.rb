@@ -37,7 +37,7 @@ class UsersController < ApplicationController
         @user.newsletter = false
       end
       @user.save
-      if @user.newletter == true
+      if @user.newsletter == true
         @user.points = @user.points + 100
         @user.save!
         flash[:notice] = "Registration Successful! Welcome #{current_user.login}! Thanks for subscribing to our newsletter. You may unsubscribe at any time from within our emails."
