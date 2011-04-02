@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
     has_one :profile
     has_many :comments
     
-    validates_presence_of :login, :email, :password, :password_confirmation
+    validates_presence_of :login, :email, :password, :password_confirmation, :on => :create
     validates_presence_of :sex, :birthday, :terms, :zip, :on => :create
     validates_inclusion_of :terms, :in => "1", :on => :create, :message => "- You must agree to our terms to sign up."
     
