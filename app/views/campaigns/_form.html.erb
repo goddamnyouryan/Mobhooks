@@ -14,7 +14,7 @@
     <%= f.text_field :offer, :class => "large_form" %>
   </p>
   <p>
-    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Shortcode:<%= image_tag "tooltip.png", :id => "shortcode_tooltip" %></h3>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Shortcode (usually 5-6 digits. ie. 242242"):<%= image_tag "tooltip.png", :id => "shortcode_tooltip" %></h3>
     <%= f.text_field :shortcode, :class => "large_form" %>
   </p>
   <p>
@@ -34,7 +34,7 @@
     <%= f.select :kind, options_for_select([[], ['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
   </p>
   <p>
-	<h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Tags (separate with commas):<%= image_tag "tooltip.png", :id => "tags_tooltip" %></h3> 
+	<h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Tags/Categories: <br />(separate w/ commas ie. restaurant, pizza)<%= image_tag "tooltip.png", :id => "tags_tooltip" %></h3> 
 	<%= f.text_field :tag_list, :class => "large_form" %>
   <p>
     <h3 style="margin:0;">Offer details:<%= image_tag "tooltip.png", :id => "offer_details_tooltip" %></h3>
