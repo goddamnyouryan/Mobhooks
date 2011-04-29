@@ -167,9 +167,6 @@ class CampaignsController < ApplicationController
     @votes.each do |v|
       v.destroy
     end
-    @user = @campaign.user
-    @user.points = @user.points - 200
-    @user.save
     @campaign.destroy
     flash[:notice] = "Successfully deleted campaign."
     redirect_to root_url
