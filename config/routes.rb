@@ -18,6 +18,8 @@ ActionController::Routing::Routes.draw do |map|
   map.printable_coupons 'printable_coupons', :controller => 'campaigns', :action => 'printable_coupons'
   map.newsletter 'newsletter', :controller => "newsletters", :action => "new"
   map.signed_up 'signed_up', :controller => "newsletters", :action => "signed_up"
+  map.redeem_points 'redeem_points', :controller => "users", :action => "redeem_points"
+  map.redeeming "redeeming", :controller => "users", :action => "redeeming"
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'

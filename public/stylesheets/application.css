@@ -260,7 +260,7 @@ div#search { float: right;margin-top:-28px; height:16px;}
 	color: #000;
 }
 
-input#email, #splash_search form input#near, input#user_session_login, input#user_session_password, input#user_login, input#user_email, input#user_password, input#user_password_confirmation, input#campaign_business_name, .large_form { 
+input#email, #splash_search form input#near, input#user_session_login, input#user_session_password, input#user_login, input#user_email, input#user_password, input#user_password_confirmation, input#campaign_business_name, .large_form, input#points { 
 	width:376px;
 	font-size: 30px;
 	padding: 5px;

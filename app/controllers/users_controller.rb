@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @downvoted = @downvotes.size
     @reviews = Review.find(:all, :conditions => ["reviewer_id in (?)", @user.id])
     @ten_latest = Campaign.find :all, :conditions => ["user_id = ?", @user.id], :limit => 10
+    @available = @user.points - @user.redeemed
   end
     
   def new
@@ -71,6 +72,31 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:notice] = "Successfully deleted user."
     redirect_to root_url
+  end
+  
+  def redeem_points
+    @available = current_user.points - current_user.redeemed
+    unless @available > 9999
+      flash[:notice] = "Sorry you don't have enough points to redeem."
+      redirect_to root_path
+    end
+  end
+  
+  def redeeming
+    @points = Integer(params[:points])
+    @available = current_user.points - current_user.redeemed
+    if @points > @available
+      flash[:notice] = "You don't have this many points available for redemption!"
+      redirect_to redeem_points_path
+    else
+      current_user.points = current_user.points - @points
+      current_user.redeemed = @points
+      current_user.save
+      mail = Notifier.create_redeem_points(current_user, @points, params[:email])
+      Notifier.deliver(mail)
+      flash[:notice] = "You have submitted your redemption request. A MobHooks associate will contact you shortly."
+      redirect_to root_path
+    end
   end
   
 end

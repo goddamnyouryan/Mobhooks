@@ -44,7 +44,7 @@
   <td><%= level(@user) %></td>
 </tr>
 <tr>
-  <td><strong>Points:</strong></td>
+  <td><strong>Total Points:</strong></td>
   <td><%=h @user.points %></td>
 </tr>
 <tr>
@@ -67,6 +67,26 @@
   <td><strong>Comments Made:</strong></td>
   <td><%=h @commented.size %></td>
 </tr>
+
+<% if @user == current_user %>
+
+<tr>
+  <td><strong>Points Redeemed:</strong></td>
+  <td><%=h @user.redeemed %></td>
+</tr>
+
+<tr>
+  <td><strong>Available Points:</strong></td>
+  <td><%=h @available %></td>
+</tr>
+
+<% if @available > 9999 %>
+<tr>
+	<td><%= link_to "Redeem Points for Cash!", redeem_points_path, :class => "link" %></td>
+</tr>
+<% end %>
+
+<% end %>
 
 </table>
 

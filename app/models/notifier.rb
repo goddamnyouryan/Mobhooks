@@ -21,5 +21,12 @@ class Notifier < ActionMailer::Base
     end
   end
   
+  def redeem_points(user, points, email)
+    subject "Someone wants to Redeem Points"
+    from "MobHooks"
+    recipients "ryan.macinnes@gmail.com, branier@hotmail.com"
+    sent_on Time.now
+    body :user => user, :points => points, :email => email
+  end
 
 end

@@ -1,0 +1,19 @@
+<% title "Redeem Points" %>
+<h2>Redeem Your Points for Cash</h2>
+<h3>For Every 1000 points you redeem you will receive $1 from MobHooks</h3>
+<h3>Available Points: <%= @available %></h3>
+
+<% form_tag redeeming_path  do %>
+
+<p>
+  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Number of Points to Redeem:</h3>
+  <%= text_field_tag :points %>
+</p>
+<p>
+  <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Paypal Email Address:</h3>
+  <%= text_field_tag :email %>
+</p>
+
+<p><%= submit_tag "Redeem", :class => 'button' %></p>
+
+<% end %>
