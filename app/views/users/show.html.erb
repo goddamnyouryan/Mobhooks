@@ -113,7 +113,11 @@
 
 <h2 id="submitted_campaigns">Campaigns Submitted</h2>
 
-<%= render :partial=>'campaigns/list', :locals => { :campaign => @user.campaigns } %>
+<% if current_user == @user %>
+	<%= render :partial=>'campaigns/list', :locals => { :campaign => @user.campaigns } %>
+<% else %>
+	<%= render :partial=>'campaigns/list', :locals => { :campaign => @ten_latest } %>
+<% end %>
 
 <div class="clear"></div>
 

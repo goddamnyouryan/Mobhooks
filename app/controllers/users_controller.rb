@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     @downvotes = @user.votes.find(:all, :conditions => ["vote = ?", false])
     @downvoted = @downvotes.size
     @reviews = Review.find(:all, :conditions => ["reviewer_id in (?)", @user.id])
+    @ten_latest = Campaign.find :all, :conditions => ["user_id = ?", @user.id], :limit => 10
   end
     
   def new
