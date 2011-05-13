@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110513040701) do
+ActiveRecord::Schema.define(:version => 20110513063924) do
 
   create_table "achievements", :force => true do |t|
     t.string   "kind"
@@ -162,7 +162,7 @@ ActiveRecord::Schema.define(:version => 20110513040701) do
     t.string   "phonenumber"
     t.boolean  "newsletter",         :default => true
     t.string   "zip"
-    t.integer  "redeemed",           :default => 0
+    t.integer  "redeemed",           :default => 0,      :null => false
   end
 
   add_index "users", ["perishable_token"], :name => "index_users_on_perishable_token"
