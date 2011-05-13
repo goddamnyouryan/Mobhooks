@@ -89,8 +89,7 @@ class UsersController < ApplicationController
       flash[:notice] = "You don't have this many points available for redemption!"
       redirect_to redeem_points_path
     else
-      current_user.points = current_user.points - @points
-      current_user.redeemed = @points
+      current_user.redeemed = current_user.redeemed + @points
       current_user.save
       mail = Notifier.create_redeem_points(current_user, @points, params[:email])
       Notifier.deliver(mail)
