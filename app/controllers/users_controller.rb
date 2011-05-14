@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   
   def redeem_points
     @available = current_user.points - current_user.redeemed
-    unless @available > 9999
+    unless @available > 999
       flash[:notice] = "Sorry you don't have enough points to redeem."
       redirect_to root_path
     end
