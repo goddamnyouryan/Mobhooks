@@ -78,7 +78,7 @@
 		<% form_tag campaigns_path, :method => 'get' do %>
 		<% unless params[:controller] == "campaigns" && params[:action] == "printable_coupons"%>
 				<span id="search_field">
-		    <%= text_field_tag :search, params[:search], :value => "Search for an Offer...", :onfocus => "if (this.value == 'Search for an Offer...') this.value = ''" %><% if params[:controller] == "home" %>
+		    <%= text_field_tag :search, params[:search], :value => "Search Thousands of Offers...", :onfocus => "if (this.value == 'Search Thousands of Offers...') this.value = ''" %><% if params[:controller] == "home" %>
 		    <% end %>
 		    <p>ex: shoes, best buy, electronics.</p>
 		    </span>
