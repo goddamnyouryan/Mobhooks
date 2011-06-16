@@ -20,6 +20,7 @@ ActionController::Routing::Routes.draw do |map|
   map.signed_up 'signed_up', :controller => "newsletters", :action => "signed_up"
   map.redeem_points 'redeem_points', :controller => "users", :action => "redeem_points"
   map.redeeming "redeeming", :controller => "users", :action => "redeeming"
+  map.press "press", :controller => "suggestions", :action => "press"
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'
