@@ -6,7 +6,7 @@ module TagsHelper
     max_count = tags.sort_by(&:count).last.count.to_f
     
     tags.each do |tag|
-      if tag.count > 5
+      if tag.count > 6
         index = ((tag.count / max_count) * (classes.size - 1)).round
         yield tag, classes[index]
       end
