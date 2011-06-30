@@ -7,10 +7,14 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
-  
+  before_filter :check_uri
   helper_method :current_user, :location
 
   private
+  
+  def check_uri
+    redirect_to request.protocol + "www." + request.host_with_port + request.request_uri if !/^www/.match(request.host) if Rails.env == 'production'
+  end
 
   def current_user_session
     return @current_user_session if defined?(@current_user_session)

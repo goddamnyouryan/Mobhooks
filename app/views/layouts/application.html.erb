@@ -2,9 +2,19 @@
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
+		<meta name="google-site-verification" content="6_ZMeMJQRJjd2ktiexLMKt83--Vaqgm10b5uK3D-ATE" />
+		<META name="y_key" content="b524e184256bc0ab" />
+		<meta name="msvalidate.01" content="5AFC74709C0BCB594B4AF65038DAAD35" />
     <title>MobHooks - <%= h(yield(:title) || "Untitled") %></title>
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'prototip' %>
+<% if params[:controller] == 'campaigns' && params[:action] == 'printable_coupons' %>
+<meta name="description" content="Browse free online printable coupons for groceries & Restaurant with Mobhooks. Use our discount printable coupons codes at your local grocery stores for saving.">
+<meta name="keywords" content="Online printable coupons, online shopping coupons, printable coupons for groceries, printable coupons for restaurant, online coupons code">
+<% else %>
+<meta name="description" content="Mobhooks SMS service providers connecting you to text coupons, text advertising, text messaging and provide free online shopping coupons for restaurant with code.">
+<meta name="keywords" content="SMS text messaging, online discount coupons, online shopping coupons, free coupons for groceries and free coupons for restaurant.">
+<% end %>
 	<% if params[:controller] == "campaigns" && params[:action] == "show" %>
 		<% if @campaign.business.photo.exists? %>
 			<link rel="image_src" href="<%= @campaign.business.photo.url(:main) %>" />
@@ -42,13 +52,15 @@
 	<% end %>
 	 <div id="container">
 	<div id="contest">
-	 <h1 id="title"><%= link_to "MobHooks", root_path %></h1>
+	 <h1 id="title"><%= link_to "MobHooks", root_path, :title => "Mobhooks hookup for SMS Text Messaging and Advertising", :alt => "Mobhooks hookup for SMS Text Messaging and Advertising" %></h1>
 	<% if params[:controller] == "home" && params[:action] == "index" %>
-		<%= link_to "#{image_tag "contest-splash.gif"}", thefamily_path, :class => "contest_gif" %>
+		<%= link_to "#{image_tag "contest-splash.gif", :title => "SMS Text Messaging and Advertising", :alt => "SMS Text Messaging and Advertising"}", thefamily_path, :class => "contest_gif", :title => "Mobhooks Share Offers to get Cash", :alt => "Mobhooks Share Offers to get Cash" %>
 	<% else %>
-		<%= link_to "#{image_tag "contest.gif"}", thefamily_path, :class => "contest_gif" %>
+		<%= link_to "#{image_tag "contest.gif", :title => "SMS Text Messaging and Advertising", :alt => "SMS Text Messaging and Advertising"}", thefamily_path, :class => "contest_gif", :title => "Mobhooks Share Offers to get Cash", :alt => "Mobhooks Share Offers to get Cash" %>
 	<% end %>
 	</div>
+	
+	<a href="/thefamily" class="contest_gif" title="Mobhooks Share Offers to get Cash"><img alt="SMS Text Messaging and Advertising" src="/images/contest-splash.gif?1308211747" /></a>
 	
 
 		<ul id="nav">
