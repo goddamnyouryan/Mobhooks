@@ -135,13 +135,14 @@
 
 <% if current_user == @user %>
 	<%= render :partial=>'campaigns/list', :locals => { :campaign => @campaigns } %>
+	<%= will_paginate @campaigns %>
 <% elsif current_user && current_user.role == "admin" %>
 	<%= render :partial=>'campaigns/list', :locals => { :campaign => @campaigns } %>
+	<%= will_paginate @campaigns %>
 <% else %>
 	<%= render :partial=>'campaigns/list', :locals => { :campaign => @ten_latest } %>
 <% end %>
 
-<%= will_paginate @posts %>
 
 <div class="clear"></div>
 
