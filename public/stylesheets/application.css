@@ -810,3 +810,5 @@ ul#locations li {
 	list-style-type:none;
 	margin: 15px 0;
 }
+
+.pagination { float: right; }
