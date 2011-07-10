@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     @reviews = Review.find(:all, :conditions => ["reviewer_id in (?)", @user.id])
     @ten_latest = Campaign.find :all, :conditions => ["user_id = ?", @user.id], :limit => 10
     @available = @user.points - @user.redeemed
+    @campaigns = Campaign.paginate :page => params[:page], :conditions => ["user_id = ?", @user.id ]
   end
     
   def new

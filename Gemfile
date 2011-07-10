@@ -28,6 +28,7 @@ gem "geokit"
 gem "paths_of_glory"
 gem "acts_as_state_machine"
 gem "recaptcha", :require => "recaptcha/rails"
+gem "will_paginate", "~> 2.3.11"
 
 
 # Add a git repository as a source. Valid options include :branch, :tag,

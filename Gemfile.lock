@@ -50,6 +50,7 @@ GEM
       mime-types (>= 1.16)
     sqlite3-ruby (1.2.5)
     vote_fu (0.0.11)
+    will_paginate (2.3.15)
     xml-simple (1.0.12)
 
 PLATFORMS
@@ -68,3 +69,4 @@ DEPENDENCIES
   recaptcha
   sqlite3-ruby (= 1.2.5)
   vote_fu
+  will_paginate (~> 2.3.11)
