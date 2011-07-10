@@ -811,4 +811,4 @@ ul#locations li {
 	margin: 15px 0;
 }
 
-.pagination { float: right; }
+.pagination { float: right; margin: 15px 0; }
