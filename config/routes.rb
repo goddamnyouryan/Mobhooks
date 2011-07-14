@@ -21,6 +21,9 @@ ActionController::Routing::Routes.draw do |map|
   map.redeem_points 'redeem_points', :controller => "users", :action => "redeem_points"
   map.redeeming "redeeming", :controller => "users", :action => "redeeming"
   map.press "press", :controller => "suggestions", :action => "press"
+  map.cfrg "coupons-for-restaurants-groceries", :controller => "campaigns", :action => "cfrg"
+  map.odc "online-discount-coupons", :controller => "campaigns", :action => "odc"
+  map.cmd "coupons-mobile-deals", :controller => "campaigns", :action => "cmd"
   
   # admin routes
   map.connect '/campaigns/admin', :controller => 'campaigns', :action => 'admin'
