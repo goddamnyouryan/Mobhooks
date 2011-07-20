@@ -7,15 +7,13 @@ class ApplicationController < ActionController::Base
 
   # Scrub sensitive parameters from your log
   filter_parameter_logging :password
-  before_filter :check_uri
+  # before_filter :check_uri
   helper_method :current_user, :location
 
   private
   
   def check_uri
-    unless request.env['HTTP_HOST'] == "mobhooks-test.heroku.com"
-      redirect_to request.protocol + "www." + request.host_with_port + request.request_uri if !/^www/.match(request.host) if Rails.env == 'production'
-    end
+    redirect_to request.protocol + "www." + request.host_with_port + request.request_uri if !/^www/.match(request.host) if Rails.env == 'production'
   end
 
   def current_user_session
