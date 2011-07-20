@@ -31,6 +31,13 @@ class CampaignsController < ApplicationController
         @geocode = Geokit::Geocoders::GoogleGeocoder.geocode "#{@business.address} #{@business.city} #{@business.city} #{@business.zip}"
         @campaign.lat = @geocode.lat
         @campaign.lng = @geocode.lng
+        if params[:campaign][:kind] == "Text Club"
+          @campaign.offer = "Join the text club for " + params[:campaign][:offer]
+        elsif params[:campaign][:kind] == "Discount/Coupon"
+          @campaign.offer = "Text to get a discount on " + params[:campaign][:offer]
+        elsif params[:campaign][:kind] == "Enter to Win"
+          @campaign.offer = "Enter to win " + params[:campaign][:offer]
+        end
         @campaign.save!
         current_user.points = current_user.points + 100
         current_user.save
@@ -53,6 +60,14 @@ class CampaignsController < ApplicationController
       @new_business = Business.create(:name => @business_name, :kind => @business_kind)
       @campaign.business_id = @new_business.id
       if @campaign.save
+        if params[:campaign][:kind] == "Text Club"
+          @campaign.offer = "Join the text club for " + params[:campaign][:offer]
+        elsif params[:campaign][:kind] == "Discount/Coupon"
+          @campaign.offer = "Text to get a discount on " + params[:campaign][:offer]
+        elsif params[:campaign][:kind] == "Enter to Win"
+          @campaign.offer = "Enter to win " + params[:campaign][:offer]
+        end
+        @campaign.save!
         current_user.points = current_user.points + 100
         current_user.save
         session[:campaign_continue] = @campaign.id

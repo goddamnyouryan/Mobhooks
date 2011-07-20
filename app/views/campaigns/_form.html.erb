@@ -1,6 +1,14 @@
 <% form_for @campaign, :html => { :multipart => true } do |f| %>
   <%= f.error_messages %>
   <p>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Offer Type:</h3>
+    <%= f.select :kind, options_for_select([[], ['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
+  </p>
+  <p>
+    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Offer:<%= image_tag "tooltip.png", :id => "offer_tooltip" %></h3>
+    <div id="offer_div"><%= f.text_field :offer, :class => "large_form" %></div>
+  </p>
+  <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Name of Business:<%= image_tag "tooltip.png", :id => "business_name_tooltip" %></h3>
 	<%= text_field_with_auto_complete :campaign, :business_name, {}, { :url => formatted_businesses_path(:js), :method => :get, :with => "'search=' + element.value" } %>
   </p>
@@ -9,10 +17,6 @@
 		<% @business_kind_options = [[],['Local', 'local'], ['National Chain', 'chain'], ['National Brand/Non-Chain', 'brand']] %>
 	    <%= f.select :business_kind, options_for_select(@business_kind_options) %>
 	</p>
-  <p>
-    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Offer:<%= image_tag "tooltip.png", :id => "offer_tooltip" %></h3>
-    <%= f.text_field :offer, :class => "large_form" %>
-  </p>
   <p>
     <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Shortcode (usually 5-6 digits. ie. 242242"):<%= image_tag "tooltip.png", :id => "shortcode_tooltip" %></h3>
     <%= f.text_field :shortcode, :class => "large_form" %>
@@ -29,10 +33,6 @@
     <h3 style="margin:0;">End Date:</h3>
     <%= f.date_select :end_date %>
   </p> -->
-  <p>
-    <h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Offer Type:</h3>
-    <%= f.select :kind, options_for_select([[], ['Text Club'], ['Discount/Coupon'], ['Enter to Win']]) %>
-  </p>
   <p>
 	<h3 style="margin:0;"><span style="color:#EDA02C;font-size: 24px;">*</span>Tags/Categories: <br />(separate w/ commas ie. restaurant, pizza)<%= image_tag "tooltip.png", :id => "tags_tooltip" %></h3> 
 	<%= f.text_field :tag_list, :class => "large_form" %>
