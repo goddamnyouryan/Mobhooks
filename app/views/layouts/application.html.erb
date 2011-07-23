@@ -5,7 +5,7 @@
 		<meta name="google-site-verification" content="6_ZMeMJQRJjd2ktiexLMKt83--Vaqgm10b5uK3D-ATE" />
 		<META name="y_key" content="b524e184256bc0ab" />
 		<meta name="msvalidate.01" content="5AFC74709C0BCB594B4AF65038DAAD35" />
-    <title>MobHooks - <%= h(yield(:title) || "Untitled") %></title>
+    <title><%= h(yield(:title) || "Untitled") %> - Mobhooks</title>
     <%= stylesheet_link_tag 'application' %>
     <%= stylesheet_link_tag 'prototip' %>
 <% if params[:controller] == 'campaigns' && params[:action] == 'printable_coupons' %>
