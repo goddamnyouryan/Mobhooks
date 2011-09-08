@@ -20,9 +20,12 @@
 <% elsif params[:controller] == 'campaigns' && params[:action] == 'odc' %>
 <meta name="description" content="Browse free online discount coupons, text coupons and shopping coupons and you can easily save 20-30% of your grocery bill or other shopping expenses, each week.">
 <meta name="keywords" content="Online Discount Coupons, Text Coupons, online shopping coupons, extreme couponing how to">
+<% elsif params[:controller] == 'campaigns' && params[:action] == "show" && params[:id] == 71 %>
+<meta name="description" content="Text to win campaigns - View all Text for chances to win a variety of prizes for some amazing upcoming competitions. Click here and place your order.">
+<meta name="keywords" content="Text to win, mobile campaigns, Coca-Cola Rewards Text to win campaigns">
 <% else %>
-<meta name="description" content="Mobhooks SMS service providers connecting you to text coupons, text advertising, text messaging and provide free online shopping coupons for restaurant with code.">
-<meta name="keywords" content="SMS text messaging, online discount coupons, online shopping coupons, free coupons for groceries and free coupons for restaurant.">
+<meta name="description" content="Mobhooks SMS service providers are connecting you to text advertising, text messaging and sharing text offers that you find in different media. Join our SMS web service family and keep texting.">
+<meta name="keywords" content="sms service providers, text messaging advertising, advertising text messages, text messaging marketing, text deals, SMS advertising, Text advertising, sms web service, sms text messaging.">
 <% end %>
 	<% if params[:controller] == "campaigns" && params[:action] == "show" %>
 		<% if @campaign.business.photo.exists? %>
