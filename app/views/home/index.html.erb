@@ -3,19 +3,13 @@
 
 <h2 id="featured">Featured Deals</h2>
 
-<ul id="sponsored">
-	<% @sponsored.each do |s| %>
-	<li>
-		<% if s.business.photo.exists? %>
-			<%= link_to "#{image_tag s.business.photo.url(:main)}", campaign_path(s) %>
-		<% else %>
-			<%= link_to "#{thumbnail(s)}", campaign_path(s) %>
-		<% end %>
-		<h3><%= link_to "#{s.business.name}", campaign_path(s) %></h3>
-		<h4><%= link_to "#{s.offer}", campaign_path(s) %></h4>
-	</li>
-	<% end %>
-</ul>
+<div id="widget">
+	<img src="<%= @read[0][7].text %>" />
+	<h1><%= @read[0][1].text %></h1>
+	<div class="clear"></div>
+	<div id="price">$<%= @read[0][17].text %>0</div>
+	<div id="savings">Save $<%= @read[0][21].text %>0, <%= link_to "Buy Now!", "http://steals.mobhooks.com/publishers/mobhooks/deal-of-the-day" %></div>
+</div>
 
 <div class="clear"></div>
 	
