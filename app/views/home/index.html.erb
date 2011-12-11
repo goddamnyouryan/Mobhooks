@@ -1,17 +1,7 @@
 <% title "SMS Advertising - SMS Text Messaging Advertising & Marketing" %>
 <div style="float:left;">
 
-<h2 id="featured">Featured Deals</h2>
-
-<div id="widget">
-	<img src="<%= @read[0][7].text %>" />
-	<h1><%= @read[0][1].text %></h1>
-	<div class="clear"></div>
-	<div id="price">$<%= @read[0][17].text %>0</div>
-	<div id="savings">Save $<%= @read[0][21].text %>0, <%= link_to "Buy Now!", "http://steals.mobhooks.com/publishers/mobhooks/deal-of-the-day" %></div>
-</div>
-
-<div class="clear"></div>
+<!--<h2 id="featured">Featured Deals</h2> -->	
 	
 <h2 id="most_popular">Most Popular Deals</h2>
 
@@ -26,6 +16,20 @@
 </div> 
 
 <div style="float:left;margin:45px 0 0 100px;width:300px;">
+	
+	<h2>Daily Steal</h2>
+	<% link_to "http://steals.mobhooks.com/publishers/mobhooks/deal-of-the-day" do %>
+		<div id="widget">
+			<h1><%= @read[0][1].text %></h1>
+			<div class="clear"></div>
+			<img src="<%= @read[0][7].text %>" />
+			<div id="savings">Save $<%= @read[0][21].text %>0, <span id="buynow">Buy now!</span></div>
+			<div class="clear"></div>
+			<div id="price">$<%= @read[0][17].text %>0</div>
+		</div>
+	<% end %>
+
+	<div class="clear"></div>
 	
 	<script src="http://connect.facebook.net/en_US/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/mobhooks" width="282" show_faces="false" stream="false" header="false"></fb:like-box>
 	
