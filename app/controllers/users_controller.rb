@@ -76,30 +76,32 @@ class UsersController < ApplicationController
   end
   
   def redeem_points
-    @available = current_user.points - current_user.redeemed
-    unless @available > 999
-      flash[:notice] = "Sorry you don't have enough points to redeem."
-      redirect_to root_path
-    end
+    redirect_to root_path
+    # @available = current_user.points - current_user.redeemed
+    # unless @available > 999
+    #   flash[:notice] = "Sorry you don't have enough points to redeem."
+    #   redirect_to root_path
+    # end
   end
   
   def redeeming
-    @points = Integer(params[:points])
-    @available = current_user.points - current_user.redeemed
-    if @points > @available
-      flash[:notice] = "You don't have this many points available for redemption!"
-      redirect_to redeem_points_path
-    elsif @points <= 1000
-      flash[:notice] = "You must redeem at least 1000 points."
-      redirect_to redeem_points_path
-    else
-      current_user.redeemed = current_user.redeemed + @points
-      current_user.save
-      mail = Notifier.create_redeem_points(current_user, @points, params[:email])
-      Notifier.deliver(mail)
-      flash[:notice] = "You have submitted your redemption request. A MobHooks associate will contact you shortly."
-      redirect_to root_path
-    end
+    redirect_to root_path
+    # @points = Integer(params[:points])
+    # @available = current_user.points - current_user.redeemed
+    # if @points > @available
+    #   flash[:notice] = "You don't have this many points available for redemption!"
+    #   redirect_to redeem_points_path
+    # elsif @points <= 1000
+    #   flash[:notice] = "You must redeem at least 1000 points."
+    #   redirect_to redeem_points_path
+    # else
+    #   current_user.redeemed = current_user.redeemed + @points
+    #   current_user.save
+    #   mail = Notifier.create_redeem_points(current_user, @points, params[:email])
+    #   Notifier.deliver(mail)
+    #   flash[:notice] = "You have submitted your redemption request. A MobHooks associate will contact you shortly."
+    #   redirect_to root_path
+    # end
   end
   
 end
